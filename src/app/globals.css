@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-montserrat);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
