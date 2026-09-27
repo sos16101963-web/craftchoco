@@ -30,6 +30,9 @@ export interface LandingProduct {
   image: string;
   cutImage?: string;
   alt: string;
+  flavorNotes?: string[];
+  perfectFor?: string;
+  dietary?: string[];
 }
 
 /**
@@ -171,7 +174,19 @@ export function ProductLanding({
               </a>
             </div>
 
-            <p className="mt-4 flex items-center gap-2 rounded-xl bg-gold-500/10 px-4 py-2.5 text-[13px] font-semibold text-choco-800">
+            <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-choco-700 sm:grid-cols-3">
+              <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
+                ⚡ {uk ? "Свіжа партія цього тижня" : "Свежая партия этой недели"}
+              </span>
+              <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
+                💌 {uk ? "Листівка в подарунок" : "Открытка в подарок"}
+              </span>
+              <span className="col-span-2 flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm sm:col-span-1">
+                💳 {uk ? "Оплата при отриманні" : "Оплата при получении"}
+              </span>
+            </div>
+
+            <p className="mt-3 flex items-center gap-2 rounded-xl bg-gold-500/10 px-4 py-2.5 text-[13px] font-semibold text-choco-800">
               <Snowflake className="h-4 w-4 shrink-0 text-gold-700" aria-hidden="true" />
               {t.thermo.title}. {t.thermo.text}
             </p>
@@ -191,6 +206,46 @@ export function ProductLanding({
               «{product.character}»
               <footer className="mt-2 text-sm not-italic text-choco-500">— {uk ? "ідея набору" : "идея набора"}, CraftChocoKharkiv</footer>
             </blockquote>
+
+            {product.flavorNotes && product.flavorNotes.length > 0 && (
+              <div className="mt-8 rounded-2xl border border-gold-500/25 bg-gold-500/5 p-6">
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-choco-900">
+                  <span className="text-xl">🍓</span> {uk ? "Смакова палітра" : "Вкусовая палитра"}
+                </h3>
+                <ul className="mt-4 space-y-2.5">
+                  {product.flavorNotes.map((note, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-[15px] leading-relaxed text-choco-800">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-600" aria-hidden="true" />
+                      <span>{note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {product.perfectFor && (
+              <div className="mt-6 rounded-2xl border border-border bg-white p-6 shadow-sm">
+                <h3 className="flex items-center gap-2 font-display text-lg font-bold text-choco-900">
+                  <span className="text-xl">🎁</span> {uk ? "Кому ідеально дарувати" : "Кому идеально подарить"}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-choco-700">{product.perfectFor}</p>
+              </div>
+            )}
+
+            {product.dietary && product.dietary.length > 0 && (
+              <div className="mt-6">
+                <p className="text-xs font-bold uppercase tracking-wider text-choco-500">
+                  {uk ? "Безпека та склад" : "Безопасность и состав"}
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-2">
+                  {product.dietary.map((tag, idx) => (
+                    <span key={idx} className="inline-flex items-center rounded-full border border-gold-500/30 bg-white px-3.5 py-1 text-xs font-medium text-choco-800 shadow-sm">
+                      ✓ {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="space-y-4">

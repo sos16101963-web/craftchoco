@@ -87,6 +87,25 @@ export function BlogArticlePage({
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl px-4 sm:px-6">
+          {article.tldr && article.tldr.length > 0 && (
+            <aside className="mb-8 rounded-2xl border-2 border-gold-500/30 bg-gold-500/10 p-5 sm:p-6" aria-label={uk ? "Короткий висновок" : "Краткий вывод"}>
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gold-500/20 text-gold-700">📌</span>
+                <h2 className="font-display text-lg font-bold text-choco-900">
+                  {uk ? "Короткий висновок за 30 секунд (TL;DR)" : "Краткий вывод за 30 секунд (TL;DR)"}
+                </h2>
+              </div>
+              <ul className="mt-3 space-y-2 text-[15px] leading-relaxed text-choco-800">
+                {article.tldr.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-600" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
+
           <div className="space-y-4 text-[17px] leading-relaxed text-choco-800">
             {article.lead.map((p, i) => (
               <p key={i} className={i === 0 ? "text-lg font-medium text-choco-900" : undefined}>
@@ -111,6 +130,37 @@ export function BlogArticlePage({
                           </li>
                         ))}
                       </ul>
+                    )}
+                    {b.table && (
+                      <div className="mt-4 overflow-x-auto rounded-2xl border border-gold-500/20 bg-white shadow-sm">
+                        <table className="w-full min-w-[500px] text-left text-sm text-choco-800">
+                          {b.table.caption && (
+                            <caption className="bg-gold-500/10 p-3 text-left font-display text-sm font-semibold text-choco-900">
+                              {b.table.caption}
+                            </caption>
+                          )}
+                          <thead className="bg-choco-900 text-xs uppercase tracking-wider text-cream">
+                            <tr>
+                              {b.table.headers.map((h, hIdx) => (
+                                <th key={hIdx} className="px-4 py-3 font-semibold">
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-border">
+                            {b.table.rows.map((row, rIdx) => (
+                              <tr key={rIdx} className={rIdx % 2 === 0 ? "bg-white" : "bg-cream-100/40"}>
+                                {row.map((cell, cIdx) => (
+                                  <td key={cIdx} className={`px-4 py-3 ${cIdx === 0 ? "font-medium text-choco-900" : ""}`}>
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     )}
                   </div>
                 ))}
