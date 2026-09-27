@@ -174,15 +174,12 @@ export function ProductLanding({
               </a>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-choco-700 sm:grid-cols-3">
+            <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-choco-700">
               <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
                 ⚡ {uk ? "Свіжа партія цього тижня" : "Свежая партия этой недели"}
               </span>
               <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
                 💌 {uk ? "Листівка в подарунок" : "Открытка в подарок"}
-              </span>
-              <span className="col-span-2 flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm sm:col-span-1">
-                💳 {uk ? "Оплата при отриманні" : "Оплата при получении"}
               </span>
             </div>
 
