@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/korporativnye-podary",
   altPath: "/korporatyvni-podary",
-  title: "Корпоративные подарки с логотипом в Харькове — шоколад от 30 шт.",
+  title: "Корпоративные подарки из шоколада от 30 шт.",
   description:
     "Корпоративные шоколадные подарки: тиражи с гравировкой логотипа от 30 наборов, дегустационные образцы, безналичный расчёт, доставка по Харькову.",
 });

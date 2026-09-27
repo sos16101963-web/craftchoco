@@ -2,8 +2,8 @@
 // Если проект в Vercel назван иначе или подключён свой домен — задайте переменную
 // NEXT_PUBLIC_SITE_URL (например, https://craft-choco.vercel.app или https://ваш-домен).
 export const site = {
-  name: "CraftChocoKharkiv",
-  alternateName: "Craft Choco Kharkiv",
+  name: "CraftChoco",
+  alternateName: "CraftChocoKharkiv",
   legalName: "Шоколадная мастерская CraftChocoKharkiv",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://crafo.com.ua",
   slogan: "Шоколад ручной работы из бельгийского шоколада Callebaut",

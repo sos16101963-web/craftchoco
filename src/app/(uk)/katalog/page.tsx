@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/katalog",
   altPath: "/ru/katalog",
-  title: "Каталог шоколадних цукерок ручної роботи в Харкові — 14 наборів",
+  title: "Каталог шоколадних цукерок ручної роботи",
   description:
     "Каталог цукерок, плиток та шоколадних букетів з бельгійського Callebaut. Ціни від 150 ₴, подарункова упаковка, доставка по Харкову в день замовлення.",
 });

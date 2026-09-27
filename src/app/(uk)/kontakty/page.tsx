@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/kontakty",
   altPath: "/ru/kontakty",
-  title: "Контакти та замовлення шоколаду в Харкові: 096 253 56 10",
+  title: "Контакти та замовлення: 096 253 56 10",
   description:
     "Контакти шоколадної майстерні: 096 253 56 10 (Viber, WhatsApp, Telegram). Щодня 9:00–20:00, швидка доставка по Харкову та Україні.",
 });

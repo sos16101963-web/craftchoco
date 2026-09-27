@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/dostavka",
   altPath: "/ru/dostavka",
-  title: "Доставка шоколадних цукерок по Харкову в день замовлення",
+  title: "Доставка шоколадних цукерок по Харкову",
   description:
     "Доставка шоколаду ручної роботи по Харкову кур'єром у день замовлення (від 3000 ₴ безкоштовно). По Україні — Новою поштою 1–2 дні у термобоксі.",
 });

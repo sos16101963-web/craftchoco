@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: `/ru/podarunky/${slug}`,
     altPath: `/podarunky/${ukSlug}`,
     title,
-    description: `${product.name} (${product.weight}): ${product.short} Callebaut, доставка по Харькову в день заказа: 096 253 56 10.`,
+    description: `${product.name}, ${product.weight}. Бельгийский шоколад Callebaut ручной работы. Доставка по Харькову в день заказа: 096 253 56 10.`,
     image: product.image,
   });
 }
