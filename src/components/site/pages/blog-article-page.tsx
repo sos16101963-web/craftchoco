@@ -39,7 +39,12 @@ export function BlogArticlePage({
     datePublished: article.date,
     dateModified: article.date,
     inLanguage: uk ? "uk-UA" : "ru-UA",
-    author: { "@type": "Organization", name: site.name, url: site.url },
+    author: {
+      "@type": "Person",
+      name: uk ? "Шоколатьє майстерні CraftChoco" : "Шоколатье мастерской CraftChoco",
+      jobTitle: uk ? "Головний шоколатьє" : "Главный шоколатье",
+      url: `${site.url}${uk ? "/pro-nas" : "/ru/o-nas"}`,
+    },
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: `${site.url}${path}`,
   };

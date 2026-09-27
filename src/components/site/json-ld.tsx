@@ -44,6 +44,13 @@ export function JsonLd({ locale }: { locale: Locale }) {
     openingHours: "Mo-Su 09:00-20:00",
     address: { "@type": "PostalAddress", addressLocality: city, addressRegion: region, addressCountry: "UA" },
     geo: { "@type": "GeoCoordinates", latitude: 49.9935, longitude: 36.2304 },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "2800",
+      bestRating: "5",
+      worstRating: "1",
+    },
   };
 
   const website = {
@@ -85,6 +92,13 @@ export function JsonLd({ locale }: { locale: Locale }) {
           itemCondition: "https://schema.org/NewCondition",
           areaServed: [city, locale === "uk" ? "Україна" : "Украина"],
           seller: { "@id": `${site.url}/#organization` },
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: p.rating,
+          reviewCount: p.reviews,
+          bestRating: 5,
+          worstRating: 1,
         },
       },
     })),

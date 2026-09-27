@@ -69,6 +69,13 @@ export function ProductLanding({
       areaServed: [uk ? "Харків" : "Харьков", uk ? "Україна" : "Украина"],
       seller: { "@id": `${site.url}/#organization` },
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.rating,
+      reviewCount: product.reviews,
+      bestRating: 5,
+      worstRating: 1,
+    },
   };
 
   const crumbs = [
