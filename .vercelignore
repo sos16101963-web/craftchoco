@@ -1,0 +1,28 @@
+# Локальные и служебные файлы — не загружаем на Vercel
+.env
+.vercel
+.git
+
+# Логи и рабочие файлы
+dev.log
+server.log
+worklog.md
+Caddyfile
+DEPLOY_VERCEL.md
+
+# Инструментарий и документы (не часть сайта)
+scripts/
+download/
+upload/
+skills/
+mini-services/
+examples/
+tests/
+tool-results/
+
+# Локальная БД шаблона (сайт статический, БД не используется)
+db/
+prisma/
+
+# bun-локфайл — Vercel ставит зависимости через npm (package-lock.json)
+bun.lock
