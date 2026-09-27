@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return innerMeta(locale, {
     path: `/blog/${slug}`,
     altPath: ruArticle ? `/ru/blog/${ruArticle.slug}` : "/ru/blog",
-    title: `${article.title} | CraftChocoKharkiv`,
+    title: article.title,
     description: article.description,
   });
 }

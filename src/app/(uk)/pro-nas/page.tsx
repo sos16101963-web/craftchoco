@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/pro-nas",
   altPath: "/ru/o-nas",
-  title: "Про шоколадну майстерню CraftChocoKharkiv у Харкові — ручна робота, Callebaut",
+  title: "Про майстерню шоколаду в Харкові — ручна робота з Callebaut",
   description:
-    "Історія та принципи харківської майстерні CraftChocoKharkiv: цукерки ручної роботи з бельгійського шоколаду Callebaut, малі партії, темперування за стандартом, 2000+ щасливих родин.",
+    "Історія та принципи майстерні CraftChoco: цукерки ручної роботи з бельгійського Callebaut, темперування за стандартом, 2000+ щасливих родин.",
 });
 
 export default function Page() {

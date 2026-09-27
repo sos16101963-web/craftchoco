@@ -6,9 +6,9 @@ import { blogUk } from "@/lib/blog-uk";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/blog",
   altPath: "/ru/blog",
-  title: "Блог про шоколад ручної роботи — зберігання, Callebaut, темперування | CraftChocoKharkiv",
+  title: "Блог про шоколад ручної роботи — зберігання, Callebaut, темперування",
   description:
-    "База знань харківської майстерні CraftChocoKharkiv: як зберігати шоколад ручної роботи, чим Callebaut відрізняється від глазурі, що таке темперування, як обрати шоколадний подарунок.",
+    "Гід по шоколаду: як зберігати цукерки ручної роботи, чим Callebaut відрізняється від глазурі, секрети темперування та вибору подарунка.",
 });
 
 export default function Page() {

@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/vidhuky",
   altPath: "/ru/otzyvy",
-  title: "Відгуки про шоколадні цукерки CraftChocoKharkiv — кейси та оцінки",
+  title: "Відгуки клієнтів про шоколадні набори — кейси та оцінки",
   description:
-    "Відгуки клієнтів майстерні CraftChocoKharkiv (Харків): 4,9 з 5 за 2800+ подарунків. Кейси: корпоративні тиражі з логотипом, весільні міні-букети, щомісячні передплати для офісів.",
+    "Відгуки клієнтів майстерні шоколаду в Харкові: 4,9 з 5 за 2800+ подарунків. Реальні кейси, весільні та корпоративні замовлення.",
 });
 
 export default function Page() {

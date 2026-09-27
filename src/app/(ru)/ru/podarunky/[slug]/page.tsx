@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = id ? catalogFor(locale).find((p) => p.id === id) : undefined;
   if (!product) return {};
   const ukSlug = (id && PRODUCT_SLUGS.uk[id]) ?? "";
-  const title = `${product.name} — ${formatPrice(product.price, locale)} | Конфеты ручной работы Харьков`;
+  const title = `${product.name} — ${formatPrice(product.price, locale)}`;
   return innerMeta(locale, {
     path: `/ru/podarunky/${slug}`,
     altPath: `/podarunky/${ukSlug}`,
     title,
-    description: `${product.short} ${product.weight}. Бельгийский шоколад Callebaut, ручная работа. Доставка по Харькову в день заказа, термобокс в жару. Заказы: 096 253 56 10.`,
+    description: `${product.name} (${product.weight}): ${product.short} Callebaut, доставка по Харькову в день заказа: 096 253 56 10.`,
     image: product.image,
   });
 }

@@ -21,7 +21,7 @@ export function makeMetadata(locale: Locale): Metadata {
   const canonicalPath = locale === "uk" ? "/" : "/ru";
   return {
     metadataBase: new URL(site.url),
-    title: { default: d.meta.title, template: `%s — ${site.name}` },
+    title: { default: d.meta.title, template: `%s | ${site.name}` },
     description: d.meta.description,
     keywords: [
       locale === "uk" ? "шоколад харків" : "шоколад харьков",

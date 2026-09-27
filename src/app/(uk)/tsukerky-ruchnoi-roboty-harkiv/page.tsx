@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/tsukerky-ruchnoi-roboty-harkiv",
   altPath: "/ru/konfety-ruchnoy-raboty-harkov",
-  title: "Цукерки ручної роботи в Харкові — купити набір від 150 ₴ | CraftChocoKharkiv",
+  title: "Цукерки ручної роботи в Харкові — купити набір від 150 ₴",
   description:
     "Цукерки ручної роботи в Харкові з бельгійського Callebaut: набори від 150 ₴, фруктові ганаши, ручна розписка какао-маслом. Замовлення онлайн або в Viber/Telegram, доставка в день замовлення.",
 });

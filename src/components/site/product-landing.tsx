@@ -253,9 +253,6 @@ export function ProductLanding({
           </div>
         </section>
       )}
-
-      {/* BreadcrumbList поруч з Product */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, ...crumbs])).replace(/</g, "\\u003c") }} />
     </InnerShell>
   );
 }

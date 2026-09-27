@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/shokolad-harkov",
   altPath: "/shokolad-harkiv",
-  title: "Шоколад ручной работы в Харькове — на заказ из Callebaut | CraftChocoKharkiv",
+  title: "Шоколад ручной работы в Харькове — на заказ из Callebaut",
   description:
-    "Шоколад ручной работы в Харькове от мастерской CraftChocoKharkiv: конфеты, плитки и букеты из бельгийского Callebaut. Курьер в день заказа по всем районам, термобокс в жару.",
+    "Шоколад ручной работы в Харькове: авторские конфеты, плитки и букеты из бельгийского Callebaut. Доставка в день заказа по всем районам города.",
 });
 
 export default function Page() {

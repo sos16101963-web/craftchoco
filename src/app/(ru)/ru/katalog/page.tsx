@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/katalog",
   altPath: "/katalog",
-  title: "Каталог конфет ручной работы в Харькове — 14 наборов | CraftChocoKharkiv",
+  title: "Каталог конфет ручной работы в Харькове — 14 наборов",
   description:
-    "Каталог наборов конфет, плиток и шоколадных букетов ручной работы из бельгийского Callebaut. Цены от 150 ₴, подарочная упаковка бесплатно, доставка по Харькову в день заказа.",
+    "Каталог конфет, плиток и шоколадных букетов из бельгийского Callebaut. Цены от 150 ₴, подарочная упаковка, доставка по Харькову в день заказа.",
 });
 
 export default function Page() {

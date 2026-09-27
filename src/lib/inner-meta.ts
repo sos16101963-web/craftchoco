@@ -16,9 +16,14 @@ export interface InnerMetaInput {
 
 export function innerMeta(locale: Locale, input: InnerMetaInput): Metadata {
   const altLocale: Locale = locale === "uk" ? "ru" : "uk";
+  const cleanTitle = input.title
+    .replace(/\s*[|—–-]\s*CraftChocoKharkiv\b/gi, "")
+    .replace(/\s*[|—–-]\s*CraftChoco\b/gi, "")
+    .trim();
+  const fullTitle = `${cleanTitle} | ${site.name}`;
   return {
     metadataBase: new URL(site.url),
-    title: input.title,
+    title: cleanTitle,
     description: input.description,
     alternates: {
       canonical: input.path,
@@ -34,13 +39,13 @@ export function innerMeta(locale: Locale, input: InnerMetaInput): Metadata {
       alternateLocale: locale === "uk" ? "ru_UA" : "uk_UA",
       url: input.path,
       siteName: site.name,
-      title: input.title,
+      title: fullTitle,
       description: input.description,
       images: [{ url: input.image ?? "/images/og-image.jpg", width: 1200, height: 630, alt: site.name }],
     },
     twitter: {
       card: "summary_large_image",
-      title: input.title,
+      title: fullTitle,
       description: input.description,
       images: [input.image ?? "/images/og-image.jpg"],
     },

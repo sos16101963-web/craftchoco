@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/faq",
   altPath: "/faq",
-  title: "Вопросы и ответы о шоколаде ручной работы в Харькове | CraftChocoKharkiv",
+  title: "Вопросы и ответы о шоколаде ручной работы в Харькове",
   description:
     "Ответы мастера на частые вопросы: сколько хранятся конфеты, как заказать, как оплатить, доедут ли в жару, корпоративные тиражи с логотипом. Харьков, CraftChocoKharkiv.",
 });

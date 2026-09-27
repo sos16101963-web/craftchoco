@@ -5,7 +5,7 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/tsiny",
   altPath: "/ru/tseny",
-  title: "Ціни на шоколадні цукерки ручної роботи в Харкові (2026) | CraftChocoKharkiv",
+  title: "Ціни на шоколадні цукерки ручної роботи в Харкові (2026)",
   description:
     "Прозорий прайс майстерні CraftChocoKharkiv: набори цукерок від 150 ₴, букети та плитки з Callebaut. Калькулятор подарунка за бюджетом і корпоративного тиражу. Упаковка — безкоштовно.",
 });
