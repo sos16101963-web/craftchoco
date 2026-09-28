@@ -79,7 +79,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
         name: p.name,
         description: p.short,
         image: `${site.url}${p.image}`,
-        category: p.categoryLabel,
+        category: "Food, Beverages & Tobacco > Food Items > Candy & Chocolate",
         weight: { "@type": "QuantitativeValue", value: parseInt(p.weight), unitCode: "GRM" },
         brand: { "@type": "Brand", name: "Callebaut" },
         manufacturer: { "@id": `${site.url}/#organization` },
@@ -88,10 +88,44 @@ export function JsonLd({ locale }: { locale: Locale }) {
           url: `${site.url}/#catalog`,
           priceCurrency: "UAH",
           price: p.price,
+          priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",
           areaServed: [city, locale === "uk" ? "Україна" : "Украина"],
           seller: { "@id": `${site.url}/#organization` },
+          hasMerchantReturnPolicy: {
+            "@type": "MerchantReturnPolicy",
+            applicableCountry: "UA",
+            returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+            merchantReturnLink: `${site.url}${locale === "uk" ? "/dostavka" : "/ru/dostavka"}`,
+          },
+          shippingDetails: {
+            "@type": "OfferShippingDetails",
+            shippingRate: {
+              "@type": "MonetaryAmount",
+              value: site.courierPrice,
+              currency: "UAH",
+            },
+            shippingDestination: {
+              "@type": "DefinedRegion",
+              addressCountry: "UA",
+            },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              handlingTime: {
+                "@type": "QuantitativeValue",
+                minValue: 0,
+                maxValue: 1,
+                unitCode: "DAY",
+              },
+              transitTime: {
+                "@type": "QuantitativeValue",
+                minValue: 1,
+                maxValue: 2,
+                unitCode: "DAY",
+              },
+            },
+          },
         },
         aggregateRating: {
           "@type": "AggregateRating",

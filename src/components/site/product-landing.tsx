@@ -59,7 +59,7 @@ export function ProductLanding({
     description: product.short,
     image: [`${site.url}${product.image}`, ...(product.cutImage ? [`${site.url}${product.cutImage}`] : [])],
     sku: product.id,
-    category: product.categoryLabel,
+    category: "Food, Beverages & Tobacco > Food Items > Candy & Chocolate",
     brand: { "@type": "Brand", name: "Callebaut" },
     manufacturer: { "@id": `${site.url}/#organization` },
     offers: {
@@ -67,10 +67,44 @@ export function ProductLanding({
       url: `${site.url}${canonicalPath}`,
       priceCurrency: "UAH",
       price: product.price,
+      priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       areaServed: [uk ? "Харків" : "Харьков", uk ? "Україна" : "Украина"],
       seller: { "@id": `${site.url}/#organization` },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "UA",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        merchantReturnLink: `${site.url}${uk ? "/dostavka" : "/ru/dostavka"}`,
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: site.courierPrice,
+          currency: "UAH",
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "UA",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 1,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 2,
+            unitCode: "DAY",
+          },
+        },
+      },
     },
     aggregateRating: {
       "@type": "AggregateRating",
