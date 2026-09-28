@@ -1,6 +1,4 @@
-// Адрес сайта: на Vercel по умолчанию используется https://craft-choco.vercel.app.
-// Если проект в Vercel назван иначе или подключён свой домен — задайте переменную
-// NEXT_PUBLIC_SITE_URL (например, https://craft-choco.vercel.app или https://ваш-домен).
+// Официальный рабочий домен сайта: https://crafo.com.ua
 export const site = {
   name: "CraftChoco",
   alternateName: "CraftChocoKharkiv",
