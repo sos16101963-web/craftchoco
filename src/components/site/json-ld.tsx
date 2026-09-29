@@ -88,6 +88,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
           url: `${site.url}/#catalog`,
           priceCurrency: "UAH",
           price: p.price,
+          validFrom: "2026-01-01",
           priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",

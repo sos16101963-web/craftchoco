@@ -67,6 +67,7 @@ export function ProductLanding({
       url: `${site.url}${canonicalPath}`,
       priceCurrency: "UAH",
       price: product.price,
+      validFrom: "2026-01-01",
       priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
