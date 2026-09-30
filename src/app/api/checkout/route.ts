@@ -82,15 +82,16 @@ ${itemsText}
       const tgJson = await tgRes.json();
       if (!tgRes.ok || !tgJson.ok) {
         console.error("Telegram API Error:", tgJson);
+        return NextResponse.json({ ok: false, error: tgJson });
       }
+      return NextResponse.json({ ok: true, sent: true, message_id: tgJson.result?.message_id });
     } else {
       console.warn(
         "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set. Order logged:",
         { name, phone, total }
       );
+      return NextResponse.json({ ok: false, error: "Credentials missing", botTokenSet: Boolean(botToken), chatIdSet: Boolean(chatId) });
     }
-
-    return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Order processing error:", error);
     return NextResponse.json(
