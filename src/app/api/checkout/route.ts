@@ -13,13 +13,40 @@ interface OrderRequest {
   items: OrderItem[];
   total: number;
   locale?: string;
+  source?: string;
 }
+
+const cityNames: Record<string, string> = {
+  Kharkiv: "Харків",
+  Kyiv: "Київ",
+  Dnipro: "Дніпро",
+  Odesa: "Одеса",
+  Lviv: "Львів",
+  Zaporizhzhia: "Запоріжжя",
+  Poltava: "Полтава",
+  Sumy: "Суми",
+  Chernihiv: "Чернігів",
+  Cherkasy: "Черкаси",
+  Vinnytsia: "Вінниця",
+  Zhytomyr: "Житомир",
+  Rivne: "Рівне",
+  Khmelnytskyi: "Хмельницький",
+  Chernivtsi: "Чернівці",
+  Ternopil: "Тернопіль",
+  IvanoFrankivsk: "Івано-Франківськ",
+  Uzhhorod: "Ужгород",
+  Lutsk: "Луцьк",
+  Mykolaiv: "Миколаїв",
+  Kropyvnytskyi: "Кропивницький",
+  KryvyiRih: "Кривий Ріг",
+  Kremenchuk: "Кременчук",
+};
 
 export async function POST(req: Request) {
   try {
     const data: OrderRequest = await req.json();
 
-    const { name, phone, items, total, locale } = data;
+    const { name, phone, items, total, locale, source } = data;
 
     if (!name?.trim() || !phone?.trim() || !items?.length) {
       return NextResponse.json(
@@ -30,6 +57,23 @@ export async function POST(req: Request) {
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN || "8946140766:AAHsVrskyjsMMLyomSNcduNpqBP5_S1FCpk";
     const chatId = process.env.TELEGRAM_CHAT_ID || "1149100939";
+
+    // Визначення геолокації та пристрою
+    const rawCity = req.headers.get("x-vercel-ip-city");
+    const cityDecoded = rawCity ? decodeURIComponent(rawCity) : "";
+    const displayCity = cityNames[cityDecoded] || cityDecoded || "Україна";
+
+    const ua = req.headers.get("user-agent") || "";
+    let device = "💻 Комп'ютер / Ноутбук";
+    if (/iphone|ipad|ipod/i.test(ua)) {
+      device = "📱 iPhone (iOS)";
+    } else if (/android/i.test(ua)) {
+      device = "📱 Android";
+    } else if (/mobile/i.test(ua)) {
+      device = "📱 Мобільний телефон";
+    }
+
+    const trafficSource = source?.trim() || "Прямий перехід на сайт";
 
     // Форматування красивого повідомлення для Telegram
     const now = new Date().toLocaleString("uk-UA", {
@@ -54,6 +98,10 @@ export async function POST(req: Request) {
 📞 <b>Телефон:</b> <a href="tel:${phone}">${phone}</a>
 💬 <b>Viber:</b> <a href="viber://chat?number=${encodeURIComponent(phone.replace(/[^0-9+]/g, ""))}">Написати у Viber</a>
 ✈️ <b>Telegram:</b> <a href="https://t.me/${phone.replace(/[^0-9+]/g, "")}">Написати у Telegram</a>
+
+📍 <b>Звідки прийшов:</b> ${trafficSource}
+🏙️ <b>Місто:</b> ${displayCity}
+📱 <b>Пристрій:</b> ${device}
 
 📦 <b>Склад замовлення:</b>
 ${itemsText}

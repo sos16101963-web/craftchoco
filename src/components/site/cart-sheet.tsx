@@ -69,6 +69,15 @@ export function CartSheet({ locale }: { locale: Locale }) {
     trackFb("InitiateCheckout", { currency: "UAH", value: total, num_items: lines.length });
 
     try {
+      let source = "Прямий перехід на сайт";
+      try {
+        const stored = sessionStorage.getItem("crafo_traffic_source");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed.source) source = parsed.source;
+        }
+      } catch {}
+
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -83,6 +92,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
           })),
           total,
           locale,
+          source,
         }),
       });
 

@@ -57,6 +57,40 @@ export function Analytics() {
           </noscript>
         </>
       ) : null}
+
+      <Script id="crafo-traffic-tracker" strategy="afterInteractive">
+        {`
+          try {
+            if (!sessionStorage.getItem('crafo_traffic_source')) {
+              var ref = document.referrer || '';
+              var params = new URLSearchParams(window.location.search);
+              var utm = (params.get('utm_source') || '').toLowerCase();
+              var lowerRef = ref.toLowerCase();
+              var source = 'Прямий перехід на сайт';
+              if (lowerRef.indexOf('youtube.com') !== -1 || lowerRef.indexOf('youtu.be') !== -1 || utm.indexOf('youtube') !== -1) {
+                source = 'YouTube';
+              } else if (lowerRef.indexOf('tiktok.com') !== -1 || utm.indexOf('tiktok') !== -1) {
+                source = 'TikTok';
+              } else if (lowerRef.indexOf('instagram.com') !== -1 || utm.indexOf('instagram') !== -1) {
+                source = 'Instagram';
+              } else if (lowerRef.indexOf('facebook.com') !== -1 || lowerRef.indexOf('fb.com') !== -1 || utm.indexOf('facebook') !== -1 || params.has('fbclid')) {
+                source = 'Facebook';
+              } else if (lowerRef.indexOf('google.') !== -1 || utm.indexOf('google') !== -1) {
+                source = 'Google (Пошук)';
+              } else if (lowerRef.indexOf('t.me') !== -1 || lowerRef.indexOf('telegram') !== -1 || utm.indexOf('telegram') !== -1) {
+                source = 'Telegram';
+              } else if (lowerRef && lowerRef.indexOf(window.location.hostname) === -1) {
+                try {
+                  source = new URL(ref).hostname;
+                } catch(e) {
+                  source = ref;
+                }
+              }
+              sessionStorage.setItem('crafo_traffic_source', JSON.stringify({ source: source, referrer: ref }));
+            }
+          } catch(e) {}
+        `}
+      </Script>
     </>
   );
 }
