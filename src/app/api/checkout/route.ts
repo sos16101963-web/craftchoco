@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const botToken = process.env.TELEGRAM_BOT_TOKEN || "8946140766:AAHsVrskyjsMMLyomSNcduNpqBP5_S1FCpk";
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     // Форматування красивого повідомлення для Telegram
