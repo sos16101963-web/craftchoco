@@ -60,14 +60,36 @@ export function CartSheet({ locale }: { locale: Locale }) {
     return catalog.filter((p) => !inCart.has(p.id)).sort((a, b) => a.price - b.price).slice(0, 2);
   }, [lines, remaining]);
 
-  const handleCheckout = (e: React.FormEvent) => {
+  const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return void toast.error(d.cart.errName);
     if (!/^[+0-9\s()\-]{10,18}$/.test(phone.trim())) return void toast.error(d.cart.errPhone);
     setSending(true);
     trackEvent("begin_checkout", { currency: "UAH", value: total, num_items: lines.length });
     trackFb("InitiateCheckout", { currency: "UAH", value: total, num_items: lines.length });
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: phone.trim(),
+          items: lines.map((l) => ({
+            id: l.product.id,
+            name: l.product.name,
+            qty: l.qty,
+            price: l.product.price,
+          })),
+          total,
+          locale,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Checkout request failed");
+      }
+
       setSending(false);
       setOrderDone(true);
       clear();
@@ -79,7 +101,15 @@ export function CartSheet({ locale }: { locale: Locale }) {
       });
       trackFb("Purchase", { currency: "UAH", value: total, num_items: lines.length });
       toast.success(d.cart.accepted, { description: d.cart.acceptedText });
-    }, 1100);
+    } catch (err) {
+      console.error("Order submission error:", err);
+      setSending(false);
+      toast.error(
+        locale === "ru"
+          ? "Помилка зв'язку. Спробуйте ще раз або зателефонуйте нам."
+          : "Помилка зв'язку. Спробуйте ще раз або зателефонуйте нам."
+      );
+    }
   };
 
   const handleClose = (open: boolean) => {
