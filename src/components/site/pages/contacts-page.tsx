@@ -95,7 +95,7 @@ export function ContactsPage({ locale, path }: { locale: Locale; path: string })
               <TikTokIcon className="h-5 w-5" aria-hidden="true" />
             </span>
             <span>
-              <span className="block font-display text-xl font-bold text-choco-900">@craft.choco.kharkiv</span>
+              <span className="block font-display text-xl font-bold text-choco-900">@aleksandr_mag_</span>
               <span className="mt-1 block text-sm text-choco-600">{uk ? "TikTok: щоденні відео створення з майстерні" : "TikTok: ежедневные видео создания из мастерской"}</span>
             </span>
           </a>

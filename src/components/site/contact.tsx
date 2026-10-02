@@ -131,7 +131,7 @@ export function ContactCta({ locale }: { locale: Locale }) {
                   </span>
                   <span>
                     <span className="block text-sm text-cream/60">TikTok</span>
-                    <span className="font-bold text-cream group-hover:text-gold-300">@craft.choco.kharkiv</span>
+                    <span className="font-bold text-cream group-hover:text-gold-300">@aleksandr_mag_</span>
                   </span>
                 </a>
                 <div className="flex items-center gap-4">

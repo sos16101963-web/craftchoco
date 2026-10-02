@@ -101,7 +101,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   className="inline-flex items-center gap-2 font-semibold text-gold-400/90 transition-colors hover:text-gold-300"
                 >
                   <TikTokIcon className="h-4 w-4 text-[#25f4ee] shrink-0" />
-                  TikTok: @craft.choco.kharkiv
+                  TikTok: @aleksandr_mag_
                 </a>
               </div>
             </address>

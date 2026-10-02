@@ -165,8 +165,8 @@ export function Header({
               href={site.tiktok}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="TikTok craft.choco.kharkiv"
-              title="TikTok: craft.choco.kharkiv"
+              aria-label="TikTok aleksandr_mag_"
+              title="TikTok: @aleksandr_mag_"
               className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all ${
                 scrolled
                   ? "border-choco-700/20 bg-white/70 text-choco-900 hover:border-choco-500 hover:bg-zinc-100 hover:scale-105"
@@ -266,7 +266,7 @@ export function Header({
                     className="flex items-center gap-3 rounded-xl bg-choco-900/90 border border-white/10 px-3 py-2.5 text-sm font-medium text-cream hover:border-gold-400/50 hover:text-gold-300 transition-colors"
                   >
                     <TikTokIcon className="h-5 w-5 text-[#25f4ee] shrink-0" />
-                    <span>TikTok <span className="block text-[11px] text-cream/60">@craft.choco.kharkiv</span></span>
+                    <span>TikTok <span className="block text-[11px] text-cream/60">@aleksandr_mag_</span></span>
                   </a>
                 </div>
 

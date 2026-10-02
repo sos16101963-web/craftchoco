@@ -17,7 +17,9 @@ export const site = {
   freeShippingFrom: 3000,
   courierPrice: 100,
   youtube: "https://www.youtube.com/@craft.choco.kharkiv",
-  tiktok: "https://www.tiktok.com/@craft.choco.kharkiv",
+  youtubeHandle: "@craft.choco.kharkiv",
+  tiktok: "https://www.tiktok.com/@aleksandr_mag_",
+  tiktokHandle: "@aleksandr_mag_",
   messengers: [
     { name: "Viber", href: "viber://chat?number=%2B380962535610", hint: "096 253 56 10" },
     { name: "WhatsApp", href: "https://wa.me/380962535610", hint: "096 253 56 10" },
@@ -28,7 +30,7 @@ export const site = {
     { name: "WhatsApp", href: "https://wa.me/380962535610" },
     { name: "Telegram", href: "https://t.me/+380962535610" },
     { name: "YouTube", href: "https://www.youtube.com/@craft.choco.kharkiv" },
-    { name: "TikTok", href: "https://www.tiktok.com/@craft.choco.kharkiv" },
+    { name: "TikTok", href: "https://www.tiktok.com/@aleksandr_mag_" },
   ],
 } as const;
 

@@ -101,7 +101,7 @@ export function Craft({ locale }: { locale: Locale }) {
                   className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-bold text-cream backdrop-blur transition-all hover:bg-white/20 hover:border-gold-400/50 hover:text-gold-200 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <TikTokIcon className="h-5 w-5 text-[#25f4ee]" />
-                  <span>TikTok <span className="font-normal opacity-85">@craft.choco.kharkiv</span></span>
+                  <span>TikTok <span className="font-normal opacity-85">@aleksandr_mag_</span></span>
                 </a>
               </div>
             </div>
