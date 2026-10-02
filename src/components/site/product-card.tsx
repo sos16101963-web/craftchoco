@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ShoppingBag } from "lucide-react";
+import { Check, ShoppingBag, MessageCircle, Send } from "lucide-react";
 import { productPath } from "@/lib/slugs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -187,6 +187,32 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                   >
                     <ShoppingBag className="mr-2 h-5 w-5" /> {t.common.inCart}
                   </Button>
+
+                  {/* Швидке замовлення в 1 клік без корзини */}
+                  <div className="mt-3.5 border-t border-choco-100 pt-3">
+                    <p className="mb-2 text-center text-[11px] font-semibold uppercase tracking-wider text-choco-600">
+                      {locale === "uk" ? "Швидке замовлення в 1 клік:" : "Быстрый заказ в 1 клик:"}
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <a
+                        href={site.messengers[0].href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7360f2]/30 bg-[#7360f2]/10 py-2.5 text-xs font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
+                      >
+                        <MessageCircle className="h-4 w-4" /> Viber
+                      </a>
+                      <a
+                        href={site.messengers[2].href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#229ed9]/30 bg-[#229ed9]/10 py-2.5 text-xs font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"
+                      >
+                        <Send className="h-4 w-4" /> Telegram
+                      </a>
+                    </div>
+                  </div>
+
                   <p className="mt-2.5 text-center text-xs text-choco-500">
                     {t.common.freeDeliveryLine(site.freeShippingFrom.toLocaleString(locale === "uk" ? "uk-UA" : "ru-RU"))}
                   </p>
@@ -232,6 +258,35 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
           >
             <ShoppingBag className="mr-1.5 h-4 w-4" /> {t.common.inCart}
           </Button>
+        </div>
+
+        {/* Быстрый заказ с витрины каталога */}
+        <div className="mt-3 flex items-center justify-between border-t border-border/70 pt-2.5 text-xs">
+          <span className="text-[11px] font-medium text-choco-500">
+            {locale === "uk" ? "Швидке замовлення:" : "Быстрый заказ:"}
+          </span>
+          <div className="flex items-center gap-1.5">
+            <a
+              href={site.messengers[0].href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={locale === "uk" ? `Замовити «${product.name}» у Viber` : `Заказать «${product.name}» в Viber`}
+              title="Viber"
+              className="rounded-lg bg-[#7360f2]/10 px-2.5 py-1 text-[11px] font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
+            >
+              Viber
+            </a>
+            <a
+              href={site.messengers[2].href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={locale === "uk" ? `Замовити «${product.name}» в Telegram` : `Заказать «${product.name}» в Telegram`}
+              title="Telegram"
+              className="rounded-lg bg-[#229ed9]/10 px-2.5 py-1 text-[11px] font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"
+            >
+              Telegram
+            </a>
+          </div>
         </div>
       </div>
     </article>

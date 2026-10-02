@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, Clock, MessageCircle, ShieldCheck, Snowflake, Truck } from "lucide-react";
+import { Check, Clock, MessageCircle, Send, ShieldCheck, Snowflake, Truck } from "lucide-react";
 import { InnerShell } from "@/components/site/inner-shell";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { ImageSwap } from "@/components/site/image-swap";
@@ -192,21 +192,47 @@ export function ProductLanding({
               </ul>
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-7 space-y-3">
               <AddToCartButton
                 productId={product.id}
                 productName={product.name}
                 price={product.price}
                 priceFrom={product.priceFrom}
                 locale={locale}
+                className="h-14 w-full rounded-full bg-gold-500 text-base font-bold text-choco-950 shadow-[0_16px_40px_-12px_rgba(196,154,74,0.55)] transition-all hover:-translate-y-0.5 hover:bg-gold-400"
               />
-              <a
-                href={site.messengers[2].href}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-choco-900/20 px-7 text-base font-semibold text-choco-900 transition-colors hover:border-gold-500/60 hover:text-gold-700"
-              >
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                {uk ? "Замовити в Telegram" : "Заказать в Telegram"}
-              </a>
+
+              {/* Швидкий спосіб замовити в 1 клік без корзини */}
+              <div className="rounded-2xl border border-gold-500/30 bg-gold-500/10 p-4">
+                <p className="text-center text-xs font-bold uppercase tracking-wider text-choco-800">
+                  ⚡ {uk ? "Швидкий заказ в 1 клік (без оформлення в корзині):" : "Быстрый заказ в 1 клик (без оформления в корзине):"}
+                </p>
+                <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+                  <a
+                    href={site.messengers[0].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#7360f2]/40 bg-[#7360f2]/15 px-4 text-sm font-bold text-[#5c49d6] transition-all hover:bg-[#7360f2] hover:text-white"
+                  >
+                    <MessageCircle className="h-4.5 w-4.5" aria-hidden="true" />
+                    Viber
+                  </a>
+                  <a
+                    href={site.messengers[2].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#229ed9]/40 bg-[#229ed9]/15 px-4 text-sm font-bold text-[#0088cc] transition-all hover:bg-[#229ed9] hover:text-white"
+                  >
+                    <Send className="h-4.5 w-4.5" aria-hidden="true" />
+                    Telegram
+                  </a>
+                </div>
+                <p className="mt-2 text-center text-[11px] text-choco-600">
+                  {uk
+                    ? "Напишіть нам напряму — відразу відповість майстер і оформить замовлення"
+                    : "Напишите нам напрямую — сразу ответит мастер и оформит заказ"}
+                </p>
+              </div>
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-choco-700">

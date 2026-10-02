@@ -302,6 +302,12 @@ export function CartSheet({ locale }: { locale: Locale }) {
                     />
                   </div>
                 </div>
+                {/* Четкая гарантия прямо перед кнопкой заказа */}
+                <div className="rounded-xl border border-gold-500/35 bg-gold-500/15 p-3 text-center text-xs font-semibold text-choco-950">
+                  🛡️ {locale === "uk"
+                    ? "Оплата при отриманні кур'єру або карткою/IBAN після підтвердження замовлення з майстром"
+                    : "Оплата при получении курьеру или картой/IBAN после подтверждения заказа с мастером"}
+                </div>
                 <Button
                   type="submit"
                   disabled={sending}
