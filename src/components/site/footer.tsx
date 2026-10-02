@@ -2,6 +2,7 @@ import { site } from "@/lib/site";
 import { categories } from "@/lib/products";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
+import { YouTubeIcon, TikTokIcon } from "@/components/site/icons";
 
 export function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale).footer;
@@ -83,16 +84,26 @@ export function Footer({ locale }: { locale: Locale }) {
                 {t.cityText[1]}
               </p>
               <p>{site.hours}</p>
-              <p>
+              <div className="flex flex-col gap-1.5 pt-1">
                 <a
                   href={site.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-gold-400/90 transition-colors hover:text-gold-300"
+                  className="inline-flex items-center gap-2 font-semibold text-gold-400/90 transition-colors hover:text-gold-300"
                 >
-                  {t.youtube}
+                  <YouTubeIcon className="h-4 w-4 text-red-500 shrink-0" />
+                  YouTube: @craft.choco.kharkiv
                 </a>
-              </p>
+                <a
+                  href={site.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-semibold text-gold-400/90 transition-colors hover:text-gold-300"
+                >
+                  <TikTokIcon className="h-4 w-4 text-[#25f4ee] shrink-0" />
+                  TikTok: @craft.choco.kharkiv
+                </a>
+              </div>
             </address>
           </div>
         </div>

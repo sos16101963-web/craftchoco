@@ -6,6 +6,7 @@ import { switchPairFor } from "@/lib/pages";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { breadcrumbLd } from "@/lib/inner-meta";
+import { TikTokIcon } from "@/components/site/icons";
 
 export function ContactsPage({ locale, path }: { locale: Locale; path: string }) {
   const uk = locale === "uk";
@@ -76,12 +77,26 @@ export function ContactsPage({ locale, path }: { locale: Locale; path: string })
             rel="noopener noreferrer"
             className="flex items-start gap-4 rounded-2xl border border-border bg-white p-6 transition-colors hover:border-gold-500/50"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-choco-900 text-gold-400">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-choco-900 text-red-500">
               <Youtube className="h-5 w-5" aria-hidden="true" />
             </span>
             <span>
               <span className="block font-display text-xl font-bold text-choco-900">@craft.choco.kharkiv</span>
               <span className="mt-1 block text-sm text-choco-600">{uk ? "YouTube: процес, розрізи, нові набори" : "YouTube: процесс, разрезы, новые наборы"}</span>
+            </span>
+          </a>
+          <a
+            href={site.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-4 rounded-2xl border border-border bg-white p-6 transition-colors hover:border-gold-500/50"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-choco-900 text-[#25f4ee]">
+              <TikTokIcon className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <span>
+              <span className="block font-display text-xl font-bold text-choco-900">@craft.choco.kharkiv</span>
+              <span className="mt-1 block text-sm text-choco-600">{uk ? "TikTok: щоденні відео створення з майстерні" : "TikTok: ежедневные видео создания из мастерской"}</span>
             </span>
           </a>
         </div>

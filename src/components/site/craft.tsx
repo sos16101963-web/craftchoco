@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Candy, Flame, Hand, Gift } from "lucide-react";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
+import { site } from "@/lib/site";
+import { YouTubeIcon, TikTokIcon } from "@/components/site/icons";
 
 const icons = [Candy, Flame, Hand, Gift];
 
@@ -61,6 +63,49 @@ export function Craft({ locale }: { locale: Locale }) {
               );
             })}
           </ol>
+
+          {/* Живые видео создания: YouTube Shorts & TikTok */}
+          <div className="mt-14 overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-br from-choco-900/90 via-choco-950/90 to-choco-900/90 p-8 sm:p-10 shadow-2xl backdrop-blur">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div className="max-w-2xl">
+                <span className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-500/10 px-3.5 py-1 text-xs font-semibold text-gold-300">
+                  <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                  {locale === "uk" ? "Щоденні відео створення" : "Ежедневные видео создания"}
+                </span>
+                <h3 className="mt-3 font-display text-2xl font-bold text-cream sm:text-3xl">
+                  {locale === "uk"
+                    ? "Дивіться наживо, як ми створюємо кожен набір"
+                    : "Смотрите вживую, как мы создаем каждый набор"}
+                </h3>
+                <p className="mt-2 text-sm sm:text-base leading-relaxed text-cream/75">
+                  {locale === "uk"
+                    ? "Темперування бельгійського Callebaut, заливка корпусних цукерок, декор шоколадних троянд та пакування замовлень. Щодня публікуємо нові відео з майстерні у Харкові."
+                    : "Темперирование бельгийского Callebaut, заливка корпусных конфет, декор шоколадных роз и упаковка заказов. Каждый день публикуем новые видео из мастерской в Харькове."}
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3.5 shrink-0">
+                <a
+                  href={site.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform hover:bg-red-500 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <YouTubeIcon className="h-5 w-5" />
+                  <span>YouTube <span className="font-normal opacity-85">@craft.choco.kharkiv</span></span>
+                </a>
+                <a
+                  href={site.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-bold text-cream backdrop-blur transition-all hover:bg-white/20 hover:border-gold-400/50 hover:text-gold-200 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <TikTokIcon className="h-5 w-5 text-[#25f4ee]" />
+                  <span>TikTok <span className="font-normal opacity-85">@craft.choco.kharkiv</span></span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

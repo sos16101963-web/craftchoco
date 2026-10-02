@@ -10,6 +10,7 @@ import { trackEvent } from "@/lib/analytics";
 import { toast } from "sonner";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
+import { TikTokIcon } from "@/components/site/icons";
 
 const messengerIcons = {
   Viber: MessageCircle,
@@ -115,6 +116,21 @@ export function ContactCta({ locale }: { locale: Locale }) {
                   </span>
                   <span>
                     <span className="block text-sm text-cream/60">YouTube</span>
+                    <span className="font-bold text-cream group-hover:text-gold-300">@craft.choco.kharkiv</span>
+                  </span>
+                </a>
+                <a
+                  href={site.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("contact_click", { channel: "tiktok" })}
+                  className="group flex items-center gap-4"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-[#22d3ee] transition-colors group-hover:bg-black group-hover:text-white">
+                    <TikTokIcon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="block text-sm text-cream/60">TikTok</span>
                     <span className="font-bold text-cream group-hover:text-gold-300">@craft.choco.kharkiv</span>
                   </span>
                 </a>

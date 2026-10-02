@@ -9,6 +9,7 @@ import { useCart } from "@/store/cart";
 import { site } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
+import { YouTubeIcon, TikTokIcon } from "@/components/site/icons";
 
 export function Logo({ light = false, locale = "uk" }: { light?: boolean; locale?: Locale }) {
   return (
@@ -144,6 +145,38 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Быстрые ссылки на видео процесса (YouTube & TikTok) */}
+          <div className="hidden items-center gap-1.5 sm:flex">
+            <a
+              href={site.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube craft.choco.kharkiv"
+              title="YouTube: craft.choco.kharkiv"
+              className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all ${
+                scrolled
+                  ? "border-choco-700/20 bg-white/70 text-red-600 hover:border-red-400 hover:bg-red-50 hover:scale-105"
+                  : "border-white/25 bg-white/10 text-red-400 backdrop-blur hover:bg-white/20 hover:text-red-300 hover:scale-105"
+              }`}
+            >
+              <YouTubeIcon className="h-4.5 w-4.5" />
+            </a>
+            <a
+              href={site.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok craft.choco.kharkiv"
+              title="TikTok: craft.choco.kharkiv"
+              className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all ${
+                scrolled
+                  ? "border-choco-700/20 bg-white/70 text-choco-900 hover:border-choco-500 hover:bg-zinc-100 hover:scale-105"
+                  : "border-white/25 bg-white/10 text-cream backdrop-blur hover:bg-white/20 hover:text-gold-300 hover:scale-105"
+              }`}
+            >
+              <TikTokIcon className="h-4.5 w-4.5" />
+            </a>
+          </div>
+
           <LangSwitch locale={locale} scrolled={scrolled} switchPair={switchPair} />
 
           <a
@@ -212,9 +245,34 @@ export function Header({
                   <span className="text-xs text-cream/50">·</span>
                   <a href="/ru" hrefLang="ru" className={`text-sm font-bold ${locale === "ru" ? "text-gold-300" : "text-cream/70"}`}>Русский</a>
                 </div>
+
+                <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-gold-400">
+                    {locale === "uk" ? "Відео створення щодня:" : "Видео создания каждый день:"}
+                  </span>
+                  <a
+                    href={site.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl bg-choco-900/90 border border-white/10 px-3 py-2.5 text-sm font-medium text-cream hover:border-red-500/50 hover:text-red-300 transition-colors"
+                  >
+                    <YouTubeIcon className="h-5 w-5 text-red-500 shrink-0" />
+                    <span>YouTube <span className="block text-[11px] text-cream/60">@craft.choco.kharkiv</span></span>
+                  </a>
+                  <a
+                    href={site.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl bg-choco-900/90 border border-white/10 px-3 py-2.5 text-sm font-medium text-cream hover:border-gold-400/50 hover:text-gold-300 transition-colors"
+                  >
+                    <TikTokIcon className="h-5 w-5 text-[#25f4ee] shrink-0" />
+                    <span>TikTok <span className="block text-[11px] text-cream/60">@craft.choco.kharkiv</span></span>
+                  </a>
+                </div>
+
                 <a
                   href={site.phoneHref}
-                  className="mt-4 flex items-center gap-2 rounded-xl bg-choco-800 px-4 py-3 text-base font-semibold text-gold-300"
+                  className="mt-3 flex items-center gap-2 rounded-xl bg-choco-800 px-4 py-3 text-base font-semibold text-gold-300"
                 >
                   <Phone className="h-4 w-4" /> {site.phone}
                 </a>
