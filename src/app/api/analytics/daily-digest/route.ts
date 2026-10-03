@@ -5,14 +5,54 @@ export const revalidate = 0;
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8946140766:AAHsVrskyjsMMLyomSNcduNpqBP5_S1FCpk";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "1149100939";
-const CLARITY_TOKEN = process.env.CLARITY_API_TOKEN;
+const CLARITY_TOKEN =
+  process.env.CLARITY_API_TOKEN ||
+  "eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ4M0FCMDhFNUYwRDMxNjdEOTRFMTQ3M0FEQTk2RTcyRDkwRUYwRkYiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiIxN2IxMTBiNi00MjFkLTQ2NzUtOTYwMC1iZWIzMWFjMGQ4NDkiLCJzdWIiOiIzNTI5NDQ2NTg3Nzg4MDM1Iiwic2NvcGUiOiJEYXRhLkV4cG9ydCIsIm5iZiI6MTc5MTAyMzAxMywiZXhwIjo0OTQ0NjIzMDEzLCJpYXQiOjE3OTEwMjMwMTMsImlzcyI6ImNsYXJpdHkiLCJhdWQiOiJjbGFyaXR5LmRhdGEtZXhwb3J0ZXIifQ.EmYjOAWMNsnftYKxXUGA9KhjZ0eYOFR0hvyTo507mDJjt14-smub98DaAfimDIyp4RpZNDcG-jBIyBr6GH2VKwwGLXuOpaCwUM9qt1KTwR5VUR9dRzhfV-0203nMdy_xdCsWDXLMLmNFXIMxo9ni0rn05yaz8hf0WXrVrtxIR335HxCkQn4JZOAJSHN-tDbr6WbWTXAp_mfThfSKos6jKsJ6MKinQ2pWenvYRtNhm7cjRJWuHjslEdo27AWmOLQK5MAK1AVSlQxqJgslWGxLlOAkxrQ-BuCEhULHQBgCWQnyM1bDCCs3peX5WCun6elerL8JGjGltLMdT69c9w8uxA";
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "yr31dmrb43";
 
-interface ClarityMetric {
+interface ClarityMetricItem {
   metricName: string;
-  dimensionName?: string;
-  dimensionValue?: string;
-  metricValue?: number | string;
+  information: Record<string, any>[];
+}
+
+function cleanReferrer(ref: string | null | undefined): string {
+  if (!ref || ref === "null") return "🌐 Прямой переход на сайт";
+  if (ref.includes("google.")) return "🔍 Google Поиск";
+  if (ref.includes("tiktok.")) return "🎵 TikTok";
+  if (ref.includes("youtube.")) return "🎬 YouTube";
+  if (ref.includes("instagram.")) return "📸 Instagram";
+  if (ref.includes("facebook.")) return "🔵 Facebook";
+  if (ref.includes("viber")) return "🟣 Viber";
+  if (ref.includes("t.me") || ref.includes("telegram")) return "✈️ Telegram";
+  try {
+    const url = new URL(ref);
+    return `🔗 ${url.hostname}`;
+  } catch {
+    return `🔗 ${ref}`;
+  }
+}
+
+function cleanPageUrl(urlStr: string | null | undefined): string {
+  if (!urlStr) return "Главная страница";
+  try {
+    const u = new URL(urlStr);
+    const path = u.pathname;
+    if (path === "/" || path === "") return "Главная витрина (каталог)";
+    if (path.includes("/podarunky/")) {
+      const slug = path.split("/podarunky/")[1]?.replace(/\/$/, "");
+      return `Набор: ${slug}`;
+    }
+    if (path.includes("/blog/")) {
+      const slug = path.split("/blog/")[1]?.replace(/\/$/, "");
+      return `Блог: ${slug}`;
+    }
+    if (path.includes("kontakty")) return "Контакты";
+    if (path.includes("dostavka")) return "Доставка и оплата";
+    if (path.includes("tsiny")) return "Цены";
+    return path;
+  } catch {
+    return urlStr;
+  }
 }
 
 export async function GET(req: Request) {
@@ -33,7 +73,7 @@ export async function GET(req: Request) {
       year: "numeric",
     });
 
-    let clarityData: ClarityMetric[] | null = null;
+    let clarityData: ClarityMetricItem[] | null = null;
     let clarityError: string | null = null;
 
     if (CLARITY_TOKEN) {
@@ -49,7 +89,7 @@ export async function GET(req: Request) {
           }
         );
         if (clarityRes.ok) {
-          clarityData = (await clarityRes.json()) as ClarityMetric[];
+          clarityData = (await clarityRes.json()) as ClarityMetricItem[];
         } else {
           clarityError = `HTTP ${clarityRes.status}`;
         }
@@ -61,50 +101,67 @@ export async function GET(req: Request) {
     let message = `📊 <b>Ежедневный дайджест Crafo.com.ua</b>\n📅 <i>Дата: ${todayDate} (21:00 Киев)</i>\n\n`;
 
     if (clarityData && Array.isArray(clarityData) && clarityData.length > 0) {
-      message += `<b>📈 Данные Microsoft Clarity за 24 часа:</b>\n`;
+      const findMetric = (name: string) =>
+        clarityData?.find((d) => d.metricName?.toLowerCase() === name.toLowerCase())?.information || [];
 
-      // Extract sessions count
-      const sessionRow = clarityData.find((d) => d.metricName?.toLowerCase().includes("session"));
-      if (sessionRow?.metricValue) {
-        message += `👥 Всего сессий: <b>${sessionRow.metricValue}</b>\n`;
-      }
+      // Traffic
+      const traffic = findMetric("Traffic")[0];
+      const distinctUsers = traffic?.distinctUserCount ?? 0;
+      const totalSessions = traffic?.totalSessionCount ?? 0;
+      const botSessions = traffic?.totalBotSessionCount ?? 0;
 
-      // Extract top referrers / sources
-      const sources = clarityData
-        .filter((d) => d.dimensionName?.toLowerCase().includes("source") || d.dimensionName?.toLowerCase().includes("referrer"))
-        .slice(0, 5);
+      // Engagement
+      const eng = findMetric("EngagementTime")[0];
+      const activeSeconds = Math.round(eng?.activeTime ?? 0);
 
-      if (sources.length > 0) {
-        message += `\n🌐 <b>Источники переходов:</b>\n`;
-        for (const s of sources) {
-          message += `• ${s.dimensionValue ?? "Прямой переход"}: ${s.metricValue ?? 1}\n`;
-        }
-      }
+      // Scroll Depth
+      const scroll = findMetric("ScrollDepth")[0];
+      const avgScroll = Math.round(scroll?.averageScrollDepth ?? 0);
 
-      // Extract top pages
-      const pages = clarityData
-        .filter((d) => d.dimensionName?.toLowerCase().includes("url") || d.dimensionName?.toLowerCase().includes("page"))
-        .slice(0, 5);
+      // Devices
+      const devices = findMetric("Device");
+      const deviceStr = devices
+        .map((d) => `${d.name === "Mobile" ? "📱 Смартфоны" : d.name === "PC" ? "💻 Компьютеры" : d.name}: <b>${d.sessionsCount}</b>`)
+        .join(" · ");
 
-      if (pages.length > 0) {
-        message += `\n🍫 <b>Популярные страницы / наборы:</b>\n`;
-        for (const p of pages) {
-          message += `• ${p.dimensionValue ?? "/"}: ${p.metricValue ?? 1}\n`;
-        }
-      }
+      message += `👥 <b>Посетители за последние 24 часа:</b>\n`;
+      message += `• Уникальных посетителей: <b>${distinctUsers} чел.</b>\n`;
+      message += `• Всего сессий на сайте: <b>${totalSessions}</b> (ботов: ${botSessions})\n`;
+      if (deviceStr) message += `• Устройства: ${deviceStr}\n`;
+      if (activeSeconds > 0) message += `• Среднее активное время: <b>${activeSeconds} сек.</b>\n`;
+      if (avgScroll > 0) message += `• Средняя глубина просмотра: <b>${avgScroll}%</b>\n`;
       message += `\n`;
-    } else {
-      // Status digest with live links
-      message += `🟢 <b>Статус витрины:</b> Все 14 наборов онлайн и доступны к заказу\n`;
-      message += `🛍 <b>Google Merchant:</b> Одобрено (Google Shopping активен)\n`;
-      message += `🎬 <b>Видео-каналы:</b> YouTube (@craft.choco.kharkiv) и TikTok (@aleksandr_mag_)\n\n`;
-      message += `📈 <b>Быстрый переход к живой аналитике за день:</b>\n`;
-      message += `• <a href="https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard">Microsoft Clarity (записи кликов и тепловые карты)</a>\n`;
-      message += `• <a href="https://analytics.google.com/">Google Analytics 4 (посетители в реальном времени)</a>\n\n`;
-      if (!CLARITY_TOKEN) {
-        message += `<i>💡 Чтобы бот автоматически выводил точные цифры сессий и просмотров прямо сюда, добавьте токен Clarity в Vercel (Clarity ➔ Settings ➔ Data Export ➔ Generate token).</i>\n`;
+
+      // Referrers
+      const referrers = findMetric("ReferrerUrl").filter((r) => !r.name?.includes("crafo.com.ua"));
+      if (referrers.length > 0) {
+        message += `🌐 <b>Источники трафика:</b>\n`;
+        for (const ref of referrers.slice(0, 4)) {
+          message += `• ${cleanReferrer(ref.name)}: <b>${ref.sessionsCount}</b>\n`;
+        }
+        message += `\n`;
       }
+
+      // Popular pages
+      const pages = findMetric("PopularPages");
+      if (pages.length > 0) {
+        message += `🍫 <b>Популярные страницы и наборы:</b>\n`;
+        for (const p of pages.slice(0, 5)) {
+          message += `• ${cleanPageUrl(p.url)}: <b>${p.visitsCount}</b> просм.\n`;
+        }
+        message += `\n`;
+      }
+    } else {
+      message += `🟢 <b>Статус витрины:</b> Все 14 наборов онлайн и доступны к заказу\n`;
     }
+
+    message += `🟢 <b>Статус витрины:</b> Все 14 наборов онлайн\n`;
+    message += `🛍 <b>Google Merchant:</b> Одобрено (Google Shopping активен)\n`;
+    message += `🎬 <b>Видео-каналы:</b> YouTube (@craft.choco.kharkiv) и TikTok (@aleksandr_mag_)\n\n`;
+
+    message += `📈 <b>Быстрый переход к живой аналитике:</b>\n`;
+    message += `• <a href="https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard">Microsoft Clarity (записи кликов и тепловые карты)</a>\n`;
+    message += `• <a href="https://analytics.google.com/">Google Analytics 4 (посетители в реальном времени)</a>\n\n`;
 
     message += `━━━━━━━━━━━━━━━━━━\n`;
     message += `<i>Шоколадная мастерская CraftChoco · Харьков</i>`;
