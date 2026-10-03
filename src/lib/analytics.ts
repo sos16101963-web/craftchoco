@@ -51,7 +51,8 @@ export function trackIntent(
     const payload = JSON.stringify({ channel, productName, price, source });
 
     if (navigator.sendBeacon) {
-      navigator.sendBeacon("/api/analytics/intent", payload);
+      const blob = new Blob([payload], { type: "application/json" });
+      navigator.sendBeacon("/api/analytics/intent", blob);
     } else {
       fetch("/api/analytics/intent", {
         method: "POST",

@@ -14,7 +14,13 @@ interface IntentData {
 
 export async function POST(req: Request) {
   try {
-    const data: IntentData = await req.json();
+    let data: IntentData;
+    try {
+      data = (await req.json()) as IntentData;
+    } catch {
+      const raw = await req.text();
+      data = JSON.parse(raw) as IntentData;
+    }
     const { channel, productName, price, source } = data;
 
     const channelEmoji =
