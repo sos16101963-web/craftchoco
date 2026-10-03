@@ -14,6 +14,7 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { toast } from "sonner";
+import { trackIntent } from "@/lib/analytics";
 import { Stars } from "./stars";
 
 interface CardProduct {
@@ -198,6 +199,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                         href={site.messengers[0].href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackIntent("viber", product.name, product.price)}
                         className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7360f2]/30 bg-[#7360f2]/10 py-2.5 text-xs font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
                       >
                         <MessageCircle className="h-4 w-4" /> Viber
@@ -206,6 +208,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                         href={site.messengers[2].href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackIntent("telegram", product.name, product.price)}
                         className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#229ed9]/30 bg-[#229ed9]/10 py-2.5 text-xs font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"
                       >
                         <Send className="h-4 w-4" /> Telegram
@@ -270,6 +273,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
               href={site.messengers[0].href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackIntent("viber", product.name, product.price)}
               aria-label={locale === "uk" ? `Замовити «${product.name}» у Viber` : `Заказать «${product.name}» в Viber`}
               title="Viber"
               className="rounded-lg bg-[#7360f2]/10 px-2.5 py-1 text-[11px] font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
@@ -280,6 +284,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
               href={site.messengers[2].href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackIntent("telegram", product.name, product.price)}
               aria-label={locale === "uk" ? `Замовити «${product.name}» в Telegram` : `Заказать «${product.name}» в Telegram`}
               title="Telegram"
               className="rounded-lg bg-[#229ed9]/10 px-2.5 py-1 text-[11px] font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"

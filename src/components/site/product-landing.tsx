@@ -11,6 +11,7 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { breadcrumbLd } from "@/lib/inner-meta";
+import { trackIntent } from "@/lib/analytics";
 
 export interface LandingProduct {
   id: string;
@@ -212,6 +213,7 @@ export function ProductLanding({
                     href={site.messengers[0].href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackIntent("viber", product.name, product.price)}
                     className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#7360f2]/40 bg-[#7360f2]/15 px-4 text-sm font-bold text-[#5c49d6] transition-all hover:bg-[#7360f2] hover:text-white"
                   >
                     <MessageCircle className="h-4.5 w-4.5" aria-hidden="true" />
@@ -221,6 +223,7 @@ export function ProductLanding({
                     href={site.messengers[2].href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackIntent("telegram", product.name, product.price)}
                     className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#229ed9]/40 bg-[#229ed9]/15 px-4 text-sm font-bold text-[#0088cc] transition-all hover:bg-[#229ed9] hover:text-white"
                   >
                     <Send className="h-4.5 w-4.5" aria-hidden="true" />
