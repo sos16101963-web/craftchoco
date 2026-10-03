@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ShoppingBag, MessageCircle, Send } from "lucide-react";
+import { Check, ShoppingBag, MessageCircle, Send, Phone } from "lucide-react";
 import { productPath } from "@/lib/slugs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -214,6 +214,14 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                         <Send className="h-4 w-4" /> Telegram
                       </a>
                     </div>
+                    <a
+                      href={site.phoneHref}
+                      onClick={() => trackIntent("phone", product.name, product.price)}
+                      className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl border border-choco-200 bg-white/90 py-2 text-xs font-bold text-choco-900 transition-colors hover:bg-gold-500 hover:text-choco-950"
+                    >
+                      <Phone className="h-3.5 w-3.5 text-gold-600" />
+                      {locale === "uk" ? "Або подзвонити: 096 253 56 10" : "Или позвонить: 096 253 56 10"}
+                    </a>
                   </div>
 
                   <p className="mt-2.5 text-center text-xs text-choco-500">

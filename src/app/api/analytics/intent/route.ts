@@ -33,7 +33,9 @@ export async function POST(req: Request) {
       productName ? `🍫 <b>Набор:</b> «${productName}»` : null,
       price ? `💰 <b>Цена:</b> ${price} ₴` : null,
       source ? `🌐 <b>Источник:</b> ${source}` : null,
-      `⏰ <i>Клиент переходит в мессенджер для связи с мастером</i>`,
+      channel === "phone"
+        ? `📞 <i>Клиент нажал кнопку звонка по телефону</i>`
+        : `💬 <i>Клиент открывает чат (проверьте сообщения в ${channel === "viber" ? "Viber" : "Telegram"} или папку «Запросы на переписку»)</i>`,
     ].filter(Boolean);
 
     await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {

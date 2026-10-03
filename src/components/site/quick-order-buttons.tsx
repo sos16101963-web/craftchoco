@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, Send } from "lucide-react";
+import { MessageCircle, Phone, Send } from "lucide-react";
 import { site } from "@/lib/site";
 import { trackIntent } from "@/lib/analytics";
 import type { Locale } from "@/lib/i18n";
@@ -19,7 +19,7 @@ export function QuickOrderButtons({
   return (
     <div className="rounded-2xl border border-gold-500/30 bg-gold-500/10 p-4">
       <p className="text-center text-xs font-bold uppercase tracking-wider text-choco-800">
-        ⚡ {uk ? "Швидкий заказ в 1 клік (без оформлення в корзині):" : "Быстрый заказ в 1 клик (без оформления в корзине):"}
+        ⚡ {uk ? "Швидкий заказ в 1 клік (без корзини):" : "Быстрый заказ в 1 клик (без корзины):"}
       </p>
       <div className="mt-2.5 grid grid-cols-2 gap-2.5">
         <a
@@ -43,10 +43,20 @@ export function QuickOrderButtons({
           Telegram
         </a>
       </div>
+
+      <a
+        href={site.phoneHref}
+        onClick={() => trackIntent("phone", productName, price)}
+        className="mt-2.5 flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-gold-500/30 bg-white/90 px-3 text-xs font-bold text-choco-900 shadow-sm transition-all hover:bg-gold-500 hover:text-choco-950"
+      >
+        <Phone className="h-3.5 w-3.5 text-gold-600" aria-hidden="true" />
+        {uk ? "Або подзвонити: 096 253 56 10" : "Или позвонить: 096 253 56 10"}
+      </a>
+
       <p className="mt-2 text-center text-[11px] text-choco-600">
         {uk
-          ? "Напишіть нам напряму — відразу відповість майстер і оформить замовлення"
-          : "Напишите нам напрямую — сразу ответит мастер и оформит заказ"}
+          ? "Натисніть Viber/Telegram для зв'язку в чаті або зателефонуйте майстру"
+          : "Нажмите Viber/Telegram для связи в чате или позвоните мастеру"}
       </p>
     </div>
   );

@@ -23,12 +23,12 @@ export const site = {
   messengers: [
     { name: "Viber", href: "viber://chat?number=%2B380962535610", hint: "096 253 56 10" },
     { name: "WhatsApp", href: "https://wa.me/380962535610", hint: "096 253 56 10" },
-    { name: "Telegram", href: "https://t.me/+380962535610", hint: "096 253 56 10" },
+    { name: "Telegram", href: "https://t.me/feelings_ua", hint: "@feelings_ua" },
   ],
   social: [
     { name: "Viber", href: "viber://chat?number=%2B380962535610" },
     { name: "WhatsApp", href: "https://wa.me/380962535610" },
-    { name: "Telegram", href: "https://t.me/+380962535610" },
+    { name: "Telegram", href: "https://t.me/feelings_ua" },
     { name: "YouTube", href: "https://www.youtube.com/@craft.choco.kharkiv" },
     { name: "TikTok", href: "https://www.tiktok.com/@aleksandr_mag_" },
   ],
