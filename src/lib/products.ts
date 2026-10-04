@@ -270,6 +270,16 @@ export const products: Product[] = [
     storage: "6 месяцев при +16…+20 °C",
     image: "/images/art-bars.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-plitki-ruchnoy-raboty-harkov-master-aleksandr-art-bars.webp",
+        alt: "Шоколадные плитки ручной работы Харьков — мастер Александр с коллекцией арт-плиток Callebaut «Искусство во плоти» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnaya-plitka-ruchnoy-raboty-abstrakciya-makro-chococraft.webp",
+        alt: "Авторская плитка из бельгийского шоколада Callebaut с ручной абстрактной росписью крупным планом — ChocoCraft Харьков",
+      },
+    ],
     alt: "Четыре плитки разного шоколада Callebaut с орехами и сухофруктами, ручная роспись — «Искусство во плоти»",
     flavorNotes: ["Хрустящие бруски из тёмного 70%, молочного 33% и белого шоколада с уникальной мраморной росписью"],
     perfectFor: "Эстетам, дизайнерам, творческим людям и ценителям утонченной визуальной красоты.",
@@ -427,8 +437,18 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 28–54%, сливки, 6 вкусов фруктовых ганашей, краски на какао-масле.",
     storage: "14 суток при +16…+18 °C",
-    image: "/images/flowers-six.jpg",
+    image: "/images/flowers-six.webp",
     cutImage: "/images/cut-buket.webp",
+    gallery: [
+      {
+        src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-buket-6-roz.webp",
+        alt: "Шоколадный букет ручной работы Харьков — мастер Александр с набором из 6 цветов Callebaut «Букет, который не завянет» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnyy-podsolnuh-i-rozy-ruchnoy-raboty-makro.webp",
+        alt: "Шоколадный подсолнух и розы ручной работы Callebaut крупным планом в подарочной коробке — ChocoCraft Харьков",
+      },
+    ],
     alt: "Шоколадные цветы с фруктовыми ганашами ручной работы Callebaut — «Букет, который не завянет», Харьков",
     flavorNotes: ["6 крупных шоколадных роз: бархатный молочный 33.6% и сливочный белый 28% шоколад Callebaut"],
     perfectFor: "Любимой девушке, жене или маме вместо обычных цветов, которые завянут через неделю.",

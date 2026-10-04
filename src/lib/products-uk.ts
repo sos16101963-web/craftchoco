@@ -253,6 +253,16 @@ export const productsUk: ProductUk[] = [
     storage: "6 місяців при +16…+20 °C",
     image: "/images/art-bars.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-plitki-ruchnoy-raboty-harkov-master-aleksandr-art-bars.webp",
+        alt: "Шоколадні плитки ручної роботи Харків — шоколатьє Олександр з колекцією арт-плиток Callebaut «Їстівне мистецтво» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnaya-plitka-ruchnoy-raboty-abstrakciya-makro-chococraft.webp",
+        alt: "Авторська плитка з бельгійського шоколаду Callebaut з ручним абстрактним розписом крупним планом — ChocoCraft Харків",
+      },
+    ],
     alt: "Чотири плитки різного шоколаду Callebaut з горіхами та сухофруктами, ручний розпис — «Їстівне мистецтво»",
     flavorNotes: ["Хрусткі бруски з темного 70%, молочного 33% та білого шоколаду з унікальним мармуровим розписом"],
     perfectFor: "Естетам, дизайнерам, творчим людям та поціновувачам витонченої візуальної краси.",
@@ -410,8 +420,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–54%, вершки, 6 смаків фруктових ганашів, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/flowers-six.jpg",
+    image: "/images/flowers-six.webp",
     cutImage: "/images/cut-buket.webp",
+    gallery: [
+      {
+        src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-buket-6-roz.webp",
+        alt: "Шоколадний букет ручної роботи Харків — шоколатьє Олександр з набором з 6 квітів Callebaut «Букет, який не зав'яне» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnyy-podsolnuh-i-rozy-ruchnoy-raboty-makro.webp",
+        alt: "Шоколадний соняшник та троянди ручної роботи Callebaut крупним планом у подарунковій коробці — ChocoCraft Харків",
+      },
+    ],
     alt: "Шоколадні квіти з фруктовими ганашами ручної роботи Callebaut — «Букет, який не зів'яне», Харків",
     flavorNotes: ["6 великих шоколадних троянд: оксамитовий молочний 33.6% та вершковий білий 28% шоколад Callebaut"],
     perfectFor: "Коханій дівчині, дружині або мамі замість звичайних квітів, які зів'януть за тиждень.",

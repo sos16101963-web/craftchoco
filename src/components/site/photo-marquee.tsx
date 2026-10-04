@@ -3,18 +3,18 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 
 const photos = [
+  { src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-buket-6-roz.webp", alt: "Шоколадный букет ручной работы — мастер Александр с набором из 6 цветов ChocoCraft" },
+  { src: "/images/shokoladnyy-podsolnuh-i-rozy-ruchnoy-raboty-makro.webp", alt: "Шоколадный подсолнух и розы ручной работы Callebaut макро" },
+  { src: "/images/shokoladnye-plitki-ruchnoy-raboty-harkov-master-aleksandr-art-bars.webp", alt: "Шоколадные арт-плитки ручной работы — мастер Александр ChocoCraft" },
+  { src: "/images/shokoladnaya-plitka-ruchnoy-raboty-abstrakciya-makro-chococraft.webp", alt: "Шоколадная плитка с абстрактной росписью какао-маслом макро" },
   { src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-4-cvetka.webp", alt: "Шоколадные цветы ручной работы — мастер Александр с набором цветов ChocoCraft" },
   { src: "/images/shokoladnaya-roza-ruchnoy-raboty-vinno-zolotaya-makro.webp", alt: "Винно-золотая шоколадная роза ручной работы Callebaut макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-spasibo.webp", alt: "Мастер Александр с набором шоколадных конфет «Спасибо, что ты есть» ChocoCraft" },
   { src: "/images/shokoladnye-konfety-ruchnoy-raboty-kosmos-makro-chococraft.webp", alt: "Шоколадная конфета ручной работы «Космос» с сусальным золотом макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp", alt: "Шоколад ручной работы Харьков — мастер Александр с набором из 16 конфет ChocoCraft" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-6-konfet.webp", alt: "Шоколатье Александр с набором конфет ручной работы в чёрной коробке" },
-  { src: "/images/shokoladnye-konfety-ruchnoy-raboty-makro-glyanec-callebaut.webp", alt: "Шоколадная конфета ручной работы с мраморным глянцем какао-маслом макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp", alt: "Шоколад ручной работы Харьков — мастер Александр с розами ChocoCraft" },
   { src: "/images/shokoladnye-sfery-ruchnoy-raboty-makro-glyanec.webp", alt: "Шоколадные сферы ручной работы макро глянец Callebaut — «Галактика желаний» ChocoCraft" },
-  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp", alt: "Шоколатье Александр с шоколадными сферами ручной работы ChocoCraft Харьков" },
-  { src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp", alt: "Подарочный набор шоколадных роз ручной работы в коробке с лентой" },
-  { src: "/images/set-combo.jpg", alt: "Комбинированный подарочный набор" },
 ];
 
 export function PhotoMarquee({ locale }: { locale: Locale }) {
