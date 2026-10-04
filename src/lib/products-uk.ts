@@ -207,8 +207,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–70%, вершки, 2 смаки фруктових ганашів, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/envelope-gift.jpg",
+    image: "/images/envelope-gift.webp",
     cutImage: "/images/cut-spasibo.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-spasibo.webp",
+        alt: "Шоколад ручної роботи Харків — шоколатьє Олександр з подарунковим набором цукерок «Дякую, що ти є» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-konfety-ruchnoy-raboty-kosmos-makro-chococraft.webp",
+        alt: "Шоколадна цукерка ручної роботи «Космос» з харчовим золотом і розписом какао-маслом крупним планом — ChocoCraft Харків",
+      },
+    ],
     alt: "Подарункова коробка-конверт з 6 цукерками та фруктовими ганашами Callebaut — «Дякую, що ти є», Харків",
     flavorNotes: ["6 вишуканих цукерок ручної роботи з ніжною ягідною та шоколадною начинкою"],
     perfectFor: "Подарунок у знак щирої вдячності лікарю, вчителю, мамі або близькій людині за підтримку, тепло та турботу.",
@@ -431,8 +441,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–54%, вершки, 4 смаки фруктових ганашів, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/flowers-four.jpg",
+    image: "/images/flowers-four.webp",
     cutImage: "/images/cut-kompliment.webp",
+    gallery: [
+      {
+        src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-4-cvetka.webp",
+        alt: "Шоколадні квіти ручної роботи Харків — шоколатьє Олександр з набором з 4 квітів Callebaut «Комплімент від серця» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnaya-roza-ruchnoy-raboty-vinno-zolotaya-makro.webp",
+        alt: "Винно-золота шоколадна троянда ручної роботи Callebaut крупним планом з набору «Комплімент від серця» — ChocoCraft Харків",
+      },
+    ],
     alt: "Шоколадні квіти з фруктовими ганашами в коробці — троянда, півонія, астра, хризантема з Callebaut — «Комплімент від серця»",
     flavorNotes: ["4 витончені шоколадні квітки з тонким ручним формуванням пелюсток"],
     perfectFor: "Душевний подарунок мамі, сестрі чи подрузі на день народження, красивий презент у знак вдячності.",
