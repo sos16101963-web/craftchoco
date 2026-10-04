@@ -12,6 +12,11 @@ export const categories: Category[] = [
   { id: "flowers", label: "Цветы и фигуры" },
 ];
 
+export interface ProductGalleryItem {
+  src: string;
+  alt: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -36,6 +41,8 @@ export interface Product {
   image: string;
   /** Макро-фото разреза начинки — показывается при наведении в каталоге */
   cutImage?: string;
+  /** Дополнительные живые фото изделия для галереи карточки */
+  gallery?: ProductGalleryItem[];
   alt: string;
   flavorNotes?: string[];
   perfectFor?: string;
@@ -455,6 +462,20 @@ export const products: Product[] = [
     storage: "14 суток при +16…+18 °C",
     image: "/images/roses-marble.webp",
     cutImage: "/images/cut-obyatiya.webp",
+    gallery: [
+      {
+        src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp",
+        alt: "Шоколадные розы ручной работы Callebaut — макро росписи пищевым золотом и какао-маслом, ChocoCraft Харьков",
+      },
+      {
+        src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp",
+        alt: "Подарочный набор из 5 шоколадных роз ручной работы в прозрачной коробке с лентой — ChocoCraft Харьков",
+      },
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp",
+        alt: "Шоколатье Александр с набором из 5 шоколадных роз ручной работы — мастерская ChocoCraft Харьков",
+      },
+    ],
     alt: "Шоколадные розы с мраморной росписью и фруктовыми ганашами из Callebaut — «Объятия любимого», Харьков",
     flavorNotes: ["Мраморное сочетание белого и молочного шоколада Callebaut с тонкими нотами ванили и карамели"],
     perfectFor: "Романтический подарок любимой девушке или жене, букет маме вместо обычных цветов, признание в чувствах.",
@@ -485,8 +506,14 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 28–54%, сливки, 5 вкусов фруктовых ганашей, краски на какао-масле.",
     storage: "14 суток при +16…+18 °C",
-    image: "/images/spheres-marble.jpg",
+    image: "/images/spheres-marble.webp",
     cutImage: "/images/cut-shchepot.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp",
+        alt: "Шоколатье Александр с подарочной коробкой шоколадных сфер ручной работы «Галактика желаний» — ChocoCraft Харьков",
+      },
+    ],
     alt: "Шоколадные сферы с мраморной росписью и фруктовыми ганашами Callebaut — набор «Галактика желаний», Харьков",
     flavorNotes: ["Космические шоколадные сферы с переливающимся глянцевым узором и нежной текстурой"],
     perfectFor: "Ценителям футуристичного дизайна, необычных подарков и ярких фото в Instagram.",

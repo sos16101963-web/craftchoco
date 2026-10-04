@@ -445,6 +445,20 @@ export const productsUk: ProductUk[] = [
     storage: "14 діб при +16…+18 °C",
     image: "/images/roses-marble.webp",
     cutImage: "/images/cut-obyatiya.webp",
+    gallery: [
+      {
+        src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp",
+        alt: "Шоколадні троянди ручної роботи Callebaut — макро розпису харчовим золотом і какао-маслом, ChocoCraft Харків",
+      },
+      {
+        src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp",
+        alt: "Подарунковий набір з 5 шоколадних троянд ручної роботи у прозорій коробці зі стрічкою — ChocoCraft Харків",
+      },
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp",
+        alt: "Шоколатьє Олександр тримає набір з 5 шоколадних троянд ручної роботи — майстерня ChocoCraft Харків",
+      },
+    ],
     alt: "Шоколадні троянди з мармуровим розписом та фруктовими ганашами з Callebaut — «Обійми коханого», Харків",
     flavorNotes: ["Мармурове поєднання білого та молочного шоколаду Callebaut з тонкими нотами ванілі та карамелі"],
     perfectFor: "Романтичний подарунок коханій дівчині або дружині, букет мамі замість звичайних квітів, ніжне зізнання у почуттях.",
@@ -475,8 +489,14 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–54%, вершки, 5 смаків фруктових ганашів, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/spheres-marble.jpg",
+    image: "/images/spheres-marble.webp",
     cutImage: "/images/cut-shchepot.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp",
+        alt: "Шоколатьє Олександр з подарунковою коробкою шоколадних сфер ручної роботи «Галактика бажань» — ChocoCraft Харків",
+      },
+    ],
     alt: "Шоколадні сфери з мармуровим розписом та фруктовими ганашами Callebaut — набір «Галактика бажань», Харків",
     flavorNotes: ["Космічні шоколадні сфери з переливчастим глянцевим розписом та ніжною текстурою"],
     perfectFor: "Поціновувачам футуристичного дизайну, незвичайних подарунків та яскравих фото в Instagram.",

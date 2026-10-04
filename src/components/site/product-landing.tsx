@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { ImageSwap } from "@/components/site/image-swap";
 import { AddToCartButton } from "@/components/site/add-to-cart-button";
 import { ProductCard } from "@/components/site/product-card";
-import { catalogFor, formatProductPrice } from "@/lib/products";
+import { catalogFor, formatProductPrice, type ProductGalleryItem } from "@/lib/products";
 import { switchPairFor } from "@/lib/pages";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
@@ -29,6 +29,7 @@ export interface LandingProduct {
   storage: string;
   image: string;
   cutImage?: string;
+  gallery?: ProductGalleryItem[];
   alt: string;
   flavorNotes?: string[];
   perfectFor?: string;
@@ -58,7 +59,11 @@ export function ProductLanding({
     name: `${uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"} ${product.name}`,
     alternateName: `${product.name} — CraftChoco (ChocoCraft)`,
     description: `${uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"} ${product.name} від майстерні CraftChoco (ChocoCraft). ${product.short}`,
-    image: [`${site.url}${product.image}`, ...(product.cutImage ? [`${site.url}${product.cutImage}`] : [])],
+    image: [
+      `${site.url}${product.image}`,
+      ...(product.cutImage ? [`${site.url}${product.cutImage}`] : []),
+      ...((product.gallery ?? []).map((g) => `${site.url}${g.src}`)),
+    ],
     sku: product.id,
     category: "Food, Beverages & Tobacco > Food Items > Candy & Chocolate",
     brand: {
@@ -159,7 +164,14 @@ export function ProductLanding({
       {/* ——— Герой товару ——— */}
       <section className="bg-cream-100/60 pb-14" aria-label={product.name}>
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-          <ImageSwap image={product.image} cutImage={product.cutImage} alt={product.alt} locale={locale} priority />
+          <ImageSwap
+            image={product.image}
+            cutImage={product.cutImage}
+            gallery={product.gallery}
+            alt={product.alt}
+            locale={locale}
+            priority
+          />
 
           <div>
             <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-gold-700">
