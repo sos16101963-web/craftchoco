@@ -18,12 +18,12 @@ export async function GET() {
         ? `\n      <g:additional_image_link>${site.url}${p.cutImage}</g:additional_image_link>`
         : "";
       const cleanTitle = p.name.replace(/«|»/g, "").trim();
-      const fullTitle = `${cleanTitle} — ${p.categoryLabel} CraftChoco`;
+      const fullTitle = `Шоколад ручної роботи «${cleanTitle}» — ${p.categoryLabel} CraftChoco (ChocoCraft)`;
 
       return `    <item>
       <g:id>${p.id}</g:id>
       <g:title><![CDATA[${fullTitle}]]></g:title>
-      <g:description><![CDATA[${p.short} 100% бельгійський шоколад Callebaut. Свіжа партія у Харкові, доставка в термобоксах по Україні.]]></g:description>
+      <g:description><![CDATA[Шоколад ручної роботи ${cleanTitle} від майстерні CraftChoco (ChocoCraft). ${p.short} 100% бельгійський шоколад Callebaut. Свіжа партія у Харкові, доставка в термобоксах по Україні.]]></g:description>
       <g:link>${link}</g:link>
       <g:image_link>${imageLink}</g:image_link>${additionalImage}
       <g:condition>new</g:condition>

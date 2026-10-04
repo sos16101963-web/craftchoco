@@ -55,12 +55,17 @@ export function ProductLanding({
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: product.name,
-    description: product.short,
+    name: `${uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"} ${product.name}`,
+    alternateName: `${product.name} — CraftChoco (ChocoCraft)`,
+    description: `${uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"} ${product.name} від майстерні CraftChoco (ChocoCraft). ${product.short}`,
     image: [`${site.url}${product.image}`, ...(product.cutImage ? [`${site.url}${product.cutImage}`] : [])],
     sku: product.id,
     category: "Food, Beverages & Tobacco > Food Items > Candy & Chocolate",
-    brand: { "@type": "Brand", name: "Callebaut" },
+    brand: {
+      "@type": "Brand",
+      name: "CraftChoco",
+      alternateName: ["ChocoCraft", "Callebaut"],
+    },
     manufacturer: { "@id": `${site.url}/#organization` },
     offers: {
       "@type": "Offer",
@@ -157,10 +162,15 @@ export function ProductLanding({
           <ImageSwap image={product.image} cutImage={product.cutImage} alt={product.alt} locale={locale} priority />
 
           <div>
-            <p className="text-[13px] font-semibold uppercase tracking-[0.25em] text-gold-700">
-              {product.categoryLabel} · {uk ? "ручна робота, Харків" : "ручная работа, Харьков"}
+            <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+              {product.categoryLabel} · {uk ? "майстерня CraftChoco (ChocoCraft), Харків" : "мастерская CraftChoco (ChocoCraft), Харьков"}
             </p>
-            <h1 className="mt-3 font-display text-4xl font-bold leading-[1.08] text-choco-900 sm:text-5xl">{product.name}</h1>
+            <h1 className="mt-2.5 font-display text-3xl font-bold leading-[1.12] text-choco-900 sm:text-4xl lg:text-5xl">
+              <span className="block text-xl sm:text-2xl font-semibold text-gold-700 mb-1">
+                {uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"}
+              </span>
+              {product.name}
+            </h1>
             <p className="mt-3 text-lg italic leading-snug text-choco-600">{product.character}</p>
 
             <div className="mt-4 flex items-center gap-2 text-sm text-choco-600">

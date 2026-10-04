@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = id ? catalogFor(locale).find((p) => p.id === id) : undefined;
   if (!product) return {};
   const ukSlug = (id && PRODUCT_SLUGS.uk[id]) ?? "";
-  const title = `${product.name} — ${formatPrice(product.price, locale)}`;
+  const title = `Шоколад ручной работы ${product.name} — ${formatPrice(product.price, locale)} | CraftChoco (ChocoCraft)`;
   return innerMeta(locale, {
     path: `/ru/podarunky/${slug}`,
     altPath: `/podarunky/${ukSlug}`,
     title,
-    description: `${product.name}, ${product.weight}. Бельгийский шоколад Callebaut ручной работы. Доставка по Харькову в день заказа: 096 253 56 10.`,
+    description: `Купить шоколад ручной работы ${product.name} (${product.weight}) в Харькове от мастерской CraftChoco (ChocoCraft). Свежий бельгийский шоколад Callebaut. Доставка в день заказа по Харькову: 096 253 56 10.`,
     image: product.image,
   });
 }

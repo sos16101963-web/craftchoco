@@ -1,12 +1,13 @@
 // Официальный рабочий домен сайта: https://crafo.com.ua
 export const site = {
   name: "CraftChoco",
-  alternateName: "CraftChocoKharkiv",
-  legalName: "Шоколадная мастерская CraftChocoKharkiv",
+  alternateName: "ChocoCraft",
+  brandAliases: ["CraftChoco", "ChocoCraft", "CraftChocoKharkiv", "ChocoCraftKharkiv"],
+  legalName: "Шоколадная мастерская CraftChoco (ChocoCraft)",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://crafo.com.ua",
-  slogan: "Шоколад ручной работы из бельгийского шоколада Callebaut",
+  slogan: "Шоколад ручной работы CraftChoco (ChocoCraft) из бельгийского Callebaut",
   description:
-    "Шоколадная мастерская CraftChocoKharkiv в Харькове: конфеты с фруктовыми ганашами, шоколадные розы и цветы, плитки и бруски с орехами и сухофруктами — ручная работа из бельгийского шоколада Callebaut. Эмоциональные подарочные наборы с доставкой по Харькову и всей Украине. Заказы от 3 000 ₴ доставим бесплатно.",
+    "Шоколадная мастерская CraftChoco (ChocoCraft) в Харькове: шоколад ручной работы, конфеты с фруктовыми ганашами, шоколадные розы и цветы из бельгийского Callebaut. Подарочные наборы от 150 ₴ с доставкой по Харькову и всей Украине. Бесплатно от 3 000 ₴.",
   phone: "+380 96 253 56 10",
   phoneShort: "096 253 56 10",
   phoneHref: "tel:+380962535610",
