@@ -294,8 +294,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 3 смаки (70%, молочний 33%, білий 28%), горіхи, сухофрукти, фарби на какао-маслі.",
     storage: "6 місяців при +16…+20 °C",
-    image: "/images/wishes-bars.jpg",
+    image: "/images/wishes-bars.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-plitki-s-pozhelaniyami-harkov-master-aleksandr.webp",
+        alt: "Шоколадні плитки з побажаннями «Удача», «Здоров'я», «Щастя» — шоколатьє Олександр ChocoCraft Харків",
+      },
+      {
+        src: "/images/shokoladnaya-plitka-zdorove-ieroglif-makro-chococraft.webp",
+        alt: "Шоколадна плитка «Здоров'я» із золотим ієрогліфом та ягодами Callebaut крупним планом — ChocoCraft Харків",
+      },
+    ],
     alt: "Три плитки різного шоколаду Callebaut з горіхами та сухофруктами — побажання «Удача», «Здоров'я», «Щастя», Харків",
     flavorNotes: ["Асорті міні-плиток зі смаженим фундуком, мигдалем, сушеними ягодами та індивідуальними побажаннями"],
     perfectFor: "День народження, Новий рік, корпоративне свято чи душевні дружні посиденьки.",
@@ -358,8 +368,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 54% та 28%, горіхи, сухофрукти, фарби на какао-маслі.",
     storage: "6 місяців при +16…+20 °C",
-    image: "/images/bars-fruit.jpg",
+    image: "/images/bars-fruit.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-brusochki-ruchnoy-raboty-harkov-master-aleksandr-10-shtuk.webp",
+        alt: "Шоколадні брусочки ручної роботи Харків — шоколатьє Олександр з набором з 10 брусків «Відпочинок після роботи» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-brusochki-s-yagodami-makro-chococraft.webp",
+        alt: "Шоколадний брусок з натуральними ягодами малини та сухофруктами Callebaut крупним планом — ChocoCraft Харків",
+      },
+    ],
     alt: "Фірмові шоколадні бруски Callebaut з горіхами та сухофруктами — «Відпочинок після роботи», CraftChocoKharkiv",
     flavorNotes: ["Добірний лісовий фундук, каліфорнійський мигдаль та сублімована малина на молочному Callebaut"],
     perfectFor: "Для вечірнього релаксу після напруженого робочого дня або як презент колезі.",

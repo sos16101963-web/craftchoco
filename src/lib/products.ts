@@ -311,8 +311,18 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 3 вкуса (70%, молочный 33%, белый 28%), орехи, сухофрукты, краски на какао-масле.",
     storage: "6 месяцев при +16…+20 °C",
-    image: "/images/wishes-bars.jpg",
+    image: "/images/wishes-bars.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-plitki-s-pozhelaniyami-harkov-master-aleksandr.webp",
+        alt: "Шоколадные плитки с пожеланиями «Удача», «Здоровье», «Счастье» — мастер Александр ChocoCraft Харьков",
+      },
+      {
+        src: "/images/shokoladnaya-plitka-zdorove-ieroglif-makro-chococraft.webp",
+        alt: "Шоколадная плитка «Здоровье» с золотым иероглифом и ягодами Callebaut крупным планом — ChocoCraft Харьков",
+      },
+    ],
     alt: "Три плитки разного шоколада Callebaut с орехами и сухофруктами — пожелания «Удача», «Здоровье», «Счастье», Харьков",
     flavorNotes: ["Ассорти мини-плиток с жареным фундуком, миндалём, сушёными ягодами и индивидуальными пожеланиями"],
     perfectFor: "День рождения, Новый год, корпоративный праздник или душевные дружеские посиделки.",
@@ -375,8 +385,18 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 54% и 28%, орехи, сухофрукты, краски на какао-масле.",
     storage: "6 месяцев при +16…+20 °C",
-    image: "/images/bars-fruit.jpg",
+    image: "/images/bars-fruit.webp",
     cutImage: "/images/cut-bar.jpg",
+    gallery: [
+      {
+        src: "/images/shokoladnye-brusochki-ruchnoy-raboty-harkov-master-aleksandr-10-shtuk.webp",
+        alt: "Шоколадные брусочки ручной работы Харьков — мастер Александр с набором из 10 брусков «Отдых после работы» ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-brusochki-s-yagodami-makro-chococraft.webp",
+        alt: "Шоколадный брусок с натуральными ягодами малины и сухофруктами Callebaut крупным планом — ChocoCraft Харьков",
+      },
+    ],
     alt: "Фирменные шоколадные бруски Callebaut с орехами и сухофруктами — «Отдых после работы», CraftChocoKharkiv",
     flavorNotes: ["Отборный лесной фундук, калифорнийский миндаль и сублимированная малина на молочном Callebaut"],
     perfectFor: "Для вечернего релакса после напряжённого рабочего дня или как презент коллеге.",
