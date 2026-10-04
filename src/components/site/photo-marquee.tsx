@@ -3,16 +3,17 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 
 const photos = [
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp", alt: "Шоколад ручной работы Харьков — мастер Александр с набором из 16 конфет ChocoCraft" },
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-6-konfet.webp", alt: "Шоколатье Александр с набором конфет ручной работы в чёрной коробке" },
+  { src: "/images/shokoladnye-konfety-ruchnoy-raboty-makro-glyanec-callebaut.webp", alt: "Шоколадная конфета ручной работы с мраморным глянцем какао-маслом макро" },
+  { src: "/images/shokoladnye-konfety-ruchnoy-raboty-v-chernoy-korobke-makro.webp", alt: "Шоколадные конфеты ручной работы в чёрной подарочной коробке макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp", alt: "Шоколад ручной работы Харьков — мастер Александр с розами ChocoCraft" },
   { src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp", alt: "Шоколадные розы ручной работы Callebaut макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp", alt: "Шоколатье Александр с шоколадными сферами ручной работы ChocoCraft Харьков" },
   { src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp", alt: "Подарочный набор шоколадных роз ручной работы в коробке с лентой" },
   { src: "/images/set-sixteen.webp", alt: "Набор 16 конфет с фруктовыми ганашами ручной работы" },
   { src: "/images/roses-marble.webp", alt: "Шоколадные розы с мраморным узором" },
-  { src: "/images/art-bars.webp", alt: "Авторские плитки с рисунком" },
   { src: "/images/spheres-marble.webp", alt: "Шоколадные сферы ручной работы" },
-  { src: "/images/flowers-six.jpg", alt: "Шоколадный букет из шести цветов" },
-  { src: "/images/bars-fruit.jpg", alt: "Бруски с фруктами в шоколаде" },
   { src: "/images/set-combo.jpg", alt: "Комбинированный подарочный набор" },
 ];
 

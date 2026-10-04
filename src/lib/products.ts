@@ -76,6 +76,16 @@ export const products: Product[] = [
     storage: "14 суток при +16…+18 °C",
     image: "/images/set-sixteen.webp",
     cutImage: "/images/cut-sviato.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
+        alt: "Шоколад ручной работы Харьков — мастер Александр с набором из 16 конфет в красной подарочной коробке ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-konfety-ruchnoy-raboty-makro-glyanec-callebaut.webp",
+        alt: "Шоколадная конфета ручной работы с мраморным узором какао-маслом и фруктовым ганашем крупным планом — ChocoCraft Харьков",
+      },
+    ],
     alt: "Набор из 16 конфет с фруктовыми ганашами ручной работы Callebaut — «Праздник без повода», Харьков",
     flavorNotes: ["Маракуйя-лайм с освежающей тропической кислинкой","Лесная малина на бархатном молочном шоколаде 33.6%","Сочный манго-маракуйя со сливочным кремовым послевкусием","Классический тёмный трюфель 70% с благородной какао-горчинкой"],
     perfectFor: "Главный подарок без повода, сюрприз маме или любимой, солидный презент руководителю в знак искренней благодарности.",
@@ -140,8 +150,18 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 28–70%, сливки, 3 вкуса фруктовых ганашей, краски на какао-масле.",
     storage: "14 суток при +16…+18 °C",
-    image: "/images/set-six.jpg",
+    image: "/images/set-six.webp",
     cutImage: "/images/cut-svidanie.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-6-konfet.webp",
+        alt: "Шоколад ручной работы Харьков — мастер Александр с набором из 6 конфет «Первое свидание» в чёрной коробке ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-konfety-ruchnoy-raboty-v-chernoy-korobke-makro.webp",
+        alt: "Конфета ручной работы с глазурью из какао-масла крупным планом в чёрной подарочной коробке — ChocoCraft Харьков",
+      },
+    ],
     alt: "Набор из 6 конфет с фруктовыми ганашами ручной работы Callebaut — «Первое свидание», Харьков",
     flavorNotes: ["Мраморная роспись тёплым какао-маслом","Фруктовые ганаши из спелой малины и тропической маракуйи","Бархатный шоколадный крем Callebaut"],
     perfectFor: "Романтический подарок любимой девушке, милый презент без повода, комплимент коллеге или первое свидание.",

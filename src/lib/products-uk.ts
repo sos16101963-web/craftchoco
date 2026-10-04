@@ -58,6 +58,16 @@ export const productsUk: ProductUk[] = [
     storage: "14 діб при +16…+18 °C",
     image: "/images/set-sixteen.webp",
     cutImage: "/images/cut-sviato.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
+        alt: "Шоколад ручної роботи Харків — шоколатьє Олександр з набором з 16 цукерок у червоній подарунковій коробці ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-konfety-ruchnoy-raboty-makro-glyanec-callebaut.webp",
+        alt: "Шоколадна цукерка ручної роботи з мармуровим розписом какао-маслом і фруктовим ганашем крупним планом — ChocoCraft Харків",
+      },
+    ],
     alt: "Набір із 16 цукерок з фруктовими ганашами ручної роботи Callebaut — «Свято без приводу», Харків",
     flavorNotes: ["Маракуя-лайм з освіжаючою тропічною кислинкою","Лісова малина на оксамитовому молочному шоколаді 33.6%","Соковитий манго-маракуя з вершковим кремовим післясмаком","Класичний темний трюфель 70% з благородною какао-гірчинкою"],
     perfectFor: "Головний подарунок без приводу, сюрприз мамі або коханій, солідний презент керівнику в знак щирої вдячності.",
@@ -122,8 +132,18 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–70%, вершки, 3 смаки фруктових ганашів, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/set-six.jpg",
+    image: "/images/set-six.webp",
     cutImage: "/images/cut-svidanie.webp",
+    gallery: [
+      {
+        src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-6-konfet.webp",
+        alt: "Шоколад ручної роботи Харків — шоколатьє Олександр з набором з 6 цукерок «Перше побачення» у чорній коробці ChocoCraft",
+      },
+      {
+        src: "/images/shokoladnye-konfety-ruchnoy-raboty-v-chernoy-korobke-makro.webp",
+        alt: "Цукерка ручної роботи з розписом какао-маслом крупним планом у чорній подарунковій коробці — ChocoCraft Харків",
+      },
+    ],
     alt: "Набір із 6 цукерок з фруктовими ганашами ручної роботи Callebaut — «Перше побачення», Харків",
     flavorNotes: ["Мармуровий розпис теплим какао-маслом","Фруктові ганаші зі стиглої малини та тропічної маракуї","Оксамитовий шоколадний крем Callebaut"],
     perfectFor: "Романтичний подарунок коханій дівчині, милий презент без приводу, комплімент колезі або перше побачення.",
