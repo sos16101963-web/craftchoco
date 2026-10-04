@@ -467,10 +467,6 @@ export const productsUk: ProductUk[] = [
     cutImage: "/images/cut-obyatiya.webp",
     gallery: [
       {
-        src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp",
-        alt: "Шоколадні троянди ручної роботи Callebaut — макро розпису харчовим золотом і какао-маслом, ChocoCraft Харків",
-      },
-      {
         src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp",
         alt: "Подарунковий набір з 5 шоколадних троянд ручної роботи у прозорій коробці зі стрічкою — ChocoCraft Харків",
       },
@@ -512,6 +508,10 @@ export const productsUk: ProductUk[] = [
     image: "/images/spheres-marble.webp",
     cutImage: "/images/cut-shchepot.webp",
     gallery: [
+      {
+        src: "/images/shokoladnye-sfery-ruchnoy-raboty-makro-glyanec.webp",
+        alt: "Шоколадні сфери ручної роботи у прозорій подарунковій коробці крупним планом — «Галактика бажань» ChocoCraft Харків",
+      },
       {
         src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp",
         alt: "Шоколатьє Олександр з подарунковою коробкою шоколадних сфер ручної роботи «Галактика бажань» — ChocoCraft Харків",

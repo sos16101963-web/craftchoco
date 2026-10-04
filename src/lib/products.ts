@@ -484,10 +484,6 @@ export const products: Product[] = [
     cutImage: "/images/cut-obyatiya.webp",
     gallery: [
       {
-        src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp",
-        alt: "Шоколадные розы ручной работы Callebaut — макро росписи пищевым золотом и какао-маслом, ChocoCraft Харьков",
-      },
-      {
         src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp",
         alt: "Подарочный набор из 5 шоколадных роз ручной работы в прозрачной коробке с лентой — ChocoCraft Харьков",
       },
@@ -529,6 +525,10 @@ export const products: Product[] = [
     image: "/images/spheres-marble.webp",
     cutImage: "/images/cut-shchepot.webp",
     gallery: [
+      {
+        src: "/images/shokoladnye-sfery-ruchnoy-raboty-makro-glyanec.webp",
+        alt: "Шоколадные сферы ручной работы в прозрачной подарочной коробке крупным планом — «Галактика желаний» ChocoCraft Харьков",
+      },
       {
         src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp",
         alt: "Шоколатье Александр с подарочной коробкой шоколадных сфер ручной работы «Галактика желаний» — ChocoCraft Харьков",

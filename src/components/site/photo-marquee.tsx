@@ -8,7 +8,7 @@ const photos = [
   { src: "/images/shokoladnye-konfety-ruchnoy-raboty-makro-glyanec-callebaut.webp", alt: "Шоколадная конфета ручной работы с мраморным глянцем какао-маслом макро" },
   { src: "/images/shokoladnye-konfety-ruchnoy-raboty-v-chernoy-korobke-makro.webp", alt: "Шоколадные конфеты ручной работы в чёрной подарочной коробке макро" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp", alt: "Шоколад ручной работы Харьков — мастер Александр с розами ChocoCraft" },
-  { src: "/images/shokoladnye-rozy-ruchnoy-raboty-callebaut-makro.webp", alt: "Шоколадные розы ручной работы Callebaut макро" },
+  { src: "/images/shokoladnye-sfery-ruchnoy-raboty-makro-glyanec.webp", alt: "Шоколадные сферы ручной работы макро глянец Callebaut — «Галактика желаний» ChocoCraft" },
   { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-sfery.webp", alt: "Шоколатье Александр с шоколадными сферами ручной работы ChocoCraft Харьков" },
   { src: "/images/shokoladnye-rozy-ruchnoy-raboty-nabor-5-roz.webp", alt: "Подарочный набор шоколадных роз ручной работы в коробке с лентой" },
   { src: "/images/set-sixteen.webp", alt: "Набор 16 конфет с фруктовыми ганашами ручной работы" },
