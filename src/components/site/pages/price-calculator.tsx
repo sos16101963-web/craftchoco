@@ -16,8 +16,10 @@ export function PriceCalculator({ locale }: { locale: Locale }) {
   const products = useMemo(() => catalogFor(locale), [locale]);
 
   const fits = useMemo(() => products.filter((p) => p.price <= budget).sort((a, b) => b.price - a.price).slice(0, 4), [products, budget]);
-  const corporateTotal = qty * 450;
-  const corporatePer = Math.max(380, corporateTotal - Math.floor(qty / 10) * 15) / qty;
+  const discountPercent = qty >= 100 ? 10 : qty >= 50 ? 5 : 0;
+  const basePrice = 450;
+  const corporatePer = Math.round(basePrice * (1 - discountPercent / 100));
+  const corporateTotal = qty * corporatePer;
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
@@ -104,13 +106,13 @@ export function PriceCalculator({ locale }: { locale: Locale }) {
           </div>
           <div className="rounded-xl bg-white px-3 py-3">
             <p className="text-xs text-choco-500">{uk ? "Ціна за набір" : "Цена за набор"}</p>
-            <p className="font-display text-xl font-bold text-choco-900">≈ {Math.round(corporatePer)} ₴</p>
+            <p className="font-display text-xl font-bold text-choco-900">{corporatePer} ₴</p>
           </div>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-choco-600">
           {uk
-            ? "Розрахунок для базового набору з 16 цукерок. Об'ємні тиражі, гравіювання логотипа, фірмова упаковка та дегустаційні зразки — узгодимо в Viber або Telegram, надішлемо рахунок для юросіб."
-            : "Расчёт для базового набора из 16 конфет. Объёмные тиражи, гравировка логотипа, фирменная упаковка и дегустационные образцы — согласуем в Viber или Telegram, вышлем счёт для юрлиц."}
+            ? "Базовий набір 16 цукерок (450 ₴). Від 50 наборів — знижка 5%, від 100 наборів — знижка 10%. Брендування стрічки або коробки узгодимо в Viber або Telegram."
+            : "Базовый набор 16 конфет (450 ₴). От 50 наборов — скидка 5%, от 100 наборов — скидка 10%. Брендирование ленты или коробки согласуем в Viber или Telegram."}
         </p>
         <a
           href={site.messengers[2].href}

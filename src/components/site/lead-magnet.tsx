@@ -58,7 +58,7 @@ export function LeadMagnet({ locale }: { locale: Locale }) {
       <p className="mt-1.5 text-sm leading-relaxed text-cream/75">{t.text}</p>
       <div className="mt-4 flex gap-2.5">
         <a
-          href="https://t.me/+380962535610"
+          href={site.messengers[2].href}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackEvent("contact_click", { channel: "telegram", source: "lead_magnet" })}

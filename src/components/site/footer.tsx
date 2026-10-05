@@ -39,15 +39,24 @@ export function Footer({ locale }: { locale: Locale }) {
                   {t.allSweets}
                 </a>
               </li>
-              {categories
-                .filter((c) => c.id !== "all")
-                .map((c) => (
-                  <li key={c.id}>
-                    <a href={locale === "uk" ? "/katalog" : "/ru/katalog"} className="transition-colors hover:text-gold-300">
-                      {c.label}
-                    </a>
-                  </li>
-                ))}
+              {(locale === "uk"
+                ? [
+                    { id: "sets", label: "Подарункові набори" },
+                    { id: "tiles", label: "Плитки та бруски" },
+                    { id: "flowers", label: "Квіти та фігури" },
+                  ]
+                : [
+                    { id: "sets", label: "Подарочные наборы" },
+                    { id: "tiles", label: "Плитки и бруски" },
+                    { id: "flowers", label: "Цветы и фигуры" },
+                  ]
+              ).map((c) => (
+                <li key={c.id}>
+                  <a href={locale === "uk" ? "/katalog" : "/ru/katalog"} className="transition-colors hover:text-gold-300">
+                    {c.label}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a href={locale === "uk" ? "/tsiny" : "/ru/tseny"} className="transition-colors hover:text-gold-300">
                   {locale === "uk" ? "Ціни на всі набори" : "Цены на все наборы"}
@@ -83,7 +92,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <br />
                 {t.cityText[1]}
               </p>
-              <p>{site.hours}</p>
+              <p>{locale === "uk" ? "Приймаємо замовлення щодня з 09:00 до 20:00" : "Принимаем заказы ежедневно с 09:00 до 20:00"}</p>
               <div className="flex flex-col gap-1.5 pt-1">
                 <a
                   href={site.youtube}
@@ -111,9 +120,9 @@ export function Footer({ locale }: { locale: Locale }) {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-cream/50 sm:flex-row sm:px-6 lg:px-8">
-          <p>{t.rights(site.legalName)}</p>
+          <p>{t.rights(locale === "uk" ? "Шоколадна майстерня CraftChoco (ChocoCraft)" : site.legalName)}</p>
           <p className="flex items-center gap-4">
-            <span>{site.city}</span>
+            <span>{locale === "uk" ? "Харків" : "Харьков"}</span>
             <span aria-hidden="true">·</span>
             <span>{t.madeIn}</span>
           </p>

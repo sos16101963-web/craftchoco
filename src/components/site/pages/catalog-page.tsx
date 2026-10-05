@@ -67,14 +67,6 @@ export function CatalogPage({ locale, path }: { locale: Locale; path: string }) 
       </section>
 
       <Catalog locale={locale} />
-
-      <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6">
-        <h2 className="font-display text-2xl font-bold text-choco-900">{uk ? "Як обрати набір — коротко" : "Как выбрать набор — коротко"}</h2>
-        <div className="mt-4 space-y-4 text-[16px] leading-relaxed text-choco-700">
-          <p>{t.catalog.advice1}</p>
-          <p>{t.catalog.advice2}</p>
-        </div>
-      </section>
     </InnerShell>
   );
 }

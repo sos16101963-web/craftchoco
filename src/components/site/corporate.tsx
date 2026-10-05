@@ -54,7 +54,7 @@ export function Corporate({ locale }: { locale: Locale }) {
           <p className="mx-auto mt-3 max-w-xl leading-relaxed text-cream/75">{t.ctaText}</p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://t.me/+380962535610"
+              href={site.messengers[2].href}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("contact_click", { channel: "telegram", source: "corporate" })}

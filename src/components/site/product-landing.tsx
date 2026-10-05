@@ -86,7 +86,10 @@ export function ProductLanding({
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "UA",
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 14,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
         merchantReturnLink: `${site.url}${uk ? "/dostavka" : "/ru/dostavka"}`,
       },
       shippingDetails: {

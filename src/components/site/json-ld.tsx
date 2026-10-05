@@ -91,7 +91,10 @@ export function JsonLd({ locale }: { locale: Locale }) {
           hasMerchantReturnPolicy: {
             "@type": "MerchantReturnPolicy",
             applicableCountry: "UA",
-            returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+            merchantReturnDays: 14,
+            returnMethod: "https://schema.org/ReturnByMail",
+            returnFees: "https://schema.org/FreeReturn",
             merchantReturnLink: `${site.url}${locale === "uk" ? "/dostavka" : "/ru/dostavka"}`,
           },
           shippingDetails: {

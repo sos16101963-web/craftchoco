@@ -2,7 +2,22 @@ import Image from "next/image";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 
-const photos = [
+const photosUk = [
+  { src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-buket-6-roz.webp", alt: "Шоколадний букет ручної роботи — майстер Олександр з набором з 6 квітів ChocoCraft" },
+  { src: "/images/shokoladnyy-podsolnuh-i-rozy-ruchnoy-raboty-makro.webp", alt: "Шоколадний соняшник та троянди ручної роботи Callebaut макро" },
+  { src: "/images/shokoladnye-plitki-ruchnoy-raboty-harkov-master-aleksandr-art-bars.webp", alt: "Шоколадні арт-плитки ручної роботи — майстер Олександр ChocoCraft" },
+  { src: "/images/shokoladnaya-plitka-ruchnoy-raboty-abstrakciya-makro-chococraft.webp", alt: "Шоколадна плитка з абстрактним розписом какао-маслом макро" },
+  { src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-4-cvetka.webp", alt: "Шоколадні квіти ручної роботи — майстер Олександр з набором квітів ChocoCraft" },
+  { src: "/images/shokoladnaya-roza-ruchnoy-raboty-vinno-zolotaya-makro.webp", alt: "Винно-золота шоколадна троянда ручної роботи Callebaut макро" },
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-spasibo.webp", alt: "Майстер Олександр з набором шоколадних цукерок «Дякую, що ти є» ChocoCraft" },
+  { src: "/images/shokoladnye-konfety-ruchnoy-raboty-kosmos-makro-chococraft.webp", alt: "Шоколадна цукерка ручної роботи «Космос» з сусальним золотом макро" },
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp", alt: "Шоколад ручної роботи Харків — майстер Олександр з набором з 16 цукерок ChocoCraft" },
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-6-konfet.webp", alt: "Шоколатьє Олександр з набором цукерок ручної роботи у чорній коробці" },
+  { src: "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-rozy.webp", alt: "Шоколад ручної роботи Харків — майстер Олександр з трояндами ChocoCraft" },
+  { src: "/images/shokoladnye-sfery-ruchnoy-raboty-makro-glyanec.webp", alt: "Шоколадні сфери ручної роботи макро глянець Callebaut — «Галактика бажань» ChocoCraft" },
+];
+
+const photosRu = [
   { src: "/images/shokoladnye-cvety-ruchnoy-raboty-harkov-master-aleksandr-buket-6-roz.webp", alt: "Шоколадный букет ручной работы — мастер Александр с набором из 6 цветов ChocoCraft" },
   { src: "/images/shokoladnyy-podsolnuh-i-rozy-ruchnoy-raboty-makro.webp", alt: "Шоколадный подсолнух и розы ручной работы Callebaut макро" },
   { src: "/images/shokoladnye-plitki-ruchnoy-raboty-harkov-master-aleksandr-art-bars.webp", alt: "Шоколадные арт-плитки ручной работы — мастер Александр ChocoCraft" },
@@ -19,11 +34,12 @@ const photos = [
 
 export function PhotoMarquee({ locale }: { locale: Locale }) {
   const t = getDict(locale);
+  const photos = locale === "uk" ? photosUk : photosRu;
   const doubled = [...photos, ...photos];
   return (
-    <section aria-label="Живые фото нашей продукции" className="relative border-y border-gold-400/15 bg-choco-950 py-7">
+    <section aria-label={locale === "uk" ? "Живі фото нашої продукції" : "Живые фото нашей продукции"} className="relative border-y border-gold-400/15 bg-choco-950 py-7">
       <p className="mb-5 text-center text-[13px] font-semibold uppercase tracking-[0.28em] text-gold-400/90">
-        
+        {locale === "uk" ? "Живі фото майстерні: від процесу до готової коробки" : "Живые фото мастерской: от процесса до готовой коробки"}
       </p>
       <div className="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="animate-marquee flex w-max gap-4 pr-4 group-hover:[animation-play-state:paused]">
