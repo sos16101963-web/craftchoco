@@ -37,5 +37,5 @@ export const site = {
 
 export const rating = {
   value: "4.9",
-  count: 2847,
+  count: 500,
 } as const;

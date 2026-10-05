@@ -7,7 +7,7 @@ export const metadata: Metadata = innerMeta("ru", {
   altPath: "/pro-nas",
   title: "О мастерской шоколада в Харькове",
   description:
-    "История и принципы мастерской CraftChoco: конфеты ручной работы из бельгийского Callebaut, темперирование по стандарту, 2000+ счастливых семей.",
+    "История и принципы мастерской CraftChoco: конфеты ручной работы из бельгийского Callebaut, темперирование по стандарту, 500+ выполненных заказов.",
 });
 
 export default function Page() {
