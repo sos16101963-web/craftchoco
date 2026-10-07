@@ -118,7 +118,7 @@ export const products: Product[] = [
     ingredients:
       "Бельгийский шоколад Callebaut 28–70%, сливки, 3 вкуса фруктовых ганашей, плитка Callebaut, орехи, сухофрукты, краски на какао-масле.",
     storage: "14 суток при +16…+18 °C",
-    image: "/images/set-combo.webp",
+    image: "/images/set-combo-box.webp",
     cutImage: "/images/cut-duet.webp",
     alt: "Подарочный набор шоколада ручной работы Callebaut: 9 конфет с ганашами и плитка — «Двойное удовольствие», Харьков",
     flavorNotes: ["Авторские конфеты с фруктовыми ганашами (малина, маракуйя, манго)","Большая плитка Callebaut с отборным жареным фундуком, миндалём и ягодами"],

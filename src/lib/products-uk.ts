@@ -100,7 +100,7 @@ export const productsUk: ProductUk[] = [
     ingredients:
       "Бельгійський шоколад Callebaut 28–70%, вершки, 3 смаки фруктових ганашів, плитка Callebaut, горіхи, сухофрукти, фарби на какао-маслі.",
     storage: "14 діб при +16…+18 °C",
-    image: "/images/set-combo.webp",
+    image: "/images/set-combo-box.webp",
     cutImage: "/images/cut-duet.webp",
     alt: "Подарунковий набір шоколаду ручної роботи Callebaut: 9 цукерок з ганашами та плитка — «Подвійна насолода», Харків",
     flavorNotes: ["Авторські цукерки з фруктовими ганашами (малина, маракуя, манго)","Велика плитка Callebaut з добірним смаженим фундуком, мигдалем та ягодами"],

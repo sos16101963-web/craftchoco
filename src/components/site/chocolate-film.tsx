@@ -152,7 +152,7 @@ const SCENES: Scene[] = [
     fx: "glow",
   },
   {
-    src: "/images/set-combo.jpg",
+    src: "/images/set-combo-box.webp",
     alt: "Комбинированный подарочный набор ручной работы — финал фильма",
     no: "09",
     kicker: "Глава IX · Финал",
