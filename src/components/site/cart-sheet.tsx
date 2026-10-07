@@ -46,7 +46,14 @@ export function CartSheet({ locale }: { locale: Locale }) {
     [items]
   );
 
-  const total = lines.reduce((acc, l) => acc + l.product.price * l.qty, 0);
+  // Якщо в кошику є інші товари, для набору set-four («Чотири настрої») діє спец-знижка 30% (100 ₴ замість 130 ₴)
+  const hasOtherItems = lines.some((l) => l.id !== "set-four");
+  const getItemPrice = (id: string, regularPrice: number) => {
+    if (id === "set-four" && hasOtherItems) return 100;
+    return regularPrice;
+  };
+
+  const total = lines.reduce((acc, l) => acc + getItemPrice(l.id, l.product.price) * l.qty, 0);
   const freeFrom = site.freeShippingFrom;
   const progress = Math.min(100, Math.round((total / freeFrom) * 100));
   const remaining = Math.max(0, freeFrom - total);
@@ -86,9 +93,12 @@ export function CartSheet({ locale }: { locale: Locale }) {
           phone: phone.trim(),
           items: lines.map((l) => ({
             id: l.product.id,
-            name: l.product.name,
+            name:
+              l.id === "set-four" && hasOtherItems
+                ? `${l.product.name} (спец-знижка 30% для себе)`
+                : l.product.name,
             qty: l.qty,
-            price: l.product.price,
+            price: getItemPrice(l.id, l.product.price),
           })),
           total,
           locale,
@@ -257,14 +267,78 @@ export function CartSheet({ locale }: { locale: Locale }) {
                           <Plus className="h-3.5 w-3.5" />
                         </Button>
                       </div>
-                      <p className="font-display text-lg font-bold text-choco-900">
-                        {formatPrice(l.product.price * l.qty)}
-                      </p>
+                      <div className="text-right">
+                        {l.id === "set-four" && hasOtherItems && (
+                          <span className="block text-[11px] font-medium text-choco-400 line-through">
+                            {formatPrice(l.product.price * l.qty)}
+                          </span>
+                        )}
+                        <p className="font-display text-lg font-bold text-choco-900">
+                          {formatPrice(getItemPrice(l.id, l.product.price) * l.qty)}
+                        </p>
+                        {l.id === "set-four" && hasOtherItems && (
+                          <span className="inline-block rounded-full bg-gold-500/20 px-2 py-0.5 text-[10px] font-bold text-choco-900">
+                            -30% спецціна
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
+
+            {/* Спец-пропозиція допродажу (Upsell) «Чотири настрої» зі знижкою 30% */}
+            {lines.length > 0 && !lines.some((l) => l.id === "set-four") && (
+              <div className="mx-6 my-2 overflow-hidden rounded-2xl border-2 border-dashed border-gold-500/60 bg-gradient-to-r from-gold-500/10 via-cream-100 to-gold-500/15 p-3.5 shadow-xs">
+                <div className="flex items-center gap-3">
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-gold-500/30 shadow-xs">
+                    <Image
+                      src="/images/set-four.webp"
+                      alt={locale === "uk" ? "Набір «Чотири настрої»" : "Набор «Четыре настроения»"}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="rounded-full bg-gold-500 px-2 py-0.5 text-[10px] font-black uppercase text-choco-950">
+                        {locale === "uk" ? "-30% для себе" : "-30% для себя"}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs font-bold leading-tight text-choco-900 truncate">
+                      {locale === "uk" ? "🎁 «Чотири настрої» (4 цукерки)" : "🎁 «Четыре настроения» (4 конфеты)"}
+                    </p>
+                    <p className="text-[11px] text-choco-600 truncate">
+                      {locale === "uk" ? "Солодкий комплімент до ранкової кави" : "Сладкий комплимент к утреннему кофе"}
+                    </p>
+                    <div className="mt-1.5 flex items-center justify-between">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display text-sm font-bold text-choco-950">100 ₴</span>
+                        <span className="text-xs text-choco-400 line-through">130 ₴</span>
+                      </div>
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() => {
+                          add("set-four");
+                          toast.success(
+                            locale === "uk" ? "Набір «Чотири настрої» додано!" : "Набор «Четыре настроения» добавлен!",
+                            {
+                              description: locale === "uk" ? "Знижка 30% застосована автоматично" : "Скидка 30% применена автоматически",
+                            }
+                          );
+                        }}
+                        className="h-7.5 rounded-lg bg-choco-900 px-3 text-xs font-bold text-gold-300 hover:bg-choco-800"
+                      >
+                        {locale === "uk" ? "+ Додати за 100 ₴" : "+ Добавить за 100 ₴"}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="border-t border-border bg-white/60 px-6 py-5">
               <div className="flex items-baseline justify-between">

@@ -9,6 +9,20 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/podarunky/shepit-na-vuho",
+        destination: "/podarunky/chotyry-nastroi",
+        permanent: true,
+      },
+      {
+        source: "/ru/podarunky/shepot-na-uho",
+        destination: "/ru/podarunky/chetyre-nastroeniya",
+        permanent: true,
+      },
+    ];
+  },
   reactStrictMode: false,
 };
 

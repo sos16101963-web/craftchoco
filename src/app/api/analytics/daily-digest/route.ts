@@ -61,9 +61,9 @@ export async function GET(req: Request) {
     const key = searchParams.get("key");
     const isCron = req.headers.get("x-vercel-cron") === "1" || req.headers.get("user-agent")?.includes("vercel-cron");
 
-    // Allow Vercel Cron or secret key query crafo2026
-    if (!isCron && key !== "crafo2026" && process.env.NODE_ENV === "production" && key !== process.env.CRON_SECRET) {
-      // In production allow if cron or key matches
+    // Allow only Vercel Cron or secret key query crafo2026 to prevent duplicate triggers by crawlers
+    if (!isCron && key !== "crafo2026" && key !== process.env.CRON_SECRET) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const todayDate = new Date().toLocaleDateString("ru-RU", {
