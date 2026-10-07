@@ -102,12 +102,6 @@ export const productsUk: ProductUk[] = [
     storage: "14 діб при +16…+18 °C",
     image: "/images/set-combo.webp",
     cutImage: "/images/cut-duet.webp",
-    gallery: [
-      {
-        src: "/images/shokoladnye-konfety-i-plitka-nabor-podviyna-nasoloda-boks.webp",
-        alt: "Подарунковий набір шоколаду «Подвійна насолода» ChocoCraft — 9 цукерок ручної роботи та біла шоколадна плитка з абстрактним розписом",
-      },
-    ],
     alt: "Подарунковий набір шоколаду ручної роботи Callebaut: 9 цукерок з ганашами та плитка — «Подвійна насолода», Харків",
     flavorNotes: ["Авторські цукерки з фруктовими ганашами (малина, маракуя, манго)","Велика плитка Callebaut з добірним смаженим фундуком, мигдалем та ягодами"],
     perfectFor: "Для тих, хто любить усе й одразу: і вишукані цукерки, і хрустку шоколадну плитку до кави.",
