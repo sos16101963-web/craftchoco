@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/konfety-ruchnoy-raboty-harkov",
   altPath: "/tsukerky-ruchnoi-roboty-harkiv",
-  title: "Конфеты ручной работы в Харькове от 150 ₴",
+  title: "Конфеты ручной работы в Харькове от 130 ₴ — купить шоколадные наборы",
   description:
-    "Конфеты ручной работы в Харькове из бельгийского Callebaut: наборы от 150 ₴, фруктовые ганаши и ручная роспись. Доставка по городу в день заказа.",
+    "Купить конфеты ручной работы в Харькове из бельгийского Callebaut: наборы от 130 ₴, фруктовые ганаши и ручная роспись. Доставка по городу в день заказа.",
 });
 
 export default function Page() {
