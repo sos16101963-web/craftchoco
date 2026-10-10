@@ -76,7 +76,7 @@ export function GeoTsukerkyPage({ locale, path }: { locale: Locale; path: string
           </div>
           <div className="mt-10 text-center">
             <Link href={uk ? "/katalog" : "/ru/katalog"} className="inline-flex h-13 items-center rounded-full bg-choco-900 px-9 py-3.5 font-bold text-cream transition-colors hover:bg-gold-600">
-              {uk ? "Дивитися всі 14 наборів" : "Смотреть все 14 наборов"}
+              {uk ? "Дивитися весь каталог" : "Смотреть весь каталог"}
             </Link>
           </div>
         </div>

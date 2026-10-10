@@ -18,6 +18,8 @@ export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
     "flowers-four": "kompliment-vid-sertsia",
     "roses-marble": "obiimy-kokhanoho",
     "spheres-marble": "halaktyka-bazhan",
+    "mediants-friends": "malenki-druzi",
+    "mediants-four": "malenki-druzi-chetvirka",
   },
   ru: {
     "set-sixteen": "prazdnik-bez-povoda",
@@ -34,6 +36,8 @@ export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
     "flowers-four": "kompliment-ot-serdtsa",
     "roses-marble": "obyatiya-lyubimogo",
     "spheres-marble": "galaktika-zhelaniy",
+    "mediants-friends": "malenkie-druzya",
+    "mediants-four": "malenkie-druzya-chetvyorka",
   },
 };
 
