@@ -9,7 +9,7 @@ import { catalogFor, formatProductPrice, type ProductGalleryItem } from "@/lib/p
 import { switchPairFor } from "@/lib/pages";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { site, CITIES_SERVED_UK, CITIES_SERVED_RU } from "@/lib/site";
 import { QuickOrderButtons } from "@/components/site/quick-order-buttons";
 
 export interface LandingProduct {
@@ -81,7 +81,7 @@ export function ProductLanding({
       priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
-      areaServed: [uk ? "Харків" : "Харьков", uk ? "Україна" : "Украина"],
+      areaServed: uk ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
       seller: { "@id": `${site.url}/#organization` },
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",

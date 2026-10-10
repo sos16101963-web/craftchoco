@@ -1,5 +1,5 @@
 import { catalogFor } from "@/lib/products";
-import { site } from "@/lib/site";
+import { site, CITIES_SERVED_UK, CITIES_SERVED_RU } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 
@@ -45,6 +45,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     openingHours: "Mo-Su 09:00-20:00",
     address: { "@type": "PostalAddress", addressLocality: city, addressRegion: region, addressCountry: "UA" },
     geo: { "@type": "GeoCoordinates", latitude: 49.9935, longitude: 36.2304 },
+    areaServed: locale === "uk" ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
   };
 
   const website = {
@@ -86,7 +87,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
           priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",
-          areaServed: [city, locale === "uk" ? "Україна" : "Украина"],
+          areaServed: locale === "uk" ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
           seller: { "@id": `${site.url}/#organization` },
           hasMerchantReturnPolicy: {
             "@type": "MerchantReturnPolicy",
