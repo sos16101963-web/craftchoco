@@ -40,6 +40,7 @@ const uk = {
   header: {
     nav: [
       { href: "/katalog", label: "Каталог" },
+      { href: "/korporatyvni-podary", label: "Корпоративні" },
       { href: "/tsiny", label: "Ціни" },
       { href: "/dostavka", label: "Доставка" },
       { href: "/pro-nas", label: "Про майстерню" },
@@ -212,6 +213,7 @@ export const dictionaries: Record<Locale, Dict> = {
     header: {
       nav: [
         { href: "/ru/katalog", label: "Каталог" },
+        { href: "/ru/korporativnye-podary", label: "Корпоративным" },
         { href: "/ru/tseny", label: "Цены" },
         { href: "/ru/dostavka", label: "Доставка" },
         { href: "/ru/o-nas", label: "О мастерской" },
