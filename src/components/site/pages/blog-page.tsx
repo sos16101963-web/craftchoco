@@ -14,12 +14,14 @@ const COVERS: Record<string, string> = {
   "iakyi-shokoladnyi-podarunok-obraty": "/images/set-sixteen.webp",
   "shokoladni-bukety": "/images/roses-marble.webp",
   "handmade-proty-fabryky": "/images/craft.webp",
+  "korysni-solodoshchi-dityam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
   "kak-khranit-shokolad": "/images/dark-85.webp",
   "pochemu-callebaut": "/images/cut-bar.jpg",
   "temperirovanie-shokolada": "/images/caramel-bar.webp",
   "kakoy-shokoladnyy-podarok-vybrat": "/images/set-sixteen.webp",
   "shokoladnye-bukety": "/images/roses-marble.webp",
   "handmade-protiv-fabriki": "/images/craft.webp",
+  "poleznye-sladosti-detyam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
 };
 
 export function blogCover(slug: string): string {
