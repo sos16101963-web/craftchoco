@@ -1,6 +1,7 @@
 import { InnerShell } from "@/components/site/inner-shell";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { Corporate } from "@/components/site/corporate";
+import { CorporateEstimateCalculator } from "@/components/site/pages/corporate-estimate-calculator";
 import { switchPairFor } from "@/lib/pages";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -266,6 +267,11 @@ export function CorporatePage({ locale, path }: { locale: Locale; path: string }
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Интерактивный калькулятор сметы */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <CorporateEstimateCalculator locale={locale} />
       </section>
 
       {/* Порядок работы */}
