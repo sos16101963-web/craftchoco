@@ -98,7 +98,7 @@ export const products: Product[] = [
     categoryLabel: "Подарочный набор",
     price: 350,
     priceFrom: true,
-    weight: "100 г · 12 конфет",
+    weight: "120 г · 12 конфет",
     character: "Когда чувства звучат ярче любых слов.",
     contents: [
       "12 авторских конфет ручной росписи",

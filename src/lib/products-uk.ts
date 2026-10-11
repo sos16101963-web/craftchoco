@@ -80,7 +80,7 @@ export const productsUk: ProductUk[] = [
     categoryLabel: catSets,
     price: 350,
     priceFrom: true,
-    weight: "100 г · 12 цукерок",
+    weight: "120 г · 12 цукерок",
     character: "Коли почуття звучать яскравіше за будь-які слова.",
     contents: [
       "12 авторських цукерок ручного розпису",
