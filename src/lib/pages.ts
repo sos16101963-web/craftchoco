@@ -31,9 +31,24 @@ export function pagePath(key: keyof typeof INNER_PAGES | string, locale: Locale)
 
 /** Пара (uk-href, ru-href) для перемикача мов у шапці */
 export function switchPairFor(path: string): { uk: string; ru: string } {
-  if (path.startsWith("/ru")) {
-    const rest = path.slice(3) || "/";
-    return { uk: rest, ru: path };
+  const cleanPath = path || "/";
+
+  // 1. Пошук у реєстрі INNER_PAGES
+  for (const pair of Object.values(INNER_PAGES)) {
+    if (cleanPath === pair.uk || cleanPath === pair.ru) {
+      return { uk: pair.uk, ru: pair.ru };
+    }
   }
-  return { uk: path || "/", ru: `/ru${path === "/" ? "" : path}` };
+
+  // 2. Головна сторінка
+  if (cleanPath === "/" || cleanPath === "/ru") {
+    return { uk: "/", ru: "/ru" };
+  }
+
+  // 3. Fallback
+  if (cleanPath.startsWith("/ru")) {
+    const rest = cleanPath.slice(3) || "/";
+    return { uk: rest, ru: cleanPath };
+  }
+  return { uk: cleanPath, ru: `/ru${cleanPath}` };
 }

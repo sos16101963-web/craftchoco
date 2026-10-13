@@ -1,4 +1,5 @@
 import { catalogFor } from "@/lib/products";
+import { productPath } from "@/lib/slugs";
 import { site, CITIES_SERVED_UK, CITIES_SERVED_RU } from "@/lib/site";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
@@ -37,7 +38,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     url: site.url,
     image: `${site.url}/images/og-image.jpg`,
     telephone: site.phoneIntl,
-    priceRange: "150–600 ₴",
+    priceRange: "130–600 ₴",
     currenciesAccepted: "UAH",
     paymentAccepted: locale === "uk"
       ? "Готівка, банківська картка, переказ на картку, оплата при отриманні"
@@ -80,11 +81,10 @@ export function JsonLd({ locale }: { locale: Locale }) {
         manufacturer: { "@id": `${site.url}/#organization` },
         offers: {
           "@type": "Offer",
-          url: `${site.url}/#catalog`,
+          url: `${site.url}${productPath(p.id, locale)}`,
           priceCurrency: "UAH",
           price: p.price,
-          validFrom: "2026-01-01",
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: "2027-12-31",
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",
           areaServed: locale === "uk" ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
@@ -92,39 +92,66 @@ export function JsonLd({ locale }: { locale: Locale }) {
           hasMerchantReturnPolicy: {
             "@type": "MerchantReturnPolicy",
             applicableCountry: "UA",
-            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-            merchantReturnDays: 14,
-            returnMethod: "https://schema.org/ReturnByMail",
-            returnFees: "https://schema.org/FreeReturn",
+            returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
             merchantReturnLink: `${site.url}${locale === "uk" ? "/dostavka" : "/ru/dostavka"}`,
           },
-          shippingDetails: {
-            "@type": "OfferShippingDetails",
-            shippingRate: {
-              "@type": "MonetaryAmount",
-              value: site.courierPrice,
-              currency: "UAH",
-            },
-            shippingDestination: {
-              "@type": "DefinedRegion",
-              addressCountry: "UA",
-            },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: {
-                "@type": "QuantitativeValue",
-                minValue: 0,
-                maxValue: 1,
-                unitCode: "DAY",
+          shippingDetails: [
+            {
+              "@type": "OfferShippingDetails",
+              shippingRate: {
+                "@type": "MonetaryAmount",
+                value: site.courierPrice,
+                currency: "UAH",
               },
-              transitTime: {
-                "@type": "QuantitativeValue",
-                minValue: 1,
-                maxValue: 2,
-                unitCode: "DAY",
+              shippingDestination: {
+                "@type": "DefinedRegion",
+                addressRegion: region,
+                addressCountry: "UA",
+              },
+              deliveryTime: {
+                "@type": "ShippingDeliveryTime",
+                handlingTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 0,
+                  maxValue: 1,
+                  unitCode: "DAY",
+                },
+                transitTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 0,
+                  maxValue: 1,
+                  unitCode: "DAY",
+                },
               },
             },
-          },
+            {
+              "@type": "OfferShippingDetails",
+              shippingRate: {
+                "@type": "MonetaryAmount",
+                value: 80,
+                currency: "UAH",
+              },
+              shippingDestination: {
+                "@type": "DefinedRegion",
+                addressCountry: "UA",
+              },
+              deliveryTime: {
+                "@type": "ShippingDeliveryTime",
+                handlingTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 0,
+                  maxValue: 1,
+                  unitCode: "DAY",
+                },
+                transitTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 1,
+                  maxValue: 2,
+                  unitCode: "DAY",
+                },
+              },
+            },
+          ],
         },
         aggregateRating: {
           "@type": "AggregateRating",

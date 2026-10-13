@@ -77,8 +77,7 @@ export function ProductLanding({
       url: `${site.url}${canonicalPath}`,
       priceCurrency: "UAH",
       price: product.price,
-      validFrom: "2026-01-01",
-      priceValidUntil: "2026-12-31",
+      priceValidUntil: "2027-12-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       areaServed: uk ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
@@ -86,39 +85,66 @@ export function ProductLanding({
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "UA",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-        merchantReturnDays: 14,
-        returnMethod: "https://schema.org/ReturnByMail",
-        returnFees: "https://schema.org/FreeReturn",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
         merchantReturnLink: `${site.url}${uk ? "/dostavka" : "/ru/dostavka"}`,
       },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: site.courierPrice,
-          currency: "UAH",
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: "UA",
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 1,
-            unitCode: "DAY",
+      shippingDetails: [
+        {
+          "@type": "OfferShippingDetails",
+          shippingRate: {
+            "@type": "MonetaryAmount",
+            value: site.courierPrice,
+            currency: "UAH",
           },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 1,
-            maxValue: 2,
-            unitCode: "DAY",
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressRegion: uk ? "Харківська область" : "Харьковская область",
+            addressCountry: "UA",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: 0,
+              maxValue: 1,
+              unitCode: "DAY",
+            },
+            transitTime: {
+              "@type": "ShippingDeliveryTime",
+              minValue: 0,
+              maxValue: 1,
+              unitCode: "DAY",
+            },
           },
         },
-      },
+        {
+          "@type": "OfferShippingDetails",
+          shippingRate: {
+            "@type": "MonetaryAmount",
+            value: 80,
+            currency: "UAH",
+          },
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "UA",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: 0,
+              maxValue: 1,
+              unitCode: "DAY",
+            },
+            transitTime: {
+              "@type": "QuantitativeValue",
+              minValue: 1,
+              maxValue: 2,
+              unitCode: "DAY",
+            },
+          },
+        },
+      ],
     },
     aggregateRating: {
       "@type": "AggregateRating",

@@ -5,7 +5,7 @@ import { PRODUCT_SLUGS } from "@/lib/slugs";
 
 /**
  * Google Shopping & Merchant Center XML Product Feed (RSS 2.0).
- * Забезпечує автоматичний експорт усіх 14 авторських товарів майстерні
+ * Забезпечує автоматичний експорт усіх авторських товарів майстерні
  * до безкоштовної програми Google Free Product Listings та товарної каруселі пошуку.
  */
 export async function GET() {
