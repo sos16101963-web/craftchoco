@@ -21,6 +21,7 @@ export const site = {
   youtubeHandle: "@craft.choco.kharkiv",
   tiktok: "https://www.tiktok.com/@aleksandr_mag_",
   tiktokHandle: "@aleksandr_mag_",
+  googleMaps: "https://www.google.com/maps/place//@49.9794669,36.2654184,17z/data=!3m1!4b1!4m3!3m2!1s0x4127a19d4450bdad:0x66f690014835d713!12e1",
   messengers: [
     { name: "Viber", href: "viber://chat?number=%2B380962535610", hint: "096 253 56 10" },
     { name: "WhatsApp", href: "https://wa.me/380962535610", hint: "096 253 56 10" },

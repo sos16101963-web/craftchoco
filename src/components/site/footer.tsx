@@ -92,6 +92,16 @@ export function Footer({ locale }: { locale: Locale }) {
                 <br />
                 {t.cityText[1]}
               </p>
+              <p>
+                <a
+                  href={site.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-semibold text-gold-400 hover:text-gold-300 underline underline-offset-4"
+                >
+                  📍 {locale === "uk" ? "Ми на Google Картах (Харків)" : "Мы на Google Картах (Харьков)"}
+                </a>
+              </p>
               <p>{locale === "uk" ? "Приймаємо замовлення щодня з 09:00 до 20:00" : "Принимаем заказы ежедневно с 09:00 до 20:00"}</p>
               <div className="flex flex-col gap-1.5 pt-1">
                 <a

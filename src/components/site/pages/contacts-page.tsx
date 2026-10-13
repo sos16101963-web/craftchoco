@@ -60,17 +60,24 @@ export function ContactsPage({ locale, path }: { locale: Locale; path: string })
               <span className="mt-1 block text-sm text-choco-600">{uk ? "приймаємо замовлення без вихідних" : "принимаем заказы без выходных"}</span>
             </span>
           </div>
-          <div className="flex items-start gap-4 rounded-2xl border border-border bg-white p-6">
+          <a
+            href={site.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-4 rounded-2xl border border-border bg-white p-6 transition-colors hover:border-gold-500/50"
+          >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-choco-900 text-gold-400">
               <MapPin className="h-5 w-5" aria-hidden="true" />
             </span>
             <span>
-              <span className="block font-display text-xl font-bold text-choco-900">{uk ? "Харків" : "Харьков"}</span>
+              <span className="block font-display text-xl font-bold text-choco-900">
+                {uk ? "Майстерня на Google Картах" : "Мастерская на Google Картах"}
+              </span>
               <span className="mt-1 block text-sm text-choco-600">
-                {uk ? "робимо в місті, доставляємо по всій Україні (Нова пошта)" : "делаем в городе, доставляем по всей Украине (Новая почта)"}
+                {uk ? "Харків · переглянути точку та відгуки →" : "Харьков · посмотреть точку и отзывы →"}
               </span>
             </span>
-          </div>
+          </a>
           <a
             href={site.youtube}
             target="_blank"
