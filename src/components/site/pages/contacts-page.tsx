@@ -71,10 +71,10 @@ export function ContactsPage({ locale, path }: { locale: Locale; path: string })
             </span>
             <span>
               <span className="block font-display text-xl font-bold text-choco-900">
-                {uk ? "Майстерня на Google Картах" : "Мастерская на Google Картах"}
+                {uk ? "вул. Лебединська, 1" : "ул. Лебединская, 1"}
               </span>
               <span className="mt-1 block text-sm text-choco-600">
-                {uk ? "Харків · переглянути точку та відгуки →" : "Харьков · посмотреть точку и отзывы →"}
+                {uk ? "Харків, р-н стадіону «Металіст» · точка на Google Картах →" : "Харьков, р-н стадиона Металлист · точка на Google Картах →"}
               </span>
             </span>
           </a>

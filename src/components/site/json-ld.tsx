@@ -14,6 +14,15 @@ export function JsonLd({ locale }: { locale: Locale }) {
   const city = locale === "uk" ? "Харків" : "Харьков";
   const region = locale === "uk" ? "Харківська область" : "Харьковская область";
 
+  const postalAddress = {
+    "@type": "PostalAddress",
+    streetAddress: locale === "uk" ? site.streetAddressUk : site.streetAddress,
+    addressLocality: city,
+    addressRegion: region,
+    postalCode: site.postalCode,
+    addressCountry: "UA",
+  };
+
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -25,7 +34,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     logo: `${site.url}/icon.svg`,
     description: d.meta.description,
     telephone: site.phoneIntl,
-    address: { "@type": "PostalAddress", addressLocality: city, addressRegion: region, addressCountry: "UA" },
+    address: postalAddress,
     sameAs: [site.youtube, site.tiktok, "https://t.me/feelings_ua"],
   };
 
@@ -44,8 +53,9 @@ export function JsonLd({ locale }: { locale: Locale }) {
       ? "Готівка, банківська картка, переказ на картку, оплата при отриманні"
       : "Наличные, банковская карта, перевод на карту, оплата при получении",
     openingHours: "Mo-Su 09:00-20:00",
-    address: { "@type": "PostalAddress", addressLocality: city, addressRegion: region, addressCountry: "UA" },
-    geo: { "@type": "GeoCoordinates", latitude: 49.9935, longitude: 36.2304 },
+    address: postalAddress,
+    geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
+    hasMap: site.googleMaps,
     areaServed: locale === "uk" ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
   };
 

@@ -134,15 +134,20 @@ export function ContactCta({ locale }: { locale: Locale }) {
                     <span className="font-bold text-cream group-hover:text-gold-300">@aleksandr_mag_</span>
                   </span>
                 </a>
-                <div className="flex items-center gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-gold-400">
+                <a
+                  href={site.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 transition-colors"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-gold-400 transition-colors group-hover:bg-gold-500 group-hover:text-choco-950">
                     <MapPin className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <span>
                     <span className="block text-sm text-cream/60">{t.where}</span>
-                    <span className="font-bold text-cream">{t.whereValue}</span>
+                    <span className="font-bold text-cream group-hover:text-gold-300">{t.whereValue}</span>
                   </span>
-                </div>
+                </a>
                 <div className="flex items-center gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.06] text-gold-400">
                     <Clock className="h-5 w-5" aria-hidden="true" />

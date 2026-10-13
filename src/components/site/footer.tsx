@@ -99,7 +99,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 font-semibold text-gold-400 hover:text-gold-300 underline underline-offset-4"
                 >
-                  📍 {locale === "uk" ? "Ми на Google Картах (Харків)" : "Мы на Google Картах (Харьков)"}
+                  📍 {locale === "uk" ? "вул. Лебединська, 1 на Google Картах" : "ул. Лебединская, 1 на Google Картах"}
                 </a>
               </p>
               <p>{locale === "uk" ? "Приймаємо замовлення щодня з 09:00 до 20:00" : "Принимаем заказы ежедневно с 09:00 до 20:00"}</p>
