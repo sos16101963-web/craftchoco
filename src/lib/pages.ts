@@ -21,6 +21,7 @@ export const INNER_PAGES: Record<string, PagePair> = {
   blog: { uk: "/blog", ru: "/ru/blog" },
   geoShokolad: { uk: "/shokolad-harkiv", ru: "/ru/shokolad-harkov" },
   geoTsukerky: { uk: "/tsukerky-ruchnoi-roboty-harkiv", ru: "/ru/konfety-ruchnoy-raboty-harkov" },
+  sommelier: { uk: "/sommelier", ru: "/ru/sommelier" },
 };
 
 /** Шлях сторінки в даній локалі */

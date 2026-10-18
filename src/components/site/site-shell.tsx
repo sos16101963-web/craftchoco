@@ -3,6 +3,7 @@ import { ChocolateJourney } from "@/components/site/chocolate-journey";
 import { ThermoBanner } from "@/components/site/thermo-banner";
 import { PhotoMarquee } from "@/components/site/photo-marquee";
 import { Catalog } from "@/components/site/catalog";
+import { ChocolateSommelier } from "@/components/site/chocolate-sommelier";
 import { Features } from "@/components/site/features";
 import { About } from "@/components/site/about";
 import { Craft } from "@/components/site/craft";
@@ -35,6 +36,7 @@ export function SiteShell({ locale }: { locale: Locale }) {
         <PhotoMarquee locale={locale} />
 
         <Catalog locale={locale} />
+        <ChocolateSommelier locale={locale} />
         <Features locale={locale} />
         <About locale={locale} />
         <Craft locale={locale} />

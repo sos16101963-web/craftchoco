@@ -62,6 +62,15 @@ export function Footer({ locale }: { locale: Locale }) {
                   {locale === "uk" ? "Ціни на всі набори" : "Цены на все наборы"}
                 </a>
               </li>
+              <li>
+                <a
+                  href={locale === "uk" ? "/sommelier" : "/ru/sommelier"}
+                  className="inline-flex items-center gap-1.5 font-semibold text-gold-400 transition-colors hover:text-gold-300"
+                >
+                  <span>✨ {locale === "uk" ? "Шоколадний сомельє" : "Шоколадный сомелье"}</span>
+                  <span className="rounded bg-gold-500/20 px-1 text-[10px] text-gold-300">-10%</span>
+                </a>
+              </li>
             </ul>
           </nav>
 

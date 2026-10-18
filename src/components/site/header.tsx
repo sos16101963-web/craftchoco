@@ -229,6 +229,19 @@ export function Header({
                 <SheetTitle className="text-left font-display text-xl text-cream">{t.menu}</SheetTitle>
               </SheetHeader>
               <nav className="mt-2 flex flex-col gap-1 px-4" aria-label={locale === "uk" ? "Мобільна навігація" : "Мобильная навигация"}>
+                <a
+                  href={locale === "uk" ? "/sommelier" : "/ru/sommelier"}
+                  onClick={() => setMobileOpen(false)}
+                  className="mb-1 flex items-center justify-between rounded-xl border border-gold-500/40 bg-gradient-to-r from-gold-500/20 to-gold-500/5 px-4 py-3 text-base font-bold text-gold-300 transition-colors hover:bg-gold-500/25"
+                >
+                  <span className="flex items-center gap-2">
+                    <span>✨</span>
+                    <span>{locale === "uk" ? "Шоколадний сомельє" : "Шоколадный сомелье"}</span>
+                  </span>
+                  <span className="rounded-full bg-gold-500 px-2 py-0.5 text-xs font-bold text-choco-950">
+                    -10%
+                  </span>
+                </a>
                 {t.nav.map((link) => (
                   <a
                     key={link.href}

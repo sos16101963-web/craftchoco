@@ -63,6 +63,24 @@ export function Catalog({ locale }: { locale: Locale }) {
           {t.catalog.lossAversion}
         </p>
 
+        {/* Быстрый переход к Шоколадному сомелье */}
+        <div className="mx-auto mt-4 max-w-3xl flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-gold-500/40 bg-gradient-to-r from-cream-50 via-white to-gold-500/10 p-3.5 text-sm shadow-sm">
+          <div className="flex items-center gap-2.5 text-center sm:text-left">
+            <span className="text-xl">✨</span>
+            <span className="text-xs sm:text-sm font-medium text-choco-900">
+              {locale === "uk"
+                ? "Важко визначитися зі смаком або приводом? Скористайтеся інтерактивним помічником:"
+                : "Трудно определиться со вкусом или поводом? Воспользуйтесь интерактивным помощником:"}
+            </span>
+          </div>
+          <a
+            href="#sommelier"
+            className="inline-flex shrink-0 items-center gap-1 rounded-xl bg-choco-900 px-3.5 py-1.5 text-xs font-bold text-gold-300 hover:bg-choco-800 transition-colors shadow-sm"
+          >
+            {locale === "uk" ? "Шоколадний сомельє ⬇" : "Шоколадный сомелье ⬇"}
+          </a>
+        </div>
+
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
           {visible.map((p: (typeof all)[number]) => (
             <ProductCard key={p.id} product={p} locale={locale} />

@@ -82,12 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 2. Внутрішні хаби та гео-посадкові сторінки
   const innerPages = Object.entries(INNER_PAGES).flatMap(([key, p]) => {
-    const isCatalog = key === "katalog";
+    const isHighPriority = key === "katalog" || key === "sommelier";
     return createLocalizedPair({
       ukPath: p.uk,
       ruPath: p.ru,
-      priority: isCatalog ? 0.9 : 0.8,
-      changeFrequency: isCatalog ? "daily" : "weekly",
+      priority: isHighPriority ? 0.9 : 0.8,
+      changeFrequency: isHighPriority ? "daily" : "weekly",
       images: ogImage,
     });
   });
