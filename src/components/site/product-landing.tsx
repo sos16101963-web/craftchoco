@@ -78,6 +78,7 @@ export function ProductLanding({
       priceCurrency: "UAH",
       price: product.price,
       priceValidUntil: "2027-12-31",
+      validFrom: "2024-01-01",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       areaServed: uk ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
@@ -110,7 +111,7 @@ export function ProductLanding({
               unitCode: "DAY",
             },
             transitTime: {
-              "@type": "ShippingDeliveryTime",
+              "@type": "QuantitativeValue",
               minValue: 0,
               maxValue: 1,
               unitCode: "DAY",

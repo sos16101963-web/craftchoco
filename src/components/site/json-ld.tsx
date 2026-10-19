@@ -95,6 +95,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
           priceCurrency: "UAH",
           price: p.price,
           priceValidUntil: "2027-12-31",
+          validFrom: "2024-01-01",
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",
           areaServed: locale === "uk" ? [...CITIES_SERVED_UK] : [...CITIES_SERVED_RU],
