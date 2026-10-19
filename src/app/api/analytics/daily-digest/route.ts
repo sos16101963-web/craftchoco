@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { products } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -60,10 +61,11 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const key = searchParams.get("key");
     const isCron = req.headers.get("x-vercel-cron") === "1" || req.headers.get("user-agent")?.includes("vercel-cron");
+    const isManualForce = searchParams.get("force") === "1" && key === "crafo2026";
 
-    // Allow only Vercel Cron or secret key query crafo2026 to prevent duplicate triggers by crawlers
-    if (!isCron && key !== "crafo2026" && key !== process.env.CRON_SECRET) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // Allow official Vercel Cron or manual force. Ignore external pings to prevent duplicate telegram messages
+    if (!isCron && !isManualForce && key !== process.env.CRON_SECRET) {
+      return NextResponse.json({ ok: false, message: "Daily digest is handled automatically by Vercel Cron" }, { status: 200 });
     }
 
     const todayDate = new Date().toLocaleDateString("ru-RU", {
@@ -152,10 +154,10 @@ export async function GET(req: Request) {
         message += `\n`;
       }
     } else {
-      message += `🟢 <b>Статус витрины:</b> Все 14 наборов онлайн и доступны к заказу\n`;
+      message += `🟢 <b>Статус витрины:</b> Все ${products.length} наборов онлайн и доступны к заказу\n`;
     }
 
-    message += `🟢 <b>Статус витрины:</b> Все 14 наборов онлайн\n`;
+    message += `🟢 <b>Статус витрины:</b> Все ${products.length} наборов онлайн\n`;
     message += `🛍 <b>Google Merchant:</b> Одобрено (Google Shopping активен)\n`;
     message += `🎬 <b>Видео-каналы:</b> YouTube (@craft.choco.kharkiv) и TikTok (@aleksandr_mag_)\n\n`;
 
