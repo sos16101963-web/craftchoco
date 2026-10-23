@@ -10,7 +10,7 @@ import { blogRu } from "@/lib/blog-ru";
  * Останній реліз контенту та технічного SEO для комерційних сторінок сайту.
  * Фіксована дата запобігає знеціненню тега <lastmod> пошуковими роботами Google.
  */
-const CONTENT_UPDATE_DATE = new Date("2026-10-13T13:30:00.000Z");
+const CONTENT_UPDATE_DATE = new Date("2026-10-23T19:45:00.000Z");
 
 interface PagePairOptions {
   ukPath: string;
@@ -118,13 +118,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const ruSlug = blogRu.find((r) => r.date === article.date)?.slug;
     if (!ruSlug) return [];
 
-    const articleDate = new Date(`${article.date}T10:00:00.000Z`);
+    const isRecentlyUpdated =
+      article.slug === "shokoladni-bukety" ||
+      article.slug === "yistivni-korporatyvni-podarunky-novyi-rik";
+    const articleDate = isRecentlyUpdated
+      ? CONTENT_UPDATE_DATE
+      : new Date(`${article.date}T10:00:00.000Z`);
 
     return createLocalizedPair({
       ukPath: `/blog/${article.slug}`,
       ruPath: `/ru/blog/${ruSlug}`,
-      priority: 0.7,
-      changeFrequency: "monthly",
+      priority: 0.8,
+      changeFrequency: "weekly",
       lastModified: isNaN(articleDate.getTime()) ? CONTENT_UPDATE_DATE : articleDate,
       images: ogImage,
     });
