@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/podarunky/sviato-bez-pryvodu",
+        destination: "/podarunky/sviato-bez-povodu",
+        permanent: true,
+      },
+      {
         source: "/ru/podarunky/shepot-na-uho",
         destination: "/ru/podarunky/chetyre-nastroeniya",
         permanent: true,
