@@ -120,7 +120,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const isRecentlyUpdated =
       article.slug === "shokoladni-bukety" ||
-      article.slug === "yistivni-korporatyvni-podarunky-novyi-rik";
+      article.slug === "yistivni-korporatyvni-podarunky-novyi-rik" ||
+      article.slug === "podarunok-mami-ta-kokhaniy-bez-pryvodu";
     const articleDate = isRecentlyUpdated
       ? CONTENT_UPDATE_DATE
       : new Date(`${article.date}T10:00:00.000Z`);
