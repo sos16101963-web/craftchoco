@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("ru", {
   path: "/ru/tseny",
   altPath: "/tsiny",
-  title: "Цены на шоколадные конфеты ручной работы в Харькове",
+  title: "Сколько стоят конфеты ручной работы: прайс и цены 2026 | CraftChoco",
   description:
-    "Прайс мастерской CraftChoco: наборы конфет от 150 ₴, букеты и плитки из Callebaut. Бесплатная упаковка, доставка по Харькову в день заказа.",
+    "Сколько стоят шоколадные конфеты ручной работы: от 25 ₴ за штуку, готовые наборы от 130 ₴, шоколадные букеты из Callebaut. Честный прайс 2026 года, праздничная коробка — бесплатно.",
 });
 
 export default function Page() {

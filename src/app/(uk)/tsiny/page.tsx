@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/tsiny",
   altPath: "/ru/tseny",
-  title: "Ціни на шоколадні цукерки ручної роботи у Харкові",
+  title: "Скільки коштують цукерки ручної роботи: прайс та ціни 2026 | CraftChoco",
   description:
-    "Прайс майстерні CraftChoco: набори цукерок від 150 ₴, букети та плитки з Callebaut. Безкоштовна упаковка, доставка по Харкову в день замовлення.",
+    "Скільки коштують шоколадні цукерки ручної роботи: від 25 ₴ за штуку, готові набори від 130 ₴, шоколадні букети з Callebaut. Чесний прайс 2026 року, святкова коробка — безкоштовно.",
 });
 
 export default function Page() {
