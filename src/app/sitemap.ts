@@ -119,6 +119,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (!ruSlug) return [];
 
     const isRecentlyUpdated =
+      article.slug === "podarunok-choloviku-u-yakoho-vse-ye-shokolad" ||
       article.slug === "podarunky-na-sviatoho-mykolaia-shokolad" ||
       article.slug === "shokoladni-bukety" ||
       article.slug === "yistivni-korporatyvni-podarunky-novyi-rik" ||

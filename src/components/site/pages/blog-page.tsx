@@ -16,6 +16,7 @@ const COVERS: Record<string, string> = {
   "handmade-proty-fabryky": "/images/craft.webp",
   "korysni-solodoshchi-dityam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
   "podarunky-na-sviatoho-mykolaia-shokolad": "/images/medianty-malenki-druzi-6-sht.webp",
+  "podarunok-choloviku-u-yakoho-vse-ye-shokolad": "/images/bars-fruit.webp",
   "yistivni-korporatyvni-podarunky-novyi-rik": "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
   "kak-khranit-shokolad": "/images/dark-85.webp",
   "pochemu-callebaut": "/images/cut-bar.jpg",
@@ -25,6 +26,7 @@ const COVERS: Record<string, string> = {
   "handmade-protiv-fabriki": "/images/craft.webp",
   "poleznye-sladosti-detyam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
   "podarki-na-den-svyatogo-nikolaya-shokolad": "/images/medianty-malenki-druzi-6-sht.webp",
+  "podarok-muzhchine-u-kotorogo-vse-est-shokolad": "/images/bars-fruit.webp",
   "sedobnye-korporativnye-podarki-novyy-god": "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
 };
 
