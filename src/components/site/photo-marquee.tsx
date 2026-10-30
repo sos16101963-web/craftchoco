@@ -45,7 +45,7 @@ export function PhotoMarquee({ locale }: { locale: Locale }) {
         <div className="animate-marquee flex w-max gap-4 pr-4 group-hover:[animation-play-state:paused]">
           {doubled.map((p, i) => (
             <div
-              key={`${p.src}-${i}`}
+              key={`marquee-${locale}-${i}`}
               aria-hidden={i >= photos.length}
               className="relative h-40 w-60 shrink-0 overflow-hidden rounded-2xl ring-1 ring-gold-400/20 sm:h-44 sm:w-72"
             >
