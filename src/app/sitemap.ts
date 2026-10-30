@@ -10,7 +10,7 @@ import { blogRu } from "@/lib/blog-ru";
  * Останній реліз контенту та технічного SEO для комерційних сторінок сайту.
  * Фіксована дата запобігає знеціненню тега <lastmod> пошуковими роботами Google.
  */
-const CONTENT_UPDATE_DATE = new Date("2026-10-23T19:45:00.000Z");
+const CONTENT_UPDATE_DATE = new Date("2026-10-30T10:00:00.000Z");
 
 interface PagePairOptions {
   ukPath: string;
@@ -119,6 +119,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (!ruSlug) return [];
 
     const isRecentlyUpdated =
+      article.slug === "podarunky-na-sviatoho-mykolaia-shokolad" ||
       article.slug === "shokoladni-bukety" ||
       article.slug === "yistivni-korporatyvni-podarunky-novyi-rik" ||
       article.slug === "podarunok-mami-ta-kokhaniy-bez-pryvodu";

@@ -15,6 +15,8 @@ const COVERS: Record<string, string> = {
   "shokoladni-bukety": "/images/roses-marble.webp",
   "handmade-proty-fabryky": "/images/craft.webp",
   "korysni-solodoshchi-dityam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
+  "podarunky-na-sviatoho-mykolaia-shokolad": "/images/medianty-malenki-druzi-6-sht.webp",
+  "yistivni-korporatyvni-podarunky-novyi-rik": "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
   "kak-khranit-shokolad": "/images/dark-85.webp",
   "pochemu-callebaut": "/images/cut-bar.jpg",
   "temperirovanie-shokolada": "/images/caramel-bar.webp",
@@ -22,6 +24,8 @@ const COVERS: Record<string, string> = {
   "shokoladnye-bukety": "/images/roses-marble.webp",
   "handmade-protiv-fabriki": "/images/craft.webp",
   "poleznye-sladosti-detyam-medianty": "/images/medianty-malenki-druzi-6-sht.webp",
+  "podarki-na-den-svyatogo-nikolaya-shokolad": "/images/medianty-malenki-druzi-6-sht.webp",
+  "sedobnye-korporativnye-podarki-novyy-god": "/images/shokolad-ruchnoy-raboty-harkov-master-aleksandr-nabor-16-konfet.webp",
 };
 
 export function blogCover(slug: string): string {
