@@ -6,6 +6,7 @@ export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
   uk: {
     "set-sixteen": "sviato-bez-povodu",
     "set-twelve": "melodiya-kokhannya",
+    "set-nine": "palitra-smakiv",
     "set-combo": "podviyna-nasoloda",
     "set-six": "pershe-pobachennya",
     "set-four": "chotyry-nastroi",
@@ -25,6 +26,7 @@ export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
   ru: {
     "set-sixteen": "prazdnik-bez-povoda",
     "set-twelve": "melodiya-lyubvi",
+    "set-nine": "palitra-vkusov",
     "set-combo": "dvoynoe-udovolstvie",
     "set-six": "pervoe-svidanie",
     "set-four": "chetyre-nastroeniya",
