@@ -30,6 +30,7 @@ export async function GET() {
       <g:availability>in_stock</g:availability>
       <g:price>${p.price.toFixed(2)} UAH</g:price>
       <g:brand>Callebaut</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
       <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items &gt; Candy &amp; Chocolate</g:google_product_category>
       <g:product_type><![CDATA[Солодощі > Шоколад ручної роботи > ${p.categoryLabel}]]></g:product_type>
       <g:shipping>
