@@ -10,7 +10,7 @@ import { blogRu } from "@/lib/blog-ru";
  * Останній реліз контенту та технічного SEO для комерційних сторінок сайту.
  * Фіксована дата запобігає знеціненню тега <lastmod> пошуковими роботами Google.
  */
-const CONTENT_UPDATE_DATE = new Date("2026-10-30T10:00:00.000Z");
+const CONTENT_UPDATE_DATE = new Date("2026-11-02T18:00:00.000Z");
 
 interface PagePairOptions {
   ukPath: string;

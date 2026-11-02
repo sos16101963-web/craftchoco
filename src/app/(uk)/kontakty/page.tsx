@@ -5,9 +5,9 @@ import { innerMeta } from "@/lib/inner-meta";
 export const metadata: Metadata = innerMeta("uk", {
   path: "/kontakty",
   altPath: "/ru/kontakty",
-  title: "Контакти та замовлення: 096 253 56 10",
+  title: "Контакти майстерні шоколаду у Харкові — вул. Лебединська, 1 | CraftChoco",
   description:
-    "Контакти шоколадної майстерні: 096 253 56 10 (Viber, WhatsApp, Telegram). Щодня 9:00–20:00, швидка доставка по Харкову та Україні.",
+    "Майстерня крафтового шоколаду CraftChoco у Харкові: вул. Лебединська, 1 (біля стадіону «Металіст» / м. Спортивна). Самовивіз та кур'єр по місту: 096 253 56 10 (Viber/Telegram).",
 });
 
 export default function Page() {
