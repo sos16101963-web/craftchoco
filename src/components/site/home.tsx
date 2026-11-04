@@ -1,6 +1,7 @@
 import { Header } from "@/components/site/header";
 import { ChocolateJourney } from "@/components/site/chocolate-journey";
 import { PhotoMarquee } from "@/components/site/photo-marquee";
+import { HolidayBanner } from "@/components/site/holiday-banner";
 import { Features } from "@/components/site/features";
 import { Catalog } from "@/components/site/catalog";
 import { About } from "@/components/site/about";
@@ -30,6 +31,9 @@ export function Home({ locale }: { locale: Locale }) {
         {/* Шоколадное погружение: 3D-маршрут в стиле igloo.inc (fallback — обычный Hero) */}
         <ChocolateJourney locale={locale} />
         <PhotoMarquee locale={locale} />
+
+        {/* Сезонний святковий блок: Святий Миколай (6 грудня) та Новий Рік */}
+        <HolidayBanner locale={locale} />
 
         <Catalog locale={locale} />
         <Features locale={locale} />
