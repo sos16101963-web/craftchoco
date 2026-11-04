@@ -200,7 +200,7 @@ export function ContactCta({ locale }: { locale: Locale }) {
                   <Button
                     type="submit"
                     disabled={sending}
-                    className="h-13 w-full rounded-full bg-gold-500 py-3.5 text-base font-bold text-choco-950 transition-colors hover:bg-gold-400 disabled:opacity-60"
+                    className="btn-gold-luxe h-13 w-full rounded-full py-3.5 text-base font-bold disabled:opacity-60"
                   >
                     {sending ? t.sending : t.submit}
                   </Button>
