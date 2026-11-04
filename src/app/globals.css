@@ -235,101 +235,110 @@
 
 /* Световая сцена: софит галереи (глубина пространства вместо плоского фона) */
 .stage-glow {
-  background-image: radial-gradient(ellipse 70% 38% at 50% 0%, rgba(196, 154, 74, 0.16) 0%, rgba(248, 242, 233, 0) 72%);
+  background-image: 
+    radial-gradient(ellipse 90% 55% at 50% -4%, rgba(214, 177, 105, 0.38) 0%, rgba(248, 242, 233, 0.5) 45%, rgba(230, 215, 192, 0.95) 100%),
+    radial-gradient(circle at 10% 25%, rgba(196, 154, 74, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(196, 154, 74, 0.18) 0%, transparent 45%);
+  background-color: #f1e5d4;
 }
 
 .stage-glow-dark {
-  background-image: radial-gradient(ellipse 75% 42% at 50% -8%, rgba(214, 177, 105, 0.22) 0%, rgba(21, 12, 7, 0) 75%);
+  background-image: 
+    radial-gradient(ellipse 85% 50% at 50% -8%, rgba(229, 203, 141, 0.32) 0%, rgba(34, 20, 9, 0.6) 55%, #150c07 100%),
+    radial-gradient(circle at 20% 40%, rgba(196, 154, 74, 0.14) 0%, transparent 50%);
+  background-color: #150c07;
 }
 
-/* Физическая карточка: световая микрофаска 1px, теплые многослойные тени какао и тактильный подъем */
+/* Физическая карточка: световая микрофаска, глубокие шоколадные тени и осязаемый объем */
 .card-lift {
-  background: linear-gradient(180deg, #ffffff 0%, #fffdfa 60%, #faf5ec 100%);
-  border: 1px solid rgba(228, 215, 195, 0.75);
+  background: linear-gradient(180deg, #ffffff 0%, #fffdfa 55%, #faf4ea 100%);
+  border: 1.5px solid rgba(214, 177, 105, 0.4);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
-    0 1px 2px 0 rgba(34, 20, 9, 0.04),
-    0 4px 16px -2px rgba(34, 20, 9, 0.06);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease;
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 1),
+    0 2px 5px rgba(34, 20, 9, 0.05),
+    0 10px 26px -4px rgba(42, 26, 14, 0.14),
+    0 20px 42px -10px rgba(42, 26, 14, 0.08);
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.2, 1, 0.3, 1), border-color 0.4s ease;
 }
 
 .card-lift:hover {
-  transform: translateY(-7px);
-  border-color: rgba(196, 154, 74, 0.65);
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(196, 154, 74, 0.9);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 1),
-    inset 0 -1px 0 0 rgba(196, 154, 74, 0.2),
-    0 4px 8px -1px rgba(34, 20, 9, 0.08),
-    0 22px 42px -12px rgba(42, 26, 14, 0.28),
-    0 0 0 1px rgba(196, 154, 74, 0.2);
+    inset 0 2px 0 0 rgba(255, 255, 255, 1),
+    0 6px 14px -2px rgba(34, 20, 9, 0.12),
+    0 28px 60px -12px rgba(42, 26, 14, 0.4),
+    0 0 28px -2px rgba(214, 177, 105, 0.5);
 }
 
-/* Кнопка темного трюфеля 70%: глубокий шоколад, микрофаска света 1px, бархатный отклик */
+/* Кнопка темного трюфеля 70%: глубокий бархат, золотое ребро и ощутимый глянец */
 .btn-choco-luxe {
-  background: linear-gradient(180deg, #321d0e 0%, #1f1107 100%);
-  color: #fcf9f2;
-  border: 1px solid rgba(196, 154, 74, 0.35);
+  background: linear-gradient(180deg, #3d2412 0%, #201107 100%);
+  color: #fffaf0 !important;
+  border: 1.5px solid rgba(229, 203, 141, 0.7);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.4),
-    0 2px 6px 0 rgba(21, 12, 7, 0.35),
-    0 8px 18px -4px rgba(21, 12, 7, 0.25);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.38),
+    inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.65),
+    0 3px 8px rgba(21, 12, 7, 0.45),
+    0 8px 22px -3px rgba(196, 154, 74, 0.35);
+  letter-spacing: 0.015em;
+  transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .btn-choco-luxe:hover {
-  background: linear-gradient(180deg, #442713 0%, #29160a 100%);
-  border-color: rgba(229, 203, 141, 0.7);
+  background: linear-gradient(180deg, #543219 0%, #2f190b 100%);
+  border-color: #ffd88a;
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
-    0 4px 12px 0 rgba(21, 12, 7, 0.4),
-    0 12px 28px -6px rgba(196, 154, 74, 0.45);
-  transform: translateY(-1.5px);
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.65),
+    0 6px 18px rgba(21, 12, 7, 0.55),
+    0 16px 36px -4px rgba(214, 177, 105, 0.7);
+  transform: translateY(-2px);
 }
 
 .btn-choco-luxe:active {
   transform: translateY(0.5px);
   box-shadow: 
-    inset 0 2px 4px 0 rgba(0, 0, 0, 0.4),
-    0 1px 2px 0 rgba(21, 12, 7, 0.2);
+    inset 0 2px 5px 0 rgba(0, 0, 0, 0.5),
+    0 2px 4px 0 rgba(21, 12, 7, 0.3);
 }
 
-/* Кнопка расплавленного золота: оптический блик, глубина и шелковистый ореол */
+/* Кнопка расплавленного золота: мощный зеркальный свет и объемная аура */
 .btn-gold-luxe {
-  background: linear-gradient(180deg, #edd295 0%, #c89e4f 55%, #ae8334 100%);
-  color: #170d06;
-  border: 1px solid rgba(255, 244, 215, 0.6);
+  background: linear-gradient(180deg, #fcebc0 0%, #d8a848 50%, #b38226 100%);
+  color: #1a0f05 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 0 0 rgba(110, 75, 20, 0.4),
-    0 3px 8px -1px rgba(110, 75, 20, 0.3),
-    0 16px 36px -8px rgba(196, 154, 74, 0.55);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 0 0 rgba(110, 75, 15, 0.5),
+    0 4px 12px rgba(110, 75, 15, 0.35),
+    0 18px 42px -8px rgba(196, 154, 74, 0.75);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .btn-gold-luxe:hover {
-  background: linear-gradient(180deg, #f7dfa6 0%, #d4aa5a 55%, #ba8e3a 100%);
+  background: linear-gradient(180deg, #fff3d4 0%, #e6b957 50%, #c4912e 100%);
+  border-color: #ffffff;
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
-    0 6px 16px -2px rgba(110, 75, 20, 0.35),
-    0 22px 44px -8px rgba(196, 154, 74, 0.65);
-  transform: translateY(-2px);
+    inset 0 2px 0 0 rgba(255, 255, 255, 1),
+    0 8px 22px rgba(110, 75, 15, 0.45),
+    0 24px 54px -8px rgba(214, 177, 105, 0.9);
+  transform: translateY(-2.5px);
 }
 
 .btn-gold-luxe:active {
   transform: translateY(0.5px);
 }
 
-/* Премиальное полупрозрачное стекло с микрофаской */
+/* Премиальное полупрозрачное стекло с микрофаской и золотым кантом */
 .glass-surface {
-  background: rgba(255, 253, 248, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(228, 215, 195, 0.6);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(254, 250, 243, 0.86) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(214, 177, 105, 0.45);
   box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
-    0 4px 16px -2px rgba(34, 20, 9, 0.05);
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 1),
+    0 6px 20px -3px rgba(34, 20, 9, 0.08);
 }
 
 .img-zoom {

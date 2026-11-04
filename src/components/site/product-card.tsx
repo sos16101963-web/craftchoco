@@ -53,8 +53,8 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
   const isFreeItem = (item: string) => item.includes(t.common.freeBadge);
 
   return (
-    <article className="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="img-zoom relative aspect-square">
+    <article className="card-lift group flex flex-col overflow-hidden rounded-2xl">
+      <div className="img-zoom relative aspect-square border-b border-gold-500/25 bg-gradient-to-b from-cream-100/30 to-cream-200/40 shadow-[inset_0_0_24px_rgba(34,20,9,0.06)]">
         {/* Основное фото */}
         <Image
           src={product.image}

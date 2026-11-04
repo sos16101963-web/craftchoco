@@ -15,7 +15,7 @@ export function Catalog({ locale }: { locale: Locale }) {
   const visible = active === "all" ? all : all.filter((p: { category: string }) => p.category === active);
 
   return (
-    <section id="catalog" className="scroll-mt-20 bg-cream-100 stage-glow relative py-20 lg:py-28" aria-label={locale === "uk" ? "Каталог шоколаду" : "Каталог шоколада"}>
+    <section id="catalog" className="scroll-mt-20 stage-glow relative py-20 lg:py-28 overflow-hidden" aria-label={locale === "uk" ? "Каталог шоколаду" : "Каталог шоколада"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="divider-gold text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-700">{t.catalog.kicker}</p>
@@ -48,7 +48,7 @@ export function Catalog({ locale }: { locale: Locale }) {
         </nav>
 
         <div
-          className="glass-surface mx-auto mt-8 max-w-3xl rounded-2xl border border-gold-500/40 p-5 shadow-sm"
+          className="glass-surface mx-auto mt-8 max-w-3xl rounded-2xl border-gold-500/50 p-6 shadow-md"
           aria-label={locale === "uk" ? "Рекомендація майстра" : "Рекомендация мастера"}
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-gold-700">
@@ -59,12 +59,12 @@ export function Catalog({ locale }: { locale: Locale }) {
         </div>
 
         {/* Страх потери: слоты на день ограничены — заказывайте сегодня */}
-        <p className="mx-auto mt-5 max-w-3xl rounded-xl border border-gold-500/30 bg-gold-500/10 px-5 py-3 text-center text-sm font-semibold text-choco-800">
+        <p className="glass-surface mx-auto mt-5 max-w-3xl rounded-xl border-gold-500/40 bg-gold-500/15 px-5 py-3 text-center text-sm font-bold text-choco-900 shadow-sm">
           {t.catalog.lossAversion}
         </p>
 
         {/* Быстрый переход к Шоколадному сомелье */}
-        <div className="mx-auto mt-4 max-w-3xl flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-gold-500/40 bg-gradient-to-r from-cream-50 via-white to-gold-500/10 p-3.5 text-sm shadow-sm">
+        <div className="glass-surface mx-auto mt-4 max-w-3xl flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border-gold-500/50 p-4 text-sm shadow-md">
           <div className="flex items-center gap-2.5 text-center sm:text-left">
             <span className="text-xl">✨</span>
             <span className="text-xs sm:text-sm font-medium text-choco-900">
@@ -75,7 +75,7 @@ export function Catalog({ locale }: { locale: Locale }) {
           </div>
           <a
             href="#sommelier"
-            className="inline-flex shrink-0 items-center gap-1 rounded-xl bg-choco-900 px-3.5 py-1.5 text-xs font-bold text-gold-300 hover:bg-choco-800 transition-colors shadow-sm"
+            className="btn-choco-luxe inline-flex shrink-0 items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold shadow-sm"
           >
             {locale === "uk" ? "Шоколадний сомельє ⬇" : "Шоколадный сомелье ⬇"}
           </a>
