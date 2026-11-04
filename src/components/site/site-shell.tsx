@@ -2,6 +2,7 @@ import { Header } from "@/components/site/header";
 import { ChocolateJourney } from "@/components/site/chocolate-journey";
 import { ThermoBanner } from "@/components/site/thermo-banner";
 import { PhotoMarquee } from "@/components/site/photo-marquee";
+import { HolidayBanner } from "@/components/site/holiday-banner";
 import { Catalog } from "@/components/site/catalog";
 import { ChocolateSommelier } from "@/components/site/chocolate-sommelier";
 import { Features } from "@/components/site/features";
@@ -34,6 +35,9 @@ export function SiteShell({ locale }: { locale: Locale }) {
         <ChocolateJourney locale={locale} />
         <ThermoBanner locale={locale} />
         <PhotoMarquee locale={locale} />
+
+        {/* Сезонний блок: Солодкі подарунки на Миколая (6 грудня) та Новий Рік */}
+        <HolidayBanner locale={locale} />
 
         <Catalog locale={locale} />
         <ChocolateSommelier locale={locale} />
