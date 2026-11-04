@@ -232,7 +232,7 @@ export function ProductLanding({
             </div>
             {product.priceFrom && <p className="mt-2 max-w-md text-xs leading-relaxed text-choco-500">{t.common.priceFromNote}</p>}
 
-            <div className="mt-6 rounded-2xl border border-gold-500/25 bg-white/70 p-5">
+            <div className="glass-surface mt-6 rounded-2xl border border-gold-500/30 p-5 shadow-sm">
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">{t.common.inSet}</p>
               <ul className="mt-3 space-y-2 text-[15px]">
                 {product.contents.map((item) => (
@@ -251,7 +251,7 @@ export function ProductLanding({
                 price={product.price}
                 priceFrom={product.priceFrom}
                 locale={locale}
-                className="h-14 w-full rounded-full bg-gold-500 text-base font-bold text-choco-950 shadow-[0_16px_40px_-12px_rgba(196,154,74,0.55)] transition-all hover:-translate-y-0.5 hover:bg-gold-400"
+                className="btn-gold-luxe h-14 w-full rounded-full text-base font-bold"
               />
 
               {/* Швидкий спосіб замовити в 1 клік без корзини */}

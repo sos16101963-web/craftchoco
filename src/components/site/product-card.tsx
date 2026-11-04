@@ -75,18 +75,18 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
         )}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {product.badges.includes("hit") && (
-            <Badge className="w-fit rounded-full bg-gold-500 px-3 py-1 text-xs font-bold text-choco-950 hover:bg-gold-500">
+            <Badge className="w-fit rounded-full bg-gold-500 px-3 py-1 text-xs font-bold text-choco-950 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.45),0_2px_8px_rgba(196,154,74,0.35)] hover:bg-gold-500">
               {t.catalog.hit}
             </Badge>
           )}
           {product.badges.includes("new") && (
-            <Badge className="w-fit rounded-full bg-choco-900 px-3 py-1 text-xs font-bold text-gold-300 hover:bg-choco-900">
+            <Badge className="w-fit rounded-full bg-choco-900 px-3 py-1 text-xs font-bold text-gold-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_2px_8px_rgba(21,12,7,0.35)] hover:bg-choco-900">
               {t.catalog.isNew}
             </Badge>
           )}
         </div>
         {product.cutImage && (
-          <span className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-choco-950/70 px-3 py-1 text-[11px] font-semibold text-gold-300 opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+          <span className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-choco-950/75 px-3 py-1 text-[11px] font-semibold text-gold-300 opacity-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
             {t.catalog.cutHover}
           </span>
         )}
@@ -95,7 +95,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
             <Button
               variant="secondary"
               size="sm"
-              className="absolute bottom-3 right-3 translate-y-2 rounded-full bg-white/90 px-4 font-semibold text-choco-900 opacity-0 shadow-lg backdrop-blur transition-all duration-300 hover:bg-white group-hover:translate-y-0 group-hover:opacity-100"
+              className="glass-surface absolute bottom-3 right-3 translate-y-2 rounded-full px-4 font-semibold text-choco-900 opacity-0 shadow-lg backdrop-blur transition-all duration-300 hover:bg-white group-hover:translate-y-0 group-hover:opacity-100"
             >
               {t.common.details}
             </Button>
@@ -184,7 +184,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                       handleAdd();
                       setOpen(false);
                     }}
-                    className="h-12 w-full rounded-full bg-choco-900 text-base font-bold text-cream hover:bg-gold-600"
+                    className="btn-choco-luxe h-12 w-full rounded-full text-base font-bold"
                   >
                     <ShoppingBag className="mr-2 h-5 w-5" /> {t.common.inCart}
                   </Button>
@@ -265,7 +265,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
             onClick={handleAdd}
             size="sm"
             aria-label={t.common.addToCart(product.name)}
-            className="h-10 rounded-full bg-choco-900 px-4 font-bold text-cream hover:bg-gold-600"
+            className="btn-choco-luxe h-10 rounded-full px-5 font-bold"
           >
             <ShoppingBag className="mr-1.5 h-4 w-4" /> {t.common.inCart}
           </Button>

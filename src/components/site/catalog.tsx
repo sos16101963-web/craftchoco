@@ -15,7 +15,7 @@ export function Catalog({ locale }: { locale: Locale }) {
   const visible = active === "all" ? all : all.filter((p: { category: string }) => p.category === active);
 
   return (
-    <section id="catalog" className="scroll-mt-20 bg-cream-100 py-20 lg:py-28" aria-label={locale === "uk" ? "Каталог шоколаду" : "Каталог шоколада"}>
+    <section id="catalog" className="scroll-mt-20 bg-cream-100 stage-glow relative py-20 lg:py-28" aria-label={locale === "uk" ? "Каталог шоколаду" : "Каталог шоколада"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="divider-gold text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-700">{t.catalog.kicker}</p>
@@ -32,14 +32,14 @@ export function Catalog({ locale }: { locale: Locale }) {
                 onClick={() => setActive(c.id)}
                 aria-pressed={active === c.id}
                 className={cn(
-                  "rounded-full border px-5 py-2.5 text-sm font-semibold transition-all",
+                  "rounded-full px-5 py-2.5 text-sm font-semibold transition-all",
                   active === c.id
-                    ? "border-choco-900 bg-choco-900 text-gold-300 shadow-md"
-                    : "border-border bg-white/70 text-choco-700 hover:border-choco-700/40 hover:bg-white"
+                    ? "btn-choco-luxe !text-gold-300 shadow-md"
+                    : "glass-surface text-choco-700 hover:border-gold-500/50 hover:bg-white"
                 )}
               >
                 {c.label}
-                <span className={cn("ml-2 text-xs", active === c.id ? "text-gold-400/80" : "text-choco-400")}>
+                <span className={cn("ml-2 text-xs", active === c.id ? "text-gold-400" : "text-choco-400")}>
                   {count}
                 </span>
               </button>
@@ -48,7 +48,7 @@ export function Catalog({ locale }: { locale: Locale }) {
         </nav>
 
         <div
-          className="mx-auto mt-8 max-w-3xl rounded-2xl border border-gold-500/40 bg-white/80 p-5 shadow-sm"
+          className="glass-surface mx-auto mt-8 max-w-3xl rounded-2xl border border-gold-500/40 p-5 shadow-sm"
           aria-label={locale === "uk" ? "Рекомендація майстра" : "Рекомендация мастера"}
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-gold-700">

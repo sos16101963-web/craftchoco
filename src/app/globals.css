@@ -192,17 +192,19 @@
   }
 }
 
-/* ---------- decorative helpers ---------- */
+/* ---------- decorative helpers: Physical Optics 2027 Aesthetic ---------- */
 
 .font-display {
   font-family: var(--font-display), Georgia, serif;
 }
 
+/* Оптический металлический блик золота (многоточечное отражение света без полосатости) */
 .gold-text {
-  background: linear-gradient(105deg, #e5cb8d 0%, #c49a4a 45%, #a87f33 70%, #e5cb8d 100%);
+  background: linear-gradient(135deg, #f7ebd0 0%, #dfb86e 24%, #fff5df 48%, #b88b3b 72%, #f2dfb6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  text-shadow: 0 1px 2px rgba(184, 139, 59, 0.15);
 }
 
 .divider-gold {
@@ -214,15 +216,15 @@
 .divider-gold::after {
   content: "";
   height: 1px;
-  width: 48px;
-  background: linear-gradient(90deg, transparent, #c49a4a);
+  width: 54px;
+  background: linear-gradient(90deg, transparent, #c49a4a 80%, rgba(247, 235, 208, 0.9));
 }
 .divider-gold::after {
-  background: linear-gradient(90deg, #c49a4a, transparent);
+  background: linear-gradient(90deg, rgba(247, 235, 208, 0.9), #c49a4a 20%, transparent);
 }
 
 .texture-dots {
-  background-image: radial-gradient(rgba(196, 154, 74, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(196, 154, 74, 0.14) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -231,12 +233,103 @@
   background-size: 26px 26px;
 }
 
-.card-lift {
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+/* Световая сцена: софит галереи (глубина пространства вместо плоского фона) */
+.stage-glow {
+  background-image: radial-gradient(ellipse 70% 38% at 50% 0%, rgba(196, 154, 74, 0.16) 0%, rgba(248, 242, 233, 0) 72%);
 }
+
+.stage-glow-dark {
+  background-image: radial-gradient(ellipse 75% 42% at 50% -8%, rgba(214, 177, 105, 0.22) 0%, rgba(21, 12, 7, 0) 75%);
+}
+
+/* Физическая карточка: световая микрофаска 1px, теплые многослойные тени какао и тактильный подъем */
+.card-lift {
+  background: linear-gradient(180deg, #ffffff 0%, #fffdfa 60%, #faf5ec 100%);
+  border: 1px solid rgba(228, 215, 195, 0.75);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 1px 2px 0 rgba(34, 20, 9, 0.04),
+    0 4px 16px -2px rgba(34, 20, 9, 0.06);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease;
+}
+
 .card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 48px -20px rgba(42, 26, 14, 0.35);
+  transform: translateY(-7px);
+  border-color: rgba(196, 154, 74, 0.65);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 0 rgba(196, 154, 74, 0.2),
+    0 4px 8px -1px rgba(34, 20, 9, 0.08),
+    0 22px 42px -12px rgba(42, 26, 14, 0.28),
+    0 0 0 1px rgba(196, 154, 74, 0.2);
+}
+
+/* Кнопка темного трюфеля 70%: глубокий шоколад, микрофаска света 1px, бархатный отклик */
+.btn-choco-luxe {
+  background: linear-gradient(180deg, #321d0e 0%, #1f1107 100%);
+  color: #fcf9f2;
+  border: 1px solid rgba(196, 154, 74, 0.35);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px 0 rgba(21, 12, 7, 0.35),
+    0 8px 18px -4px rgba(21, 12, 7, 0.25);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-choco-luxe:hover {
+  background: linear-gradient(180deg, #442713 0%, #29160a 100%);
+  border-color: rgba(229, 203, 141, 0.7);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+    0 4px 12px 0 rgba(21, 12, 7, 0.4),
+    0 12px 28px -6px rgba(196, 154, 74, 0.45);
+  transform: translateY(-1.5px);
+}
+
+.btn-choco-luxe:active {
+  transform: translateY(0.5px);
+  box-shadow: 
+    inset 0 2px 4px 0 rgba(0, 0, 0, 0.4),
+    0 1px 2px 0 rgba(21, 12, 7, 0.2);
+}
+
+/* Кнопка расплавленного золота: оптический блик, глубина и шелковистый ореол */
+.btn-gold-luxe {
+  background: linear-gradient(180deg, #edd295 0%, #c89e4f 55%, #ae8334 100%);
+  color: #170d06;
+  border: 1px solid rgba(255, 244, 215, 0.6);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 0 rgba(110, 75, 20, 0.4),
+    0 3px 8px -1px rgba(110, 75, 20, 0.3),
+    0 16px 36px -8px rgba(196, 154, 74, 0.55);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-gold-luxe:hover {
+  background: linear-gradient(180deg, #f7dfa6 0%, #d4aa5a 55%, #ba8e3a 100%);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+    0 6px 16px -2px rgba(110, 75, 20, 0.35),
+    0 22px 44px -8px rgba(196, 154, 74, 0.65);
+  transform: translateY(-2px);
+}
+
+.btn-gold-luxe:active {
+  transform: translateY(0.5px);
+}
+
+/* Премиальное полупрозрачное стекло с микрофаской */
+.glass-surface {
+  background: rgba(255, 253, 248, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(228, 215, 195, 0.6);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+    0 4px 16px -2px rgba(34, 20, 9, 0.05);
 }
 
 .img-zoom {

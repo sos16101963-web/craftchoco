@@ -17,7 +17,7 @@ export function Hero({
   const numFmt = locale === "uk" ? "uk-UA" : "ru-RU";
 
   return (
-    <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-choco-950 text-cream" aria-label={t.hero.aria}>
+    <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-choco-950 text-cream stage-glow-dark" aria-label={t.hero.aria}>
       {/* Background */}
       <div className="absolute inset-0">
         <Image
@@ -32,8 +32,10 @@ export function Hero({
           sizes="100vw"
           className="object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-choco-950 via-choco-950/75 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-choco-950 via-transparent to-choco-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-choco-950 via-choco-950/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-choco-950 via-transparent to-choco-950/60" />
+        {/* Оптический амбиентный софит в центре */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_65%_35%,rgba(214,177,105,0.18)_0%,transparent_60%)]" />
       </div>
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-4 pb-40 pt-36 sm:px-6 sm:pb-28 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:px-8">
@@ -59,13 +61,13 @@ export function Hero({
           <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.55s" }}>
             <a
               href="#catalog"
-              className="inline-flex h-14 items-center justify-center rounded-full bg-gold-500 px-9 text-base font-bold text-choco-950 shadow-[0_16px_40px_-12px_rgba(196,154,74,0.55)] transition-all hover:-translate-y-0.5 hover:bg-gold-400"
+              className="btn-gold-luxe inline-flex h-14 items-center justify-center rounded-full px-9 text-base font-bold"
             >
               {t.hero.ctaPrimary}
             </a>
             <a
               href="#craft"
-              className="inline-flex h-14 items-center justify-center rounded-full border border-cream/25 px-9 text-base font-semibold text-cream backdrop-blur transition-all hover:border-gold-400/60 hover:text-gold-300"
+              className="inline-flex h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 px-9 text-base font-semibold text-cream shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] backdrop-blur transition-all hover:border-gold-400/60 hover:bg-white/10 hover:text-gold-300"
             >
               {t.hero.ctaSecondary}
             </a>
