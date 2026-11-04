@@ -89,7 +89,7 @@ export default function JourneyOverlays({ locale }: { locale: Locale }) {
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#catalog"
-              className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-gold-500/15 px-6 py-3 text-sm font-medium text-gold-200 backdrop-blur transition-colors hover:bg-gold-500/25"
+              className="btn-gold-luxe pointer-events-auto inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold"
             >
               <ShoppingBag className="h-4 w-4" /> {t.toCatalog}
             </a>
@@ -139,7 +139,7 @@ export default function JourneyOverlays({ locale }: { locale: Locale }) {
           </p>
           <a
             href="#catalog"
-            className="pointer-events-auto mt-7 inline-flex items-center gap-2 rounded-full border border-gold-400/50 bg-gold-500/15 px-7 py-3 text-sm font-medium text-gold-200 backdrop-blur transition-colors hover:bg-gold-500/25"
+            className="btn-gold-luxe pointer-events-auto mt-7 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold"
           >
             {t.gateCta}
           </a>
@@ -161,7 +161,7 @@ function StationCard({
   return (
     <div
       data-interactive
-      className="pointer-events-none rounded-2xl border border-gold-500/25 bg-choco-950/70 p-5 shadow-[0_0_44px_rgba(255,180,94,0.14)] backdrop-blur-xl sm:p-6"
+      className="pointer-events-none rounded-2xl border border-gold-500/35 bg-choco-950/80 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.22),0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:p-6"
     >
       <div className="flex items-center justify-between gap-3">
         <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-[11px] text-cream/85">
