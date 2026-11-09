@@ -35,7 +35,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     description: d.meta.description,
     telephone: site.phoneIntl,
     address: postalAddress,
-    sameAs: [site.youtube, site.tiktok, "https://t.me/feelings_ua"],
+    sameAs: [site.youtube, site.tiktok, "https://t.me/craft_choco_kharkiv"],
   };
 
   const store = {
