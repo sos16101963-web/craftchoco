@@ -52,6 +52,11 @@ export function makeMetadata(locale: Locale): Metadata {
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
     },
+    verification: {
+      other: {
+        "p:domain_verify": "f71cbf06d60dcb26654c0efa03f732fa",
+      },
+    },
     other: locale === "uk" ? {} : { "og:locale:alternate": "uk_UA" },
   };
 }
@@ -65,6 +70,9 @@ export const viewport: Viewport = {
 export function RootLayoutBase({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   return (
     <html lang={locale}>
+      <head>
+        <meta name="p:domain_verify" content="f71cbf06d60dcb26654c0efa03f732fa" />
+      </head>
       <body className="flex min-h-screen flex-col bg-cream font-body text-choco-900 antialiased">
         {/* React 19 поднимает эти <link rel=preload> в <head> при SSR и гидратации */}
         <FontPreloads />
