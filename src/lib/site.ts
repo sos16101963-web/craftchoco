@@ -44,6 +44,7 @@ export const site = {
     { name: "Telegram", href: "https://t.me/craft_choco_kharkiv" },
     { name: "YouTube", href: "https://www.youtube.com/@craft.choco.kharkiv" },
     { name: "TikTok", href: "https://www.tiktok.com/@aleksandr_mag_" },
+    { name: "Pinterest", href: "https://www.pinterest.com/craft_choco_kharkiv/" },
   ],
 } as const;
 
