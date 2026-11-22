@@ -58,8 +58,8 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
           },
           {
             format: "Шоколадні букети",
-            size: "від 4 до 6 троянд",
-            price: "від 200 ₴ – 600 ₴",
+            size: "від 3 до 6 квітів",
+            price: "від 200 ₴ – 880 ₴",
             unit: "скульптурний Callebaut",
             desc: "Реалістичні квіти, які не в'януть і дарують справжній бельгійський шоколад замість листя.",
           },
@@ -160,8 +160,8 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
           },
           {
             format: "Шоколадные букеты",
-            size: "от 4 до 6 роз",
-            price: "от 200 ₴ – 600 ₴",
+            size: "от 3 до 6 цветов",
+            price: "от 200 ₴ – 880 ₴",
             unit: "скульптурный Callebaut",
             desc: "Реалистичные цветы, которые не вянут и дарят настоящий бельгийский шоколад вместо увядших лепестков.",
           },

@@ -47,7 +47,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     url: site.url,
     image: `${site.url}/images/og-image.jpg`,
     telephone: site.phoneIntl,
-    priceRange: "130–600 ₴",
+    priceRange: "130–880 ₴",
     currenciesAccepted: "UAH",
     paymentAccepted: locale === "uk"
       ? "Готівка, банківська картка, переказ на картку, оплата при отриманні"
