@@ -5,12 +5,11 @@ import { InnerShell } from "@/components/site/inner-shell";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
 import { ProductCard } from "@/components/site/product-card";
 import { blogCover, blogArticlePath } from "@/components/site/pages/blog-page";
-import { switchPairFor } from "@/lib/pages";
+import { switchPairFor, blogArticleModifiedDate } from "@/lib/pages";
 import { catalogFor } from "@/lib/products";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 import type { BlogArticle } from "@/lib/blog-types";
 
 /** Страница статьи блога + Article JSON-LD + CTA-товары */
@@ -29,6 +28,7 @@ export function BlogArticlePage({
   const t = getDict(locale);
   const products = catalogFor(locale).filter((p) => article.productIds.includes(p.id)).slice(0, 3);
   const cover = blogCover(article.slug);
+  const modifiedDate = blogArticleModifiedDate(article.slug, article.date);
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -37,13 +37,19 @@ export function BlogArticlePage({
     description: article.description,
     image: `${site.url}${cover}`,
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: modifiedDate,
     inLanguage: uk ? "uk-UA" : "ru-UA",
     author: {
       "@type": "Person",
-      name: uk ? "Шоколатьє майстерні CraftChoco" : "Шоколатье мастерской CraftChoco",
-      jobTitle: uk ? "Головний шоколатьє" : "Главный шоколатье",
+      "@id": `${site.url}/#founder`,
+      name: uk ? "Олександр — шеф-шоколатьє CraftChoco" : "Александр — шеф-шоколатье CraftChoco",
+      jobTitle: uk ? "Засновник та головний шоколатьє" : "Основатель и главный шоколатье",
       url: `${site.url}${uk ? "/pro-nas" : "/ru/o-nas"}`,
+      worksFor: { "@id": `${site.url}/#organization` },
+      knowsAbout: uk
+        ? ["Темперування бельгійського шоколаду Callebaut", "Корпусні цукерки ручної роботи", "Шоколадні подарунки"]
+        : ["Темперирование бельгийского шоколада Callebaut", "Корпусные конфеты ручной работы", "Шоколадные подарки"],
+      sameAs: [site.youtube, site.tiktok],
     },
     publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: `${site.url}${path}`,

@@ -66,6 +66,7 @@ export function ProductLanding({
     ],
     sku: product.id,
     category: "Food, Beverages & Tobacco > Food Items > Candy & Chocolate",
+    weight: { "@type": "QuantitativeValue", value: parseInt(product.weight), unitCode: "GRM" },
     brand: {
       "@type": "Brand",
       name: "CraftChoco",
@@ -182,9 +183,23 @@ export function ProductLanding({
     },
   ];
 
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(canonicalPath)}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }} />
       <div className="bg-cream-100/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={crumbs} locale={locale} />

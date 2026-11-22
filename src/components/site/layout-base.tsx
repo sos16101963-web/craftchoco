@@ -16,6 +16,30 @@ function FontPreloads() {
   return null;
 }
 
+/* Speculation Rules API (2026): фонова передзагрузка HTML внутрішніх сторінок при наведенні */
+function SpeculationRules() {
+  const rules = {
+    prefetch: [
+      {
+        source: "document",
+        where: {
+          and: [
+            { href_matches: "/*" },
+            { not: { href_matches: "/api/*" } },
+          ],
+        },
+        eagerness: "moderate",
+      },
+    ],
+  };
+  return (
+    <script
+      type="speculationrules"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(rules) }}
+    />
+  );
+}
+
 export function makeMetadata(locale: Locale): Metadata {
   const d = dictionaries[locale];
   const canonicalPath = locale === "uk" ? "/" : "/ru";
@@ -70,12 +94,10 @@ export const viewport: Viewport = {
 export function RootLayoutBase({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   return (
     <html lang={locale}>
-      <head>
-        <meta name="p:domain_verify" content="f71cbf06d60dcb26654c0efa03f732fa" />
-      </head>
       <body className="flex min-h-screen flex-col bg-cream font-body text-choco-900 antialiased">
         {/* React 19 поднимает эти <link rel=preload> в <head> при SSR и гидратации */}
         <FontPreloads />
+        <SpeculationRules />
         {children}
         <LazyToaster />
         <Analytics />

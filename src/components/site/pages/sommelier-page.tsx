@@ -6,7 +6,6 @@ import { ThermoBanner } from "@/components/site/thermo-banner";
 import { switchPairFor } from "@/lib/pages";
 import { site } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
-import { breadcrumbLd } from "@/lib/inner-meta";
 import { Sparkles, Heart, Award, ShieldCheck, Truck, HelpCircle } from "lucide-react";
 
 export function SommelierPage({ locale, path }: { locale: Locale; path: string }) {
@@ -127,17 +126,6 @@ export function SommelierPage({ locale, path }: { locale: Locale; path: string }
 
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(path)}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([
-              { name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" },
-              { name: uk ? "Шоколадний сомельє" : "Шоколадный сомелье", path },
-            ])
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

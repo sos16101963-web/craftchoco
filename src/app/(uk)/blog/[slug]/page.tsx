@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BlogArticlePage } from "@/components/site/pages/blog-article-page";
 import { innerMeta } from "@/lib/inner-meta";
 import { blogUk } from "@/lib/blog-uk";
+import { blogAltSlug } from "@/lib/pages";
 
 const locale = "uk" as const;
 
@@ -14,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = blogUk.find((a) => a.slug === slug);
   if (!article) return {};
-  const ruArticle = (await import("@/lib/blog-ru")).blogRu.find((a) => a.date === article.date);
+  const ruSlug = blogAltSlug(slug, locale);
   return innerMeta(locale, {
     path: `/blog/${slug}`,
-    altPath: ruArticle ? `/ru/blog/${ruArticle.slug}` : "/ru/blog",
+    altPath: ruSlug ? `/ru/blog/${ruSlug}` : "/ru/blog",
     title: article.title,
     description: article.description,
   });

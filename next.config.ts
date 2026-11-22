@@ -1,4 +1,37 @@
 import type { NextConfig } from "next";
+import { PRODUCT_SLUGS } from "./src/lib/slugs";
+import { BLOG_SLUG_PAIRS, INNER_PAGES } from "./src/lib/pages";
+
+const hybridLocaleRedirects = [
+  ...Object.keys(PRODUCT_SLUGS.uk).flatMap((id) => {
+    const ukSlug = PRODUCT_SLUGS.uk[id];
+    const ruSlug = PRODUCT_SLUGS.ru[id];
+    if (!ukSlug || !ruSlug || ukSlug === ruSlug) return [];
+    return [
+      { source: `/ru/podarunky/${ukSlug}`, destination: `/ru/podarunky/${ruSlug}`, permanent: true },
+      { source: `/podarunky/${ruSlug}`, destination: `/podarunky/${ukSlug}`, permanent: true },
+    ];
+  }),
+  ...BLOG_SLUG_PAIRS.flatMap((pair) => {
+    if (pair.uk === pair.ru) return [];
+    return [
+      { source: `/ru/blog/${pair.uk}`, destination: `/ru/blog/${pair.ru}`, permanent: true },
+      { source: `/blog/${pair.ru}`, destination: `/blog/${pair.uk}`, permanent: true },
+    ];
+  }),
+  ...Object.values(INNER_PAGES).flatMap((pair) => {
+    const hybridRu = `/ru${pair.uk}`;
+    const hybridUk = pair.ru.startsWith("/ru") ? pair.ru.slice(3) : pair.ru;
+    const redirects = [];
+    if (hybridRu !== pair.ru) {
+      redirects.push({ source: hybridRu, destination: pair.ru, permanent: true });
+    }
+    if (hybridUk && hybridUk !== pair.uk) {
+      redirects.push({ source: hybridUk, destination: pair.uk, permanent: true });
+    }
+    return redirects;
+  }),
+];
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -11,6 +44,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...hybridLocaleRedirects,
       {
         source: "/podarunky/shepit-na-vuho",
         destination: "/podarunky/chotyry-nastroi",

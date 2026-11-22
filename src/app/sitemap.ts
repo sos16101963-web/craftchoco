@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { INNER_PAGES } from "@/lib/pages";
+import { INNER_PAGES, BLOG_SLUG_PAIRS, blogArticleModifiedDate } from "@/lib/pages";
 import { PRODUCT_SLUGS } from "@/lib/slugs";
 import { products } from "@/lib/products";
 import { blogUk } from "@/lib/blog-uk";
-import { blogRu } from "@/lib/blog-ru";
 
 /**
  * Останній реліз контенту та технічного SEO для комерційних сторінок сайту.
@@ -115,18 +114,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 4. Експертні статті блогу (E-E-A-T)
   const blogPages = blogUk.flatMap((article) => {
-    const ruSlug = blogRu.find((r) => r.date === article.date)?.slug;
+    const ruSlug = BLOG_SLUG_PAIRS.find((p) => p.uk === article.slug)?.ru;
     if (!ruSlug) return [];
 
-    const isRecentlyUpdated =
-      article.slug === "podarunok-choloviku-u-yakoho-vse-ye-shokolad" ||
-      article.slug === "podarunky-na-sviatoho-mykolaia-shokolad" ||
-      article.slug === "shokoladni-bukety" ||
-      article.slug === "yistivni-korporatyvni-podarunky-novyi-rik" ||
-      article.slug === "podarunok-mami-ta-kokhaniy-bez-pryvodu";
-    const articleDate = isRecentlyUpdated
-      ? CONTENT_UPDATE_DATE
-      : new Date(`${article.date}T10:00:00.000Z`);
+    const modDateStr = blogArticleModifiedDate(article.slug, article.date);
+    const articleDate =
+      modDateStr !== article.date
+        ? CONTENT_UPDATE_DATE
+        : new Date(`${modDateStr}T10:00:00.000Z`);
 
     return createLocalizedPair({
       ukPath: `/blog/${article.slug}`,
