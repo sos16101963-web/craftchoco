@@ -11,6 +11,8 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site, CITIES_SERVED_UK, CITIES_SERVED_RU } from "@/lib/site";
 import { QuickOrderButtons } from "@/components/site/quick-order-buttons";
+import { productVideoFor, buildVideoObjectLd } from "@/lib/videos";
+import { LiteYouTubeShort } from "@/components/site/lite-youtube-short";
 
 export interface LandingProduct {
   id: string;
@@ -196,10 +198,14 @@ export function ProductLanding({
     })),
   };
 
+  const productVideo = productVideoFor(product.id);
+  const videoLd = buildVideoObjectLd(productVideo, locale);
+
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(canonicalPath)}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd).replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoLd).replace(/</g, "\\u003c") }} />
       <div className="bg-cream-100/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={crumbs} locale={locale} />
@@ -374,6 +380,19 @@ export function ProductLanding({
                   {uk ? "у спеку — термобокс з охолодженням, пухирчаста плівка за потреби" : "в жару — термобокс с охлаждением, пузырчатая пленка по необходимости"}
                 </li>
               </ul>
+            </div>
+            <div className="rounded-2xl border border-border bg-white p-5">
+              <h3 className="font-display text-lg font-bold text-choco-900">
+                {uk ? "Відеоогляд з майстерні" : "Видеообзор из мастерской"}
+              </h3>
+              <div className="mx-auto mt-4 max-w-[240px]">
+                <LiteYouTubeShort
+                  videoId={productVideo.id}
+                  title={productVideo.title[locale]}
+                  views={productVideo.views}
+                  locale={locale}
+                />
+              </div>
             </div>
           </div>
         </div>

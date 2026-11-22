@@ -4,13 +4,23 @@ import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { YouTubeIcon, TikTokIcon } from "@/components/site/icons";
+import { FEATURED_VIDEOS, buildVideoObjectLd } from "@/lib/videos";
+import { LiteYouTubeShort } from "@/components/site/lite-youtube-short";
 
 const icons = [Candy, Flame, Hand, Gift];
 
 export function Craft({ locale }: { locale: Locale }) {
   const t = getDict(locale).craft;
+  const videosLd = FEATURED_VIDEOS.map((v) => buildVideoObjectLd(v, locale));
   return (
     <section id="craft" className="relative scroll-mt-20 overflow-hidden bg-choco-950 py-20 text-cream lg:py-28" aria-label={t.aria}>
+      {videosLd.map((ld) => (
+        <script
+          key={ld.embedUrl}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }}
+        />
+      ))}
       <div className="texture-cocoa absolute inset-0 opacity-40" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
@@ -104,6 +114,18 @@ export function Craft({ locale }: { locale: Locale }) {
                   <span>TikTok <span className="font-normal opacity-85">@aleksandr_mag_</span></span>
                 </a>
               </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {FEATURED_VIDEOS.map((video) => (
+                <LiteYouTubeShort
+                  key={video.id}
+                  videoId={video.id}
+                  title={video.title[locale]}
+                  views={video.views}
+                  locale={locale}
+                />
+              ))}
             </div>
           </div>
         </div>
