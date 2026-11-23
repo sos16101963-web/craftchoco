@@ -308,7 +308,7 @@ export const productsUk: Record<string, ProductTexts> = {
   "flowers-four": {
     name: "«Комплімент від серця»",
     categoryLabel: FLOWERS_LABEL,
-    weight: "350 г · 4 квітки",
+    weight: "385 г · 4 квітки",
     character: "Робить компліменти, від яких перехоплює подих.",
     contents: [
       "4 великі шоколадні квітки",

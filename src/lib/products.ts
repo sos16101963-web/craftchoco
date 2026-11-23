@@ -728,9 +728,9 @@ export const products: Product[] = [
     name: "«Комплимент от сердца»",
     category: "flowers",
     categoryLabel: "Цветы и фигуры",
-    price: 400,
+    price: 580,
     priceFrom: true,
-    weight: "350 г · 4 цветка",
+    weight: "385 г · 4 цветка",
     character: "Вызывает искреннее «Вау!» и оставляет самые тёплые воспоминания.",
     contents: [
       "4 больших шоколадных цветка",

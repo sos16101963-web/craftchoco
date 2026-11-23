@@ -711,9 +711,9 @@ export const productsUk: ProductUk[] = [
     name: "«Комплімент від серця»",
     category: "flowers",
     categoryLabel: catFlowers,
-    price: 400,
+    price: 580,
     priceFrom: true,
-    weight: "350 г · 4 квітки",
+    weight: "385 г · 4 квітки",
     character: "Викликає щире «Вау!» і залишає найтепліші спогади.",
     contents: [
       "4 великі шоколадні квітки",
