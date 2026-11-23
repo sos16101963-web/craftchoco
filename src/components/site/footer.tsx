@@ -29,6 +29,18 @@ export function Footer({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-xs leading-relaxed">
+              <a
+                href="https://www.crafohab.com.ua"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-1.5 text-gold-400/90 underline decoration-gold-500/40 underline-offset-4 transition-colors hover:text-gold-300"
+              >
+                {locale === "uk"
+                  ? "Учасник каталогу крафтових майстерень CrafoHab"
+                  : "Участник каталога крафтовых мастерских CrafoHab"}
+              </a>
+            </p>
           </div>
 
           <nav aria-label={t.catalogAria}>
