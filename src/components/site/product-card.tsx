@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useCart } from "@/store/cart";
-import { formatProductPrice, formatPrice, type ProductVariant } from "@/lib/products";
+import { formatProductPrice, formatPrice, type ProductGalleryItem, type ProductVariant } from "@/lib/products";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -35,6 +35,7 @@ interface CardProduct {
   storage: string;
   image: string;
   cutImage?: string;
+  gallery?: ProductGalleryItem[];
   variants?: ProductVariant[];
   alt: string;
 }
@@ -71,6 +72,11 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
   };
 
   const isFreeItem = (item: string) => item.includes(t.common.freeBadge);
+  const hoverImage = product.cutImage ?? product.gallery?.[0]?.src;
+  const hoverAlt = product.cutImage ? t.catalog.cutAlt : (product.gallery?.[0]?.alt ?? product.alt);
+  const hoverLabel = product.cutImage
+    ? t.catalog.cutHover
+    : (product.gallery?.[0]?.label ?? (locale === "uk" ? "У коробці" : "В коробке"));
 
   return (
     <article className="card-lift group flex flex-col overflow-hidden rounded-2xl">
@@ -81,13 +87,13 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
           alt={product.alt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-opacity duration-500 group-hover:opacity-0"
+          className={`object-cover transition-opacity duration-500 ${hoverImage ? "group-hover:opacity-0" : ""}`}
         />
-        {/* Разрез начинки — эффект «слюноотделения» при наведении */}
-        {product.cutImage && (
+        {/* Друге фото (розріз начинки або вигляд у коробці) при наведенні */}
+        {hoverImage && (
           <Image
-            src={product.cutImage}
-            alt={t.catalog.cutAlt}
+            src={hoverImage}
+            alt={hoverAlt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -105,9 +111,9 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
             </Badge>
           )}
         </div>
-        {product.cutImage && (
+        {hoverImage && (
           <span className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-choco-950/75 px-3 py-1 text-[11px] font-semibold text-gold-300 opacity-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-            {t.catalog.cutHover}
+            {hoverLabel}
           </span>
         )}
         <Dialog open={open} onOpenChange={setOpen}>

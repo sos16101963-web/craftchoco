@@ -50,15 +50,19 @@ export function ImageSwap({
     })),
   ];
 
-  const isCutActive = activeImage === cutImage || (showCutHover && activeImage === image && hasCut);
-  const displayedSrc = isCutActive && cutImage ? cutImage : activeImage;
-  const displayedAlt = isCutActive ? (cutAlt ?? t.catalog.cutAlt) : activeAlt;
+  const hoverFallback = !hasCut && gallery.length > 0 ? gallery[0] : undefined;
+  const hoverSrc = hasCut ? cutImage : hoverFallback?.src;
+  const hoverAlt = hasCut ? (cutAlt ?? t.catalog.cutAlt) : (hoverFallback?.alt ?? alt);
+  const isHoverActive = showCutHover && activeImage === image && Boolean(hoverSrc);
+  const isCutActive = hasCut && activeImage === cutImage;
+  const displayedSrc = isHoverActive && hoverSrc ? hoverSrc : (isCutActive && cutImage ? cutImage : activeImage);
+  const displayedAlt = isHoverActive ? hoverAlt : (isCutActive ? (cutAlt ?? t.catalog.cutAlt) : activeAlt);
 
   return (
     <div className="flex flex-col gap-3.5">
       <div
         className="group relative aspect-square overflow-hidden rounded-[2rem] bg-choco-950/5 ring-1 ring-gold-400/30 shadow-[0_40px_80px_-24px_rgba(0,0,0,0.55)]"
-        onMouseEnter={() => hasCut && activeImage === image && setShowCutHover(true)}
+        onMouseEnter={() => Boolean(hoverSrc) && activeImage === image && setShowCutHover(true)}
         onMouseLeave={() => setShowCutHover(false)}
       >
         <Image

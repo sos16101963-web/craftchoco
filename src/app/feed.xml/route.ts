@@ -14,8 +14,9 @@ export async function GET() {
       const slug = PRODUCT_SLUGS.uk[p.id];
       const link = `${site.url}/podarunky/${slug}`;
       const imageLink = `${site.url}${p.image}`;
-      const additionalImage = p.cutImage
-        ? `\n      <g:additional_image_link>${site.url}${p.cutImage}</g:additional_image_link>`
+      const secondImage = p.cutImage ?? p.gallery?.[0]?.src;
+      const additionalImage = secondImage
+        ? `\n      <g:additional_image_link>${site.url}${secondImage}</g:additional_image_link>`
         : "";
       const cleanTitle = p.name.replace(/«|»/g, "").trim();
       const fullTitle = `Шоколад ручної роботи «${cleanTitle}» — ${p.categoryLabel} CraftChoco (ChocoCraft)`;
