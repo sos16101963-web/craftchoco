@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Scissors } from "lucide-react";
 import { getDict } from "@/lib/i18n";
@@ -16,6 +16,7 @@ export function ImageSwap({
   locale,
   priority = false,
   gallery = [],
+  externalImage,
 }: {
   image: string;
   cutImage?: string;
@@ -24,6 +25,7 @@ export function ImageSwap({
   locale: Locale;
   priority?: boolean;
   gallery?: ProductGalleryItem[];
+  externalImage?: { src: string; alt?: string; seq: number };
 }) {
   const t = getDict(locale);
   const [activeImage, setActiveImage] = useState<string>(image);
@@ -31,13 +33,20 @@ export function ImageSwap({
   const [showCutHover, setShowCutHover] = useState(false);
   const hasCut = !!cutImage;
 
+  useEffect(() => {
+    if (!externalImage) return;
+    setActiveImage(externalImage.src);
+    if (externalImage.alt) setActiveAlt(externalImage.alt);
+    setShowCutHover(false);
+  }, [externalImage]);
+
   const allThumbnails = [
     { src: image, alt, label: locale === "uk" ? "Головне" : "Главное" },
     ...(hasCut ? [{ src: cutImage!, alt: cutAlt ?? t.catalog.cutAlt, label: locale === "uk" ? "Розріз" : "Разрез" }] : []),
     ...gallery.map((g, idx) => ({
       src: g.src,
       alt: g.alt,
-      label: locale === "uk" ? `Ракурс ${idx + 1}` : `Ракурс ${idx + 1}`,
+      label: g.label ?? (locale === "uk" ? `Ракурс ${idx + 1}` : `Ракурс ${idx + 1}`),
     })),
   ];
 
@@ -106,7 +115,7 @@ export function ImageSwap({
                     ? "border-gold-500 shadow-md ring-2 ring-gold-400/50 scale-105"
                     : "border-gold-200/40 opacity-70 hover:opacity-100 hover:border-gold-400/70"
                 }`}
-                title={thumb.alt}
+                title={thumb.label ? `${thumb.label} — ${thumb.alt}` : thumb.alt}
               >
                 <Image
                   src={thumb.src}

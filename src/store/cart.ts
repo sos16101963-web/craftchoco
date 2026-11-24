@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { products } from "@/lib/products";
+import { products, resolveCartProduct } from "@/lib/products";
 import { trackEvent, trackFb } from "@/lib/analytics";
 
 export interface CartItem {
@@ -27,7 +27,7 @@ export const useCart = create<CartState>()(
       items: [],
       isOpen: false,
       add: (id, qty = 1) => {
-        const product = products.find((p) => p.id === id);
+        const product = resolveCartProduct(id, products);
         if (product) {
           trackEvent("add_to_cart", {
             currency: "UAH",

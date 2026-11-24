@@ -14,6 +14,7 @@ export function generateStaticParams() {
 
 function getProductTypeRu(p: { id: string; category: string }): string {
   if (p.id.startsWith("mediants")) return "Детские шоколадные медианты";
+  if (p.category === "cheese") return "Сырные конфеты ручной работы";
   if (p.category === "flowers") return "Шоколадный букет роз";
   if (p.category === "tiles") return "Шоколадная плитка / бруски";
   return "Шоколадный набор конфет";
@@ -26,12 +27,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!product) return {};
   const ukSlug = (id && PRODUCT_SLUGS.uk[id]) ?? "";
   const typeName = getProductTypeRu(product);
-  const title = `${typeName} ${product.name} — купить в Харькове от ${product.price} ₴ | CraftChoco`;
+  const displayPrice = product.variants?.length
+    ? Math.min(...product.variants.map((v) => v.price))
+    : product.price;
+  const title = `${typeName} ${product.name} — купить в Харькове от ${displayPrice} ₴ | CraftChoco`;
   return innerMeta(locale, {
     path: `/ru/podarunky/${slug}`,
     altPath: `/podarunky/${ukSlug}`,
     title,
-    description: `Купить ${typeName.toLowerCase()} ${product.name} (${product.weight}) из бельгийского шоколада Callebaut в Харькове от ${product.price} ₴. Свежая партия ручной работы, быстрая доставка день в день: 096 253 56 10.`,
+    description: `Купить ${typeName.toLowerCase()} ${product.name} (${product.weight}) из бельгийского шоколада Callebaut в Харькове от ${displayPrice} ₴. Свежая партия ручной работы, быстрая доставка день в день: 096 253 56 10.`,
     image: product.image,
   });
 }

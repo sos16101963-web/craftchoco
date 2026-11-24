@@ -56,11 +56,13 @@ export function Footer({ locale }: { locale: Locale }) {
                     { id: "sets", label: "Подарункові набори" },
                     { id: "tiles", label: "Плитки та бруски" },
                     { id: "flowers", label: "Квіти та фігури" },
+                    { id: "cheese", label: "Сирна колекція · Гурме" },
                   ]
                 : [
                     { id: "sets", label: "Подарочные наборы" },
                     { id: "tiles", label: "Плитки и бруски" },
                     { id: "flowers", label: "Цветы и фигуры" },
+                    { id: "cheese", label: "Сырная коллекция · Гурмэ" },
                   ]
               ).map((c) => (
                 <li key={c.id}>

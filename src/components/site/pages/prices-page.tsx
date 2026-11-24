@@ -63,6 +63,13 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
             unit: "скульптурний Callebaut",
             desc: "Реалістичні квіти, які не в'януть і дарують справжній бельгійський шоколад замість листя.",
           },
+          {
+            format: "Сирна колекція · Гурме",
+            size: "6 / 9 / 12 пірамід · 60–120 г",
+            price: "295 – 585 ₴",
+            unit: "сири + Callebaut",
+            desc: "«Грань насолоди»: манго × Адигейський, малина × блакитна пліснява, ананас × 3-річний сир «101 ніч».",
+          },
         ],
         h2WhyCost: "З чого складається ціна цукерок ручної роботи",
         whyCostItems: [
@@ -164,6 +171,13 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
             price: "от 200 ₴ – 880 ₴",
             unit: "скульптурный Callebaut",
             desc: "Реалистичные цветы, которые не вянут и дарят настоящий бельгийский шоколад вместо увядших лепестков.",
+          },
+          {
+            format: "Сырная коллекция · Гурмэ",
+            size: "6 / 9 / 12 пирамид · 60–120 г",
+            price: "295 – 585 ₴",
+            unit: "сыры + Callebaut",
+            desc: "«Грань наслаждения»: манго × Адыгейский, малина × голубая плесень, ананас × 3-летний сыр «101 ночь».",
           },
         ],
         h2WhyCost: "Из чего складывается цена конфет ручной работы",
@@ -328,8 +342,14 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
                   <td className="px-5 py-3.5 font-semibold text-choco-900">{p.name}</td>
                   <td className="px-5 py-3.5 text-choco-600">{p.weight}</td>
                   <td className="whitespace-nowrap px-5 py-3.5 font-bold text-gold-700">
-                    {p.priceFrom ? `${uk ? "від" : "от"} ` : ""}
-                    {p.price} ₴
+                    {p.variants?.length ? (
+                      <span>{p.variants.map((v) => v.price).join(" / ")} ₴</span>
+                    ) : (
+                      <>
+                        {p.priceFrom ? `${uk ? "від" : "от"} ` : ""}
+                        {p.price} ₴
+                      </>
+                    )}
                   </td>
                   <td className="px-5 py-3.5 text-right">
                     <a href={productPath(p.id, locale)} className="font-semibold text-choco-700 underline decoration-gold-500/50 underline-offset-4 hover:text-gold-700">

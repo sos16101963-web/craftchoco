@@ -15,6 +15,7 @@ export function generateStaticParams() {
 
 function getProductTypeUk(p: { id: string; category: string }): string {
   if (p.id.startsWith("mediants")) return "Дитячі шоколадні медіанти";
+  if (p.category === "cheese") return "Сирні цукерки ручної роботи";
   if (p.category === "flowers") return "Шоколадний букет троянд";
   if (p.category === "tiles") return "Шоколадна плитка / бруски";
   return "Шоколадний набір цукерок";
@@ -27,12 +28,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!product) return {};
   const ruSlug = (id && PRODUCT_SLUGS.ru[id]) ?? "";
   const typeName = getProductTypeUk(product);
-  const title = `${typeName} ${product.name} — купити у Харкові від ${product.price} ₴ | CraftChoco`;
+  const displayPrice = product.variants?.length
+    ? Math.min(...product.variants.map((v) => v.price))
+    : product.price;
+  const title = `${typeName} ${product.name} — купити у Харкові від ${displayPrice} ₴ | CraftChoco`;
   return innerMeta(locale, {
     path: `/podarunky/${slug}`,
     altPath: `/ru/podarunky/${ruSlug}`,
     title,
-    description: `Купити ${typeName.toLowerCase()} ${product.name} (${product.weight}) з бельгійського шоколаду Callebaut у Харкові від ${product.price} ₴. Свіжа партія ручної роботи, швидка доставка день у день: 096 253 56 10.`,
+    description: `Купити ${typeName.toLowerCase()} ${product.name} (${product.weight}) з бельгійського шоколаду Callebaut у Харкові від ${displayPrice} ₴. Свіжа партія ручної роботи, швидка доставка день у день: 096 253 56 10.`,
     image: product.image,
   });
 }

@@ -130,6 +130,7 @@ const EXTRA_VIDEOS: Record<string, VideoMeta> = {
 };
 
 const PRODUCT_VIDEO_MAP: Record<string, VideoMeta> = {
+  "cheese-gran": EXTRA_VIDEOS.giftSets,
   "set-sixteen": EXTRA_VIDEOS.giftSets,
   "set-twelve": EXTRA_VIDEOS.giftSets,
   "set-nine": FEATURED_VIDEOS[2],

@@ -1,16 +1,14 @@
 import Link from "next/link";
-import { Check, Clock, MessageCircle, Send, ShieldCheck, Snowflake, Truck } from "lucide-react";
+import { Check, Clock, ShieldCheck, Truck } from "lucide-react";
 import { InnerShell } from "@/components/site/inner-shell";
 import { Breadcrumbs } from "@/components/site/breadcrumbs";
-import { ImageSwap } from "@/components/site/image-swap";
-import { AddToCartButton } from "@/components/site/add-to-cart-button";
 import { ProductCard } from "@/components/site/product-card";
-import { catalogFor, formatProductPrice, type ProductGalleryItem } from "@/lib/products";
+import { ProductHeroInteractive } from "@/components/site/product-hero-interactive";
+import type { ProductGalleryItem, ProductVariant } from "@/lib/products";
 import { switchPairFor } from "@/lib/pages";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site, CITIES_SERVED_UK, CITIES_SERVED_RU } from "@/lib/site";
-import { QuickOrderButtons } from "@/components/site/quick-order-buttons";
 import { productVideoFor, buildVideoObjectLd } from "@/lib/videos";
 import { LiteYouTubeShort } from "@/components/site/lite-youtube-short";
 
@@ -32,6 +30,7 @@ export interface LandingProduct {
   image: string;
   cutImage?: string;
   gallery?: ProductGalleryItem[];
+  variants?: ProductVariant[];
   alt: string;
   flavorNotes?: string[];
   perfectFor?: string;
@@ -214,90 +213,7 @@ export function ProductLanding({
 
       {/* ——— Герой товару ——— */}
       <section className="bg-cream-100/60 pb-14" aria-label={product.name}>
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-          <ImageSwap
-            image={product.image}
-            cutImage={product.cutImage}
-            gallery={product.gallery}
-            alt={product.alt}
-            locale={locale}
-            priority
-          />
-
-          <div>
-            <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-gold-700">
-              {product.categoryLabel} · {uk ? "майстерня CraftChoco (ChocoCraft), Харків" : "мастерская CraftChoco (ChocoCraft), Харьков"}
-            </p>
-            <h1 className="mt-2.5 font-display text-3xl font-bold leading-[1.12] text-choco-900 sm:text-4xl lg:text-5xl">
-              <span className="block text-xl sm:text-2xl font-semibold text-gold-700 mb-1">
-                {uk ? "Шоколад ручної роботи" : "Шоколад ручной работы"}
-              </span>
-              {product.name}
-            </h1>
-            <p className="mt-3 text-lg italic leading-snug text-choco-600">{product.character}</p>
-
-            <div className="mt-4 flex items-center gap-2 text-sm text-choco-600">
-              <span className="inline-flex items-center rounded-full bg-gold-500/15 px-3 py-1 font-bold text-gold-700">
-                ★ {product.rating}
-              </span>
-              <span>
-                {product.reviews} {t.common.reviewsWord}
-              </span>
-              <span aria-hidden="true">·</span>
-              <span>{product.weight}</span>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-baseline gap-3">
-              <span className="font-display text-4xl font-bold text-choco-900">{formatProductPrice(product as never, locale)}</span>
-              <span className="text-sm text-choco-500">{product.weight}</span>
-            </div>
-            {product.priceFrom && <p className="mt-2 max-w-md text-xs leading-relaxed text-choco-500">{t.common.priceFromNote}</p>}
-
-            <div className="glass-surface mt-6 rounded-2xl border border-gold-500/30 p-5 shadow-sm">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">{t.common.inSet}</p>
-              <ul className="mt-3 space-y-2 text-[15px]">
-                {product.contents.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" aria-hidden="true" />
-                    <span className="leading-snug text-choco-800">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-7 space-y-3">
-              <AddToCartButton
-                productId={product.id}
-                productName={product.name}
-                price={product.price}
-                priceFrom={product.priceFrom}
-                locale={locale}
-                className="btn-gold-luxe h-14 w-full rounded-full text-base font-bold"
-              />
-
-              {/* Швидкий спосіб замовити в 1 клік без корзини */}
-              <QuickOrderButtons
-                productName={product.name}
-                price={product.price}
-                locale={locale}
-              />
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-choco-700">
-              <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
-                ⚡ {uk ? "Свіжа партія цього тижня" : "Свежая партия этой недели"}
-              </span>
-              <span className="flex items-center gap-1.5 rounded-lg bg-white/80 p-2 font-medium shadow-sm">
-                💌 {uk ? "Листівка в подарунок" : "Открытка в подарок"}
-              </span>
-            </div>
-
-            <p className="mt-3 flex items-center gap-2 rounded-xl bg-gold-500/10 px-4 py-2.5 text-[13px] font-semibold text-choco-800">
-              <Snowflake className="h-4 w-4 shrink-0 text-gold-700" aria-hidden="true" />
-              {t.thermo.title}. {t.thermo.text}
-            </p>
-          </div>
-        </div>
+        <ProductHeroInteractive locale={locale} product={product} />
       </section>
 
       {/* ——— Опис ——— */}
@@ -307,7 +223,11 @@ export function ProductLanding({
             <h2 className="font-display text-3xl font-bold text-choco-900">
               {uk ? `Про ${product.name}` : `О наборе ${product.name}`}
             </h2>
-            <p className="mt-5 text-[17px] leading-relaxed text-choco-700">{product.description}</p>
+            <div className="mt-5 space-y-4 text-[17px] leading-relaxed text-choco-700">
+              {product.description.split("\n\n").map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
+            </div>
             <blockquote className="mt-6 border-l-4 border-gold-500/60 pl-5 font-display text-lg italic leading-relaxed text-choco-800">
               «{product.character}»
               <footer className="mt-2 text-sm not-italic text-choco-500">— {uk ? "ідея набору" : "идея набора"}, CraftChocoKharkiv</footer>

@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useCart } from "@/store/cart";
-import { formatProductPrice, formatPrice } from "@/lib/products";
+import { formatProductPrice, formatPrice, type ProductVariant } from "@/lib/products";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -35,6 +35,7 @@ interface CardProduct {
   storage: string;
   image: string;
   cutImage?: string;
+  variants?: ProductVariant[];
   alt: string;
 }
 
@@ -43,10 +44,29 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
   const [open, setOpen] = useState(false);
   const add = useCart((s) => s.add);
 
+  const variants = product.variants ?? [];
+  const defaultVariant = variants.length > 0 ? variants[variants.length - 1] : undefined;
+  const [selectedVariantId, setSelectedVariantId] = useState<string | undefined>(defaultVariant?.id);
+  const [dialogImageSrc, setDialogImageSrc] = useState<string>(product.image);
+
+  const activeVariant = variants.find((v) => v.id === selectedVariantId) ?? defaultVariant;
+  const activePrice = activeVariant?.price ?? product.price;
+  const activeWeight = activeVariant?.weight ?? product.weight;
+  const activePriceFrom = activeVariant ? false : product.priceFrom;
+  const activeCartId = activeVariant ? `${product.id}::${activeVariant.id}` : product.id;
+  const activeName = activeVariant ? `${product.name} (${activeVariant.label})` : product.name;
+
+  const selectVariant = (v: ProductVariant, updateDialogImage = true) => {
+    setSelectedVariantId(v.id);
+    if (updateDialogImage) {
+      setDialogImageSrc(v.image ?? product.image);
+    }
+  };
+
   const handleAdd = () => {
-    add(product.id);
+    add(activeCartId);
     toast.success(t.common.added, {
-      description: `«${product.name}» — ${formatProductPrice(product as never, locale)}`,
+      description: `«${activeName}» — ${formatProductPrice({ price: activePrice, priceFrom: activePriceFrom } as never, locale)}`,
     });
   };
 
@@ -106,7 +126,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
             </DialogHeader>
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="relative aspect-square overflow-hidden rounded-2xl">
-                <Image src={product.image} alt={product.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
+                <Image src={dialogImageSrc} alt={product.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
               </div>
               <div className="flex flex-col">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">{product.categoryLabel}</p>
@@ -118,7 +138,11 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                   <span aria-hidden="true">·</span>
                   <span>{product.reviews} {t.common.reviewsWord}</span>
                 </div>
-                <p className="mt-4 text-[15px] leading-relaxed text-choco-700">{product.description}</p>
+                <div className="mt-4 space-y-2.5 text-[15px] leading-relaxed text-choco-700">
+                  {product.description.split("\n\n").map((para, idx) => (
+                    <p key={idx}>{para}</p>
+                  ))}
+                </div>
 
                 <div className="mt-4 rounded-2xl bg-cream-100 p-4">
                   <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">{t.common.inSet}</p>
@@ -156,7 +180,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                   )}
                   <div>
                     <dt className="text-choco-500">{t.common.weight}</dt>
-                    <dd className="font-bold text-choco-900">{product.weight}</dd>
+                    <dd className="font-bold text-choco-900">{activeWeight}</dd>
                   </div>
                   <div className="col-span-2">
                     <dt className="text-choco-500">{t.common.composition}</dt>
@@ -168,11 +192,42 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                   </div>
                 </dl>
 
+                {variants.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">
+                      {locale === "uk" ? "Оберіть розмір коробки:" : "Выберите размер коробки:"}
+                    </p>
+                    <div className="mt-2 grid grid-cols-3 gap-2">
+                      {variants.map((v) => {
+                        const isSelected = activeVariant?.id === v.id;
+                        return (
+                          <button
+                            key={v.id}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() => selectVariant(v, true)}
+                            className={`rounded-xl border px-2.5 py-2 text-center text-xs transition-all ${
+                              isSelected
+                                ? "border-gold-600 bg-choco-950 font-bold text-gold-300 shadow-sm"
+                                : "border-gold-500/30 bg-white font-semibold text-choco-800 hover:border-gold-500"
+                            }`}
+                          >
+                            <span className="block">{v.label}</span>
+                            <span className={isSelected ? "text-cream" : "text-gold-700"}>{v.price} ₴</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 <div className="mt-auto pt-5">
                   <div className="mb-3 flex items-baseline gap-3">
-                    <span className="font-display text-3xl font-bold text-choco-900">{formatProductPrice(product as never, locale)}</span>
+                    <span className="font-display text-3xl font-bold text-choco-900">
+                      {formatProductPrice({ price: activePrice, priceFrom: activePriceFrom } as never, locale)}
+                    </span>
                   </div>
-                  {product.priceFrom && (
+                  {activePriceFrom && (
                     <p className="mb-3 text-xs leading-relaxed text-choco-500">{t.common.priceFromNote}</p>
                   )}
                   {/* Термобокс — снятие риска прямо в карточке */}
@@ -199,7 +254,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                         href={site.messengers[0].href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => trackIntent("viber", product.name, product.price)}
+                        onClick={() => trackIntent("viber", activeName, activePrice)}
                         className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7360f2]/30 bg-[#7360f2]/10 py-2.5 text-xs font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
                       >
                         <MessageCircle className="h-4 w-4" /> Viber
@@ -208,7 +263,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                         href={site.messengers[2].href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => trackIntent("telegram", product.name, product.price)}
+                        onClick={() => trackIntent("telegram", activeName, activePrice)}
                         className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#229ed9]/30 bg-[#229ed9]/10 py-2.5 text-xs font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"
                       >
                         <Send className="h-4 w-4" /> Telegram
@@ -216,7 +271,7 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
                     </div>
                     <a
                       href={site.phoneHref}
-                      onClick={() => trackIntent("phone", product.name, product.price)}
+                      onClick={() => trackIntent("phone", activeName, activePrice)}
                       className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl border border-choco-200 bg-white/90 py-2 text-xs font-bold text-choco-900 transition-colors hover:bg-gold-500 hover:text-choco-950"
                     >
                       <Phone className="h-3.5 w-3.5 text-gold-600" />
@@ -252,19 +307,44 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
           <span className="font-semibold text-choco-800">{product.rating}</span>
           <span aria-hidden="true">·</span>
           <span>
-            {product.weight}
+            {activeWeight}
             {product.cocoa ? ` · ${t.common.cocoa.toLowerCase()} ${product.cocoa}%` : ""}
           </span>
         </div>
 
+        {variants.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5" role="group" aria-label={locale === "uk" ? "Розмір коробки" : "Размер коробки"}>
+            {variants.map((v) => {
+              const isSelected = activeVariant?.id === v.id;
+              return (
+                <button
+                  key={v.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => selectVariant(v, true)}
+                  className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-all ${
+                    isSelected
+                      ? "border-gold-600 bg-choco-950 text-gold-300 shadow-xs"
+                      : "border-gold-500/35 bg-white text-choco-700 hover:border-gold-500"
+                  }`}
+                >
+                  {v.label} · {v.price} ₴
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         <div className="mt-4 flex items-end justify-between gap-3 pt-1">
           <div>
-            <span className="font-display text-2xl font-bold text-choco-900">{formatProductPrice(product as never, locale)}</span>
+            <span className="font-display text-2xl font-bold text-choco-900">
+              {formatProductPrice({ price: activePrice, priceFrom: activePriceFrom } as never, locale)}
+            </span>
           </div>
           <Button
             onClick={handleAdd}
             size="sm"
-            aria-label={t.common.addToCart(product.name)}
+            aria-label={t.common.addToCart(activeName)}
             className="btn-choco-luxe h-10 rounded-full px-5 font-bold"
           >
             <ShoppingBag className="mr-1.5 h-4 w-4" /> {t.common.inCart}
@@ -281,8 +361,8 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
               href={site.messengers[0].href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackIntent("viber", product.name, product.price)}
-              aria-label={locale === "uk" ? `Замовити «${product.name}» у Viber` : `Заказать «${product.name}» в Viber`}
+              onClick={() => trackIntent("viber", activeName, activePrice)}
+              aria-label={locale === "uk" ? `Замовити «${activeName}» у Viber` : `Заказать «${activeName}» в Viber`}
               title="Viber"
               className="rounded-lg bg-[#7360f2]/10 px-2.5 py-1 text-[11px] font-bold text-[#5c49d6] transition-colors hover:bg-[#7360f2] hover:text-white"
             >
@@ -292,8 +372,8 @@ export function ProductCard({ product, locale }: { product: CardProduct; locale:
               href={site.messengers[2].href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackIntent("telegram", product.name, product.price)}
-              aria-label={locale === "uk" ? `Замовити «${product.name}» в Telegram` : `Заказать «${product.name}» в Telegram`}
+              onClick={() => trackIntent("telegram", activeName, activePrice)}
+              aria-label={locale === "uk" ? `Замовити «${activeName}» в Telegram` : `Заказать «${activeName}» в Telegram`}
               title="Telegram"
               className="rounded-lg bg-[#229ed9]/10 px-2.5 py-1 text-[11px] font-bold text-[#0088cc] transition-colors hover:bg-[#229ed9] hover:text-white"
             >

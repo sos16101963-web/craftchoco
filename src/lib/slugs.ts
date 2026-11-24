@@ -4,6 +4,7 @@ import type { Locale } from "./i18n";
 
 export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
   uk: {
+    "cheese-gran": "gran-nasolody",
     "set-sixteen": "sviato-bez-povodu",
     "set-twelve": "melodiya-kokhannya",
     "set-nine": "palitra-smakiv",
@@ -26,6 +27,7 @@ export const PRODUCT_SLUGS: Record<Locale, Record<string, string>> = {
     "mediants-four": "malenki-druzi-chetvirka",
   },
   ru: {
+    "cheese-gran": "gran-naslazhdeniya",
     "set-sixteen": "prazdnik-bez-povoda",
     "set-twelve": "melodiya-lyubvi",
     "set-nine": "palitra-vkusov",

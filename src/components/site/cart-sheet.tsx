@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCart } from "@/store/cart";
 import { trackEvent, trackFb } from "@/lib/analytics";
-import { formatPrice, formatProductPrice, catalogFor } from "@/lib/products";
+import { formatPrice, formatProductPrice, catalogFor, resolveCartProduct } from "@/lib/products";
 import { site } from "@/lib/site";
 import { toast } from "sonner";
 import { getDict } from "@/lib/i18n";
@@ -41,15 +41,16 @@ export function CartSheet({ locale }: { locale: Locale }) {
   const lines = useMemo(
     () =>
       items
-        .map((i) => ({ ...i, product: catalog.find((p) => p.id === i.id)! }))
+        .map((i) => ({ ...i, product: resolveCartProduct(i.id, catalog)! }))
         .filter((l) => Boolean(l.product)),
-    [items]
+    [items, catalog]
   );
 
   // Якщо в кошику є інші товари, для набору set-four («Чотири настрої») діє спец-знижка 30% (100 ₴ замість 130 ₴)
-  const hasOtherItems = lines.some((l) => l.id !== "set-four");
-  const getItemPrice = (id: string, regularPrice: number) => {
-    if (id === "set-four" && hasOtherItems) return 100;
+  const hasOtherItems = lines.some((l) => l.product.productId !== "set-four");
+  const getItemPrice = (cartId: string, regularPrice: number) => {
+    const [productId] = cartId.split("::");
+    if (productId === "set-four" && hasOtherItems) return 100;
     return regularPrice;
   };
 
@@ -61,11 +62,11 @@ export function CartSheet({ locale }: { locale: Locale }) {
   // Подсказки «добрать до бесплатной доставки»: сначала то, что влезает в остаток (крупное первым),
   // иначе — самый доступный набор, чтобы приблизиться к порогу.
   const suggestions = useMemo(() => {
-    const inCart = new Set(lines.map((l) => l.id));
+    const inCart = new Set(lines.map((l) => l.product.productId));
     const fits = catalog.filter((p) => !inCart.has(p.id) && p.price <= remaining).sort((a, b) => b.price - a.price);
     if (fits.length > 0) return fits.slice(0, 2);
     return catalog.filter((p) => !inCart.has(p.id)).sort((a, b) => a.price - b.price).slice(0, 2);
-  }, [lines, remaining]);
+  }, [lines, remaining, catalog]);
 
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,9 +93,9 @@ export function CartSheet({ locale }: { locale: Locale }) {
           name: name.trim(),
           phone: phone.trim(),
           items: lines.map((l) => ({
-            id: l.product.id,
+            id: l.product.productId,
             name:
-              l.id === "set-four" && hasOtherItems
+              l.product.productId === "set-four" && hasOtherItems
                 ? `${l.product.name} (спец-знижка 30% для себе)`
                 : l.product.name,
             qty: l.qty,
@@ -268,7 +269,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
                         </Button>
                       </div>
                       <div className="text-right">
-                        {l.id === "set-four" && hasOtherItems && (
+                        {l.product.productId === "set-four" && hasOtherItems && (
                           <span className="block text-[11px] font-medium text-choco-400 line-through">
                             {formatPrice(l.product.price * l.qty)}
                           </span>
@@ -276,7 +277,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
                         <p className="font-display text-lg font-bold text-choco-900">
                           {formatPrice(getItemPrice(l.id, l.product.price) * l.qty)}
                         </p>
-                        {l.id === "set-four" && hasOtherItems && (
+                        {l.product.productId === "set-four" && hasOtherItems && (
                           <span className="inline-block rounded-full bg-gold-500/20 px-2 py-0.5 text-[10px] font-bold text-choco-900">
                             -30% спецціна
                           </span>
@@ -289,7 +290,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
             </ul>
 
             {/* Спец-пропозиція допродажу (Upsell) «Чотири настрої» зі знижкою 30% */}
-            {lines.length > 0 && !lines.some((l) => l.id === "set-four") && (
+            {lines.length > 0 && !lines.some((l) => l.product.productId === "set-four") && (
               <div className="mx-6 my-2 overflow-hidden rounded-2xl border-2 border-dashed border-gold-500/60 bg-gradient-to-r from-gold-500/10 via-cream-100 to-gold-500/15 p-3.5 shadow-xs">
                 <div className="flex items-center gap-3">
                   <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-gold-500/30 shadow-xs">

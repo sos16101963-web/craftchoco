@@ -87,7 +87,8 @@ const uk = {
       { id: "sets", label: "Подарункові набори" },
       { id: "tiles", label: "Плитки та бруски" },
       { id: "flowers", label: "Квіти та фігури" },
-    ] as { id: "all" | "sets" | "tiles" | "flowers"; label: string }[],
+      { id: "cheese", label: "Сирна колекція · Гурме" },
+    ] as { id: "all" | "sets" | "tiles" | "flowers" | "cheese"; label: string }[],
     adviceTitle: "Порада майстра — виконуйте по порядку",
     advice1:
       "В офіс — беріть «Захоплення недоброзичливців». Коханій — «Обійми коханого». Мамі — «Букет, який не зів'яне». Начальнику — «Свято без приводу». Собі — «Відпочинок після роботи», без варіантів. Далі довіртеся майстру.",
@@ -260,6 +261,7 @@ export const dictionaries: Record<Locale, Dict> = {
         { id: "sets", label: "Подарочные наборы" },
         { id: "tiles", label: "Плитки и бруски" },
         { id: "flowers", label: "Цветы и фигуры" },
+        { id: "cheese", label: "Сырная коллекция · Гурмэ" },
       ],
       adviceTitle: "Совет мастера — выполняйте по порядку",
       advice1:
