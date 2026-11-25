@@ -35,6 +35,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
   );
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
   const [orderDone, setOrderDone] = useState(false);
   const [sending, setSending] = useState(false);
 
@@ -104,6 +105,7 @@ export function CartSheet({ locale }: { locale: Locale }) {
           total,
           locale,
           source,
+          note: note.trim() || undefined,
         }),
       });
 
@@ -376,6 +378,23 @@ export function CartSheet({ locale }: { locale: Locale }) {
                       className="h-11 rounded-xl bg-white"
                     />
                   </div>
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="cart-note" className="sr-only">
+                    {locale === "uk" ? "Текст на листівку або коментар" : "Текст на открытку или комментарий"}
+                  </Label>
+                  <Input
+                    id="cart-note"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    placeholder={
+                      locale === "uk"
+                        ? "Текст на безкоштовну листівку або побажання (за бажанням)"
+                        : "Текст на бесплатную открытку или комментарий (по желанию)"
+                    }
+                    maxLength={220}
+                    className="h-10 rounded-xl bg-white text-xs"
+                  />
                 </div>
                 {/* Четкая гарантия прямо перед кнопкой заказа */}
                 <div className="rounded-xl border border-gold-500/35 bg-gold-500/15 p-3 text-center text-xs font-semibold text-choco-950">

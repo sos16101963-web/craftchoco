@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Snowflake } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Check, Send, Snowflake } from "lucide-react";
 import { ImageSwap } from "@/components/site/image-swap";
 import { AddToCartButton } from "@/components/site/add-to-cart-button";
 import { QuickOrderButtons } from "@/components/site/quick-order-buttons";
 import { formatProductPrice } from "@/lib/products";
+import { site } from "@/lib/site";
+import { trackIntent } from "@/lib/analytics";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import type { LandingProduct } from "./product-landing";
@@ -27,6 +29,14 @@ export function ProductHeroInteractive({
   const [externalImage, setExternalImage] = useState<{ src: string; alt?: string; seq: number } | undefined>(
     undefined,
   );
+  const [showSticky, setShowSticky] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowSticky(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const activeVariant = variants.find((v) => v.id === selectedVariantId) ?? defaultVariant;
   const activePrice = activeVariant?.price ?? product.price;
@@ -168,6 +178,44 @@ export function ProductHeroInteractive({
           {t.thermo.title}. {t.thermo.text}
         </p>
       </div>
+
+      {/* Плавающая нижняя панель покупки для мобильных устройств */}
+      {showSticky && (
+        <div
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/30 bg-cream/95 px-4 py-3 shadow-[0_-12px_32px_-12px_rgba(28,16,9,0.25)] backdrop-blur-md md:hidden"
+          role="region"
+          aria-label={uk ? "Швидке замовлення" : "Быстрый заказ"}
+        >
+          <div className="mx-auto flex max-w-lg items-center justify-between gap-2.5">
+            <div className="min-w-0">
+              <p className="truncate text-xs font-bold text-choco-900">{activeName}</p>
+              <p className="font-display text-lg font-bold leading-tight text-gold-700">
+                {formatProductPrice({ price: activePrice, priceFrom: activePriceFrom } as never, locale)}
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <a
+                href={site.messengers[2].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackIntent("telegram", activeName, activePrice)}
+                aria-label="Telegram"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#229ed9]/40 bg-[#229ed9]/15 text-[#0088cc]"
+              >
+                <Send className="h-4 w-4" />
+              </a>
+              <AddToCartButton
+                productId={activeCartId}
+                productName={activeName}
+                price={activePrice}
+                priceFrom={activePriceFrom}
+                locale={locale}
+                className="btn-gold-luxe h-11 rounded-full px-5 text-sm font-bold"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

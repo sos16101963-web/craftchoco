@@ -465,3 +465,12 @@
 @media (prefers-reduced-motion: reduce) {
   .journey-goldflow { animation: none; }
 }
+
+/* ---------- 2026–2027 Нативные переходы между страницами и плавные аккордеоны ---------- */
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  interpolate-size: allow-keywords;
+}

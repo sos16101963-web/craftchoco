@@ -14,6 +14,7 @@ interface OrderRequest {
   total: number;
   locale?: string;
   source?: string;
+  note?: string;
 }
 
 const cityNames: Record<string, string> = {
@@ -46,7 +47,7 @@ export async function POST(req: Request) {
   try {
     const data: OrderRequest = await req.json();
 
-    const { name, phone, items, total, locale, source } = data;
+    const { name, phone, items, total, locale, source, note } = data;
 
     if (!name?.trim() || !phone?.trim() || !items?.length) {
       return NextResponse.json(
@@ -92,6 +93,8 @@ export async function POST(req: Request) {
       )
       .join("\n");
 
+    const noteLine = note?.trim() ? `\n💌 <b>Листівка / Коментар:</b> ${note.trim()}` : "";
+
     const message = `🍫 <b>НОВЕ ЗАМОВЛЕННЯ НА САЙТІ CRAFO!</b>
 ━━━━━━━━━━━━━━━━━━━━
 👤 <b>Клієнт:</b> ${name}
@@ -104,7 +107,7 @@ export async function POST(req: Request) {
 📱 <b>Пристрій:</b> ${device}
 
 📦 <b>Склад замовлення:</b>
-${itemsText}
+${itemsText}${noteLine}
 
 💰 <b>Разом до сплати:</b> <b>${total} ₴</b>
 🕐 <b>Час:</b> ${now}
