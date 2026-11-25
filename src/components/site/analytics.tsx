@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-KN1ZWRMSWZ";
-const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "1847133093271781";
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "yr31dmrb43";
 
 /**
