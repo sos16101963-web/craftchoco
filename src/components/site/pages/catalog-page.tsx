@@ -8,7 +8,6 @@ import { catalogFor } from "@/lib/products";
 import { productPath } from "@/lib/slugs";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
 export function CatalogPage({ locale, path }: { locale: Locale; path: string }) {
   const uk = locale === "uk";
@@ -31,14 +30,6 @@ export function CatalogPage({ locale, path }: { locale: Locale; path: string }) 
 
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(path)}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Каталог" : "Каталог", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
       <section className="bg-choco-950 pb-10 pt-32 text-cream sm:pt-36">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-400">{t.catalog.kicker}</p>
@@ -46,6 +37,13 @@ export function CatalogPage({ locale, path }: { locale: Locale; path: string }) 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-cream/85">{seo.intro}</p>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs
+          items={[{ name: uk ? "Каталог шоколаду ручної роботи Callebaut" : "Каталог шоколада ручной работы Callebaut", path }]}
+          locale={locale}
+        />
+      </div>
 
       <ThermoBanner locale={locale} />
 

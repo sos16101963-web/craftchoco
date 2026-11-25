@@ -27,6 +27,7 @@ export const INNER_PAGES: Record<string, PagePair> = {
 
 /** Мовні пари слагов статей блогу (1-to-1 відповідність, без колізій за датою) */
 export const BLOG_SLUG_PAIRS: ReadonlyArray<{ uk: string; ru: string }> = [
+  { uk: "syrni-shokoladni-tsukerky-kharkiv", ru: "syrnye-shokoladnye-konfety-kharkov" },
   { uk: "yak-zberihaty-shokolad", ru: "kak-khranit-shokolad" },
   { uk: "chomu-callebaut", ru: "pochemu-callebaut" },
   { uk: "temperuvannia-shokoladu", ru: "temperirovanie-shokolada" },

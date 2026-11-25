@@ -68,7 +68,7 @@ export function BlogArticlePage({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
-              { name: uk ? "Блог" : "Блог", path: uk ? "/blog" : "/ru/blog" },
+              { name: uk ? "Блог про шоколад ручної роботи" : "Блог о шоколаде ручной работы", path: uk ? "/blog" : "/ru/blog" },
               { name: article.h1, path },
             ]}
             locale={locale}

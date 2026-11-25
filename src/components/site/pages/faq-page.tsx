@@ -5,7 +5,6 @@ import { switchPairFor } from "@/lib/pages";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
 export function FaqPage({ locale, path }: { locale: Locale; path: string }) {
   const uk = locale === "uk";
@@ -35,14 +34,6 @@ export function FaqPage({ locale, path }: { locale: Locale; path: string }) {
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(path)}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Питання та відповіді" : "Вопросы и ответы", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
       <section className="bg-choco-950 pb-14 pt-32 text-cream sm:pt-36">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-400">{seo.kicker}</p>
@@ -53,6 +44,14 @@ export function FaqPage({ locale, path }: { locale: Locale; path: string }) {
           </a>
         </div>
       </section>
+      <div className="bg-cream-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs
+            items={[{ name: uk ? "Питання про бельгійський шоколад" : "Вопросы о бельгийском шоколаде", path }]}
+            locale={locale}
+          />
+        </div>
+      </div>
       <div className="bg-cream-100 pb-10">
         <Faq locale={locale} />
       </div>

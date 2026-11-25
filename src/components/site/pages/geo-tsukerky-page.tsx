@@ -8,9 +8,8 @@ import { catalogFor } from "@/lib/products";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
-const SETS_IDS = ["set-sixteen", "set-combo", "set-six", "set-four", "envelope-gift", "set-hobby"];
+const SETS_IDS = ["cheese-gran", "set-sixteen", "set-combo", "set-six", "set-four", "envelope-gift"];
 
 /** Гео-лендинг №2: «Цукерки ручної роботи в Харкові» */
 export function GeoTsukerkyPage({ locale, path }: { locale: Locale; path: string }) {
@@ -43,20 +42,19 @@ export function GeoTsukerkyPage({ locale, path }: { locale: Locale; path: string
 
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(path)}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Цукерки ручної роботи Харків" : "Конфеты ручной работы Харьков", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
       <section className="bg-choco-950 pb-14 pt-32 text-cream sm:pt-36">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-400">{seo.kicker}</p>
           <h1 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{seo.h1}</h1>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs
+          items={[{ name: uk ? "Цукерки ручної роботи з ганашем Харків" : "Конфеты ручной работы с ганашем Харьков", path }]}
+          locale={locale}
+        />
+      </div>
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
         <div className="space-y-4 text-[16.5px] leading-relaxed text-choco-700">

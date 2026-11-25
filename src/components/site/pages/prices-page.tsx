@@ -7,7 +7,6 @@ import { productPath } from "@/lib/slugs";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
 export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
   const uk = locale === "uk";
@@ -239,14 +238,6 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Ціни" : "Цены", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -268,6 +259,13 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-cream/85">{seo.sub}</p>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs
+          items={[{ name: uk ? "Ціни на шоколад ручної роботи" : "Цены на шоколад ручной работы", path }]}
+          locale={locale}
+        />
+      </div>
 
       {/* Быстрый гид: сколько стоит коробка конфет по форматам */}
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">

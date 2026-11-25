@@ -5,7 +5,6 @@ import { CorporateEstimateCalculator } from "@/components/site/pages/corporate-e
 import { switchPairFor } from "@/lib/pages";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
 export function CorporatePage({ locale, path }: { locale: Locale; path: string }) {
   const uk = locale === "uk";
@@ -264,14 +263,6 @@ export function CorporatePage({ locale, path }: { locale: Locale; path: string }
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Корпоративні подарунки" : "Корпоративные подарки", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -301,6 +292,13 @@ export function CorporatePage({ locale, path }: { locale: Locale; path: string }
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs
+          items={[{ name: uk ? "Корпоративні шоколадні подарунки" : "Корпоративные шоколадные подарки", path }]}
+          locale={locale}
+        />
+      </div>
 
       {/* Бонусы и спецпредложения */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">

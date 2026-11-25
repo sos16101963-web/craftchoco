@@ -11,7 +11,7 @@ export interface Crumb {
 /** Хлебные крошки + микроразметка BreadcrumbList */
 export function Breadcrumbs({ items, locale }: { items: Crumb[]; locale: Locale }) {
   const home = locale === "uk" ? "/" : "/ru";
-  const all: Crumb[] = [{ name: locale === "uk" ? "Головна" : "Главная", path: home }, ...items];
+  const all: Crumb[] = [{ name: locale === "uk" ? "Шоколад ручної роботи Харків" : "Шоколад ручной работы Харьков", path: home }, ...items];
   return (
     <nav aria-label={locale === "uk" ? "Хлібні крихти" : "Хлебные крошки"} className="py-4">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd(all)).replace(/</g, "\\u003c") }} />

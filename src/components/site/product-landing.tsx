@@ -159,8 +159,8 @@ export function ProductLanding({
   };
 
   const crumbs = [
-    { name: uk ? "Каталог" : "Каталог", path: uk ? "/katalog" : "/ru/katalog" },
-    { name: product.name, path: canonicalPath },
+    { name: uk ? "Каталог шоколаду Callebaut" : "Каталог шоколада Callebaut", path: uk ? "/katalog" : "/ru/katalog" },
+    { name: `${product.categoryLabel}: ${product.name}`, path: canonicalPath },
   ];
 
   const faq = [

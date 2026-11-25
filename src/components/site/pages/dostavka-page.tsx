@@ -5,7 +5,6 @@ import { switchPairFor } from "@/lib/pages";
 import { getDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { breadcrumbLd } from "@/lib/inner-meta";
 
 const DISTRICTS_UK = [
   "Шевченківський район",
@@ -126,14 +125,6 @@ export function DostavkaPage({ locale, path }: { locale: Locale; path: string })
 
   return (
     <InnerShell locale={locale} switchPair={switchPairFor(path)}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbLd([{ name: uk ? "Головна" : "Главная", path: uk ? "/" : "/ru" }, { name: uk ? "Доставка" : "Доставка", path }]),
-          ).replace(/</g, "\\u003c"),
-        }}
-      />
       <section className="bg-choco-950 pb-14 pt-32 text-cream sm:pt-36">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-gold-400">{seo.kicker}</p>
@@ -141,6 +132,13 @@ export function DostavkaPage({ locale, path }: { locale: Locale; path: string })
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-cream/85">{seo.sub}</p>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs
+          items={[{ name: uk ? "Доставка шоколаду по Харкову та Україні" : "Доставка шоколада по Харькову и Украине", path }]}
+          locale={locale}
+        />
+      </div>
 
       {/* Города Украины */}
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
