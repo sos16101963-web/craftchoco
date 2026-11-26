@@ -37,7 +37,7 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
           {
             format: "Комбо-бокси",
             size: "9 цукерок + плитка · 180 г",
-            price: "320 ₴",
+            price: "336 ₴",
             unit: "цукерки + плитка",
             desc: "«Подвійна насолода» — корпусні цукерки та плитка з горіхами й ягодами в одній коробці.",
           },
@@ -146,7 +146,7 @@ export function PricesPage({ locale, path }: { locale: Locale; path: string }) {
           {
             format: "Комбо-боксы",
             size: "9 конфет + плитка · 180 г",
-            price: "320 ₴",
+            price: "336 ₴",
             unit: "конфеты + плитка",
             desc: "«Двойное удовольствие» — корпусные конфеты и плитка с орехами и ягодами в одной коробке.",
           },

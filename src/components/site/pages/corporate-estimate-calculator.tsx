@@ -50,7 +50,7 @@ const FORMAT_OPTIONS: CorporateFormatOption[] = [
     id: "set-combo",
     nameUk: "Комбо-набір: 9 цукерок + плитка («Подвійна насолода»)",
     nameRu: "Комбо-набор: 9 конфет + плитка («Двойное удовольствие»)",
-    basePrice: 320,
+    basePrice: 336,
     sizeUk: "9 цукерок + шоколадна плитка · 180 г",
     sizeRu: "9 конфет + шоколадная плитка · 180 г",
   },

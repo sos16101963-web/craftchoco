@@ -276,7 +276,7 @@ export const products: Product[] = [
     name: "«Двойное удовольствие»",
     category: "sets",
     categoryLabel: "Подарочный набор",
-    price: 320,
+    price: 336,
     priceFrom: true,
     weight: "180 г · 9 конфет + плитка",
     character: "Считает, что выбирать — вредно. Берёт всё сразу.",

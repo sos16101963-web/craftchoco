@@ -248,7 +248,7 @@ export const productsUk: ProductUk[] = [
     name: "«Подвійна насолода»",
     category: "sets",
     categoryLabel: catSets,
-    price: 320,
+    price: 336,
     priceFrom: true,
     weight: "180 г · 9 цукерок + плитка",
     character: "Вважає, що вибирати — шкода. Бере все одразу.",
