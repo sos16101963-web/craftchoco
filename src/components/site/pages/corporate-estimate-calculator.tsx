@@ -26,9 +26,9 @@ const FORMAT_OPTIONS: CorporateFormatOption[] = [
     id: "mediants",
     nameUk: "Дитячі медіанти «Маленькі друзі» (4 шт)",
     nameRu: "Детские медианты «Маленькие друзья» (4 шт)",
-    basePrice: 150,
-    sizeUk: "4 шт по 20 г зі звірятами",
-    sizeRu: "4 шт по 20 г со зверятами",
+    basePrice: 227,
+    sizeUk: "4 шт зі звірятами · 135 г",
+    sizeRu: "4 шт со зверятами · 135 г",
   },
   {
     id: "set-six",
